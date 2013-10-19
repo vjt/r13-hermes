@@ -8,6 +8,10 @@ class SitesController < ApplicationController
 
   def index
     @sites = Site.by_user(current_user)
+
+    if @sites.blank?
+      redirect_to new_site_path, notice: "Create your first site"
+    end
   end
 
   def show
@@ -18,12 +22,13 @@ class SitesController < ApplicationController
   end
 
   def create
-    @site = Site.new(params[:site])
+    @site = current_user.sites.
+      new(params.require(:site).permit(:name, :hostname, :description))
 
     if @site.save
-      redirect_to :show
+      redirect_to site_path(@site)
     else
-      render :edit
+      render :new
     end
   end
 
