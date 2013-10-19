@@ -14,7 +14,9 @@ class ScriptsController < ApplicationController
       return unless request.referer.present?
 
       url = URI.parse(request.referer)
-      @site = Site.find_by_host(url)
+      return unless url.scheme.in? %w( http https )
+
+      @site = Site.find_by_hostname(url.host)
 
     rescue URI::InvalidURIError
       nil
