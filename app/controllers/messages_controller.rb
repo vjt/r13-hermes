@@ -15,8 +15,8 @@ class MessagesController < ApplicationController
     remote_user = (cookies['__hermes_user'] ||= State.ephemeral_user)
 
     @messages =
-      @site.tips.published.respecting(remote_user) +
-      @site.tutorials.published.respecting(remote_user)
+      @site.tips.published.within(@source.path).respecting(remote_user) +
+      @site.tutorials.published.within(@source.path).respecting(remote_user)
 
     render json: render_to_string, callback: @callback
   end
@@ -51,10 +51,10 @@ class MessagesController < ApplicationController
     def find_site
       return unless request.referer.present?
 
-      url = URI.parse(request.referer)
-      return unless url.scheme.in? %w( http https )
+      @source = URI.parse(request.referer)
+      return unless @source.scheme.in? %w( http https )
 
-      @site = Site.find_by_hostname(url.host)
+      @site = Site.find_by_hostname(@source.host)
 
     rescue URI::InvalidURIError
       nil

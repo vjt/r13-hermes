@@ -1,6 +1,7 @@
 class Tip < ActiveRecord::Base
   include Publicable
   include Politeness
+  include PathScoping
   include Sortable
 
   belongs_to :tippable, polymorphic: true, inverse_of: :tips
