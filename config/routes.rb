@@ -7,5 +7,5 @@ Hermes::Application.routes.draw do
     resources :tips
   end
 
-  get "/payload.js" => "scripts#show"
+  get "/messages.js" => "messages#index"
 end

@@ -1,10 +1,10 @@
 # This controller serves JS embed files for external sites.
 # The remote site is identified through the HTTP Referer header.
 #
-class ScriptsController < ApplicationController
+class MessagesController < ApplicationController
   before_filter :find_site, :only => :show
 
-  def show
+  def index
     head :not_found and return unless @site
 
     callback = params[:callback]
