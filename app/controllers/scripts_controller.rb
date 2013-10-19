@@ -12,8 +12,11 @@ class ScriptsController < ApplicationController
 
     remote_user = (cookies['__hermes_user'] ||= State.ephemeral_user)
 
-    tips = @site.tips.published.respecting(remote_user)
-    render :json => tips.to_json, :callback => callback
+    @messages =
+      @site.tips.published.respecting(remote_user) +
+      @site.tutorials.published.respecting(remote_user)
+
+    render json: render_to_string, callback: callback
   end
 
   protected

@@ -9,8 +9,4 @@ class Tip < ActiveRecord::Base
   validates :tippable, associated: true
 
   validates :title, :content, presence: true
-
-  def as_json(*)
-    { :content => self.content }
-  end
 end
