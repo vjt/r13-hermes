@@ -2,10 +2,10 @@
 
 (function() {
   var jQuery,
-      jQueryURL     = '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
-      hermesURL     = __hermes_host__ + '/messages.js',
-      foundationURL = __hermes_host__ + '/foundation.min.js',
-      modernizrURL  = __hermes_host__ + '/custom.modernizr.js';
+      jQueryURL         = '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
+      hermesURL         = __hermes_host__ + '/messages.js',
+      foundationURL     = __hermes_host__ + '/foundation.min.js',
+      modernizrURL      = __hermes_host__ + '/custom.modernizr.js';
 
   function loadJavaScript(url, loadHandler) {
     var script_tag = document.createElement('script');
@@ -20,6 +20,7 @@
     } else {
       script_tag.onload = loadHandler;
     }
+
     (document.getElementsByTagName('head')[0] || document.documentElement).appendChild(script_tag);
   }
 
@@ -39,7 +40,7 @@
     jQuery(document).ready(function($) {
       var h = new Hermes();
 
-      $.ajax(h.endpoint, {
+      $.ajax(hermesURL, {
         dataType: 'jsonp',
         success: function(messages, status) {
           var message = null;
@@ -50,8 +51,6 @@
   }
 
   function Hermes() {
-    this.endpoint = hermesURL;
-
     this.show = function(message) {
       switch(message.type) {
       case 'tutorial':
