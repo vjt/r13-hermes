@@ -127,15 +127,24 @@
       //var wrapper = $('<div/>')
       //var body    = $('body').wrap(wrapper);
 
-      // Add the overlayer
+      // Add the 4 overlays
       //
-      var overlay = $('<div/>', {id: 'overlay'}).
-        css({margin: 0, padding:0, position:'absolute', opacity: '0.6', 'background-color': '#a00'});
+      var css = {margin: 0, padding:0, position:'absolute', 'background-color': '#a00'}
+      var overlay = {
+        N: $('<div/>', {id: 'overlayN'}).css(css),
+        S: $('<div/>', {id: 'overlayS'}).css(css),
+        E: $('<div/>', {id: 'overlayE'}).css(css),
+        W: $('<div/>', {id: 'overlayW'}).css(css),
+      };
 
-      $('html').append(overlay);
+      for (i in overlay) {
+        $('html').append(overlay[i]);
+      }
+
+      var thickness = 4; // px
 
       // And now set the mousemove event handler
-      $('body > *').on('mousemove', function (event) {
+      $('body').on('mousemove', function (event) {
         try {
 
           var elem = document.elementFromPoint(event.pageX, event.pageY);
@@ -144,17 +153,29 @@
             return;
 
           var rect = elem.getBoundingClientRect();
-          var doc = $(document), stop = doc.scrollTop(), sleft = doc.scrollLeft();
+          var doc  = $(document), stop = doc.scrollTop(), sleft = doc.scrollLeft();
 
           if (rect.width > 5000)
             return;
 
-          overlay.css({
+          // North
+          //
+          overlay.N.css({
             width:  rect.width,
-            height: rect.height,
-            top:    rect.top - stop,
-            left:   rect.left - sleft
+            height: thickness,
+            top:    rect.top - thickness/2,
+            left:   rect.left
           });
+
+          // South
+          //
+          overlay.S.css({
+            width:  rect.width,
+            height: thickness,
+            top:    rect.top + rect.height - thickness/2,
+            left:   rect.left
+          });
+
         } catch (e) {
           console.log(e);
         }
