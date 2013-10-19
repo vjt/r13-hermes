@@ -1,12 +1,16 @@
 <div>
-  <h3><%= site.name %></h3>
-
-  <dl>
-    <dt>Hostname</dt>
-    <dd><%= site.hostname %></dd>
-
-    <dt>Description</dt>
-    <dd><%= site.description %></dd>
-  </dl>
-
+  <table>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Hostname</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= link_to site.name, site_path(site)  %></td>
+        <td><%= site.hostname %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
