@@ -28,7 +28,12 @@
   function main() {
     jQuery(document).ready(function($) {
       // Hermes code here.
-      alert($.fn.jquery);
+      $.ajax('//localhost:3000/payload.js', {
+        dataType: 'jsonp',
+        success: function() {
+          alert('ye!');
+        }
+      });
     });
   }
 })();
