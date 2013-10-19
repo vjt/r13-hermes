@@ -38,9 +38,7 @@ class MessagesController < ApplicationController
       Time.at(params[:until].to_i / 1000)
     end
 
-    @message.dismiss! remote_user, up_to
-
-    head :created
+    head(@message.dismiss!(remote_user, up_to) ? :created : :ok)
   end
 
   protected

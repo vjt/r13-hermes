@@ -27,15 +27,24 @@ class State < ActiveRecord::Base
   # won't be displayed again until the `up_to` timestamp. If
   # the timestamp is `nil`, then the message will be dismissed
   # forever (more or less ;-).
+  #
+  # Returns true if the change was successful, or false if no
+  # state change was applied.
+  #
   def self.dismiss!(message, remote_user, up_to = nil)
     up_to = nil if up_to.respond_to?(:past?) && up_to.past?
 
-    new.tap do |state|
-      state.message     = message
-      state.remote_user = remote_user
-      state.show_at     = up_to || Time.at(0xffffffff)
-      state.save!
-    end
+    state = find_or_initialize_by(
+      message_id:   message.id,
+      message_type: message.class.name,
+      remote_user:  remote_user
+    )
+
+    state.show_at = up_to || Time.at(0xffffffff)
+
+    return false unless state.changed?
+
+    state.save!
   end
 
 end
