@@ -7,6 +7,7 @@ class SitesController < ApplicationController
   before_filter :find_site, :only => %w( show edit update destroy )
 
   def index
+    @site = Site.new
     @sites = Site.by_user(current_user)
 
     if @sites.blank?
@@ -26,9 +27,9 @@ class SitesController < ApplicationController
       new(params.require(:site).permit(:name, :hostname, :description))
 
     if @site.save
-      redirect_to site_path(@site)
+      redirect_to sites_path
     else
-      render :new
+      redirect_to sites_path, :warning => 'Wrong data'
     end
   end
 
