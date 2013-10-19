@@ -18,7 +18,7 @@ class State < ActiveRecord::Base
   scope :for_type, -> type { where(:message_type => type) }
 
   scope :unwanted_by, -> remote_user do
-    select(:id).
+    select(:message_id).
     where(:remote_user => remote_user).
     where('show_at > ?', Time.now)
   end
