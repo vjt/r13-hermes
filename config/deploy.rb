@@ -42,7 +42,7 @@ LINODE_SERVER_HOSTNAME = 'antani.r13.railsrumble.com'
 set :bundle_flags,               "--deployment"
 
 set :application,                "hermes"
-set :deploy_to,                  "/www/"
+set :deploy_to,                  "/www"
 set :normalize_asset_timestamps, false
 set :rails_env,                  "production"
 
@@ -76,10 +76,10 @@ end
 # Restart Unicorn
 deploy.task :restart, :roles => :app do
   # Fix Permissions
-  sudo "chown -R www-data:www-data #{current_path}"
-  sudo "chown -R www-data:www-data #{latest_release}"
-  sudo "chown -R www-data:www-data #{shared_path}/bundle"
-  sudo "chown -R www-data:www-data #{shared_path}/log"
+  run "chown -R #{runner}:#{runner} #{current_path}"
+  run "chown -R #{runner}:#{runner} #{latest_release}"
+  run "chown -R #{runner}:#{runner} #{shared_path}/bundle"
+  run "chown -R #{runner}:#{runner} #{shared_path}/log"
 
   # Restart Application
   pid = "#{deploy_to}/.unicorn.pid"
