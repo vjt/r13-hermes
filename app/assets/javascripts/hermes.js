@@ -39,13 +39,17 @@
     jQuery(document).ready(function($) {
       var h = new Hermes();
 
-      $.ajax(h.endpoint, {
-        dataType: 'jsonp',
-        success: function(messages, status) {
-          var message = null;
-          while (message = messages.shift()) { h.show(message); }
-        }
-      });
+      if (/#hermes-authoring/.test(document.location.hash)) {
+        h.author();
+      } else {
+        $.ajax(h.endpoint, {
+          dataType: 'jsonp',
+          success: function(messages, status) {
+            var message = null;
+            while (message = messages.shift()) { h.show(message); }
+          }
+        });
+      }
     });
   }
 
@@ -115,6 +119,46 @@
       broadcast.append(close);
 
       jQuery(document.body).prepend(broadcast);
+    }
+
+    this.author = function () {
+      // Wrap all the body into a new div
+      //
+      //var wrapper = $('<div/>')
+      //var body    = $('body').wrap(wrapper);
+
+      // Add the overlayer
+      //
+      var overlay = $('<div/>', {id: 'overlay'}).
+        css({margin: 0, padding:0, position:'absolute', opacity: '0.6', 'background-color': '#a00'});
+
+      $('html').append(overlay);
+
+      // And now set the mousemove event handler
+      $('body > *').on('mousemove', function (event) {
+        try {
+
+          var elem = document.elementFromPoint(event.pageX, event.pageY);
+
+          if (elem.tagName == 'BODY')
+            return;
+
+          var rect = elem.getBoundingClientRect();
+          var doc = $(document), stop = doc.scrollTop(), sleft = doc.scrollLeft();
+
+          if (rect.width > 5000)
+            return;
+
+          overlay.css({
+            width:  rect.width,
+            height: rect.height,
+            top:    rect.top - stop,
+            left:   rect.left - sleft
+          });
+        } catch (e) {
+          console.log(e);
+        }
+      });
     }
 
     return this;
