@@ -49,6 +49,11 @@ gem 'debugger', group: [:development, :test]
 # Ranked model for tip sorting
 gem 'ranked-model', github: 'vjt/ranked-model'
 
+# Well, some testing is due.
+gem 'rspec-rails', group: :test
+gem 'fuubar', group: :test
+
+# Authentication
 gem 'devise'
 
 # Add Foundation Here
