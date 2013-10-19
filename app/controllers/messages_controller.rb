@@ -2,6 +2,8 @@
 # The remote site is identified through the HTTP Referer header.
 #
 class MessagesController < ApplicationController
+  before_filter :require_callback
+
   before_filter :find_site
   before_filter :find_message, only: %w( update )
 
@@ -10,16 +12,13 @@ class MessagesController < ApplicationController
   def index
     head :not_found and return unless @site
 
-    callback = params[:callback]
-    head :bad_request and return unless callback.present?
-
     remote_user = (cookies['__hermes_user'] ||= State.ephemeral_user)
 
     @messages =
       @site.tips.published.respecting(remote_user) +
       @site.tutorials.published.respecting(remote_user)
 
-    render json: render_to_string, callback: callback
+    render json: render_to_string, callback: @callback
   end
 
   # Updates the status of the given message type and ID for the hermes_user
@@ -34,21 +33,20 @@ class MessagesController < ApplicationController
     remote_user = cookies['__hermes_user']
     head :bad_request and return unless remote_user.present?
 
-    callback = params[:callback]
-    head :bad_request and return unless callback.present?
-
     up_to = if params[:until].present?
       Time.at(params[:until].to_i / 1000)
     end
 
-    dismissed = @message.dismiss!(remote_user, up_to)
-
-    # head(@message.dismiss!(remote_user, up_to) ? :created : :ok)
-
-    render json: {}, callback: callback
+    status = @message.dismiss!(remote_user, up_to) ? :created : :ok
+    render json: {}, callback: @callback, :status => status
   end
 
   protected
+
+    def require_callback
+      @callback = params[:callback]
+      head :bad_request unless @callback.present?
+    end
 
     def find_site
       return unless request.referer.present?
