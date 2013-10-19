@@ -45,3 +45,6 @@ gem 'capistrano', '~> 2.0', group: :development
 
 # Use debugger
 gem 'debugger', group: [:development, :test]
+
+
+gem 'devise'

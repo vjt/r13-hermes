@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tippable_id: 
+  tippable_type: Tippable
+  title: MyString
+  content: MyText
+  published_at: 2013-10-19 12:27:12
+  unpublished_at: 2013-10-19 12:27:12
+
+two:
+  tippable_id: 
+  tippable_type: Tippable
+  title: MyString
+  content: MyText
+  published_at: 2013-10-19 12:27:12
+  unpublished_at: 2013-10-19 12:27:12
