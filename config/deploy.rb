@@ -71,6 +71,8 @@ after 'deploy:update_code' do
 
   # Compile Assets
   run "cd #{release_path}; RAILS_ENV=production bundle exec rake assets:precompile hermes:symlink"
+
+  # Symlink hermes.js
 end
 
 # Restart Unicorn

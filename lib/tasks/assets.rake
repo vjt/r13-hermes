@@ -1,9 +1,14 @@
 namespace :hermes do
   desc 'Symlink public/assets/hermes-#{assets_digest}.js -> public/assets/hermes.js'
   task :symlink do
-    digest = Rails.application.assets.digest.to_s
-    from, to = "public/assets/hermes-#{digest}.js", 'public/assets/hermes.js'
-    puts "#{from} -> #{to}"
-    File.symlink from, to
+
+    Dir["public/assets/hermes-*.js*"].each do |f|
+      dst = File.basename(f)
+      src = f.sub(/-[0-9a-f]+/, "")
+
+      $stderr.puts "Symlink #{src} -> #{dst}"
+      File.symlink(dst, src)
+    end
+
   end
 end

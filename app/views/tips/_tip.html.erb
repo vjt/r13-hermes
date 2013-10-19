@@ -1,13 +1,6 @@
-<div>
-  <h3><%= tip.title %></h3>
-
-  <dl>
-    <dt>Publish at</dt>
-    <dd><%= l tip.published_at %></dd>
-
-    <dt>Unpublish at</dt>
-    <dd><%= l tip.unpublished_at %></dd>
-  </dl>
-
-  <%= link_to 'Edit', edit_site_tip_path(@site, tip) %>
-</div>
+<tr>
+  <td><%= tip.title  %></td>
+  <td><%= l tip.published_at %></td>
+  <td><%= l tip.unpublished_at %></td>
+  <td><%= link_to 'Edit', edit_site_tip_path(@site, tip) %></td>
+</tr>

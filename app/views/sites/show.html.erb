@@ -1,6 +1,7 @@
-<h1><%= title "Site #{@site.name}" %></h1>
+<div class="span12">
+  <h1><%= title "Site #{@site.name}" %></h1>
 
-<dl>
+<dl class="dl-horizontal">
   <dt>Host name</dt>
   <dd><%= @site.hostname %></dd>
 
@@ -13,3 +14,4 @@
   <dt>Tutorials</dt>
   <dd><%= link_to pluralize(@site.tutorials.count, 'tutorial'), site_tutorials_path(@site) %></dd>
 </dl>
+</div>
