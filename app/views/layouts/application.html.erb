@@ -22,25 +22,32 @@
 
   <body>
 
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><%= link_to "HERMES", root_path %></a></h1>
-      </li>
-    </ul>
-    <section class="top-bar-section">
-      <ul class="right">
-        <li class="divider"></li>
-        <li><%= link_to "Sites", sites_path %></li>
-        <li class="divider"></li>
-        <li><%= link_to "Messages" %></li>
-        <li class="divider"></li>
-        <li><%= link_to "Tutorials" %></li>
-      </ul>
+  <div class="row">
+    <div class="large-12 columns">
+      <nav class="top-bar">
+        <ul class="title-area">
+          <li class="name">
+            <h1><%= link_to "HERMES", root_path %></a></h1>
+          </li>
+        </ul>
+        <section class="top-bar-section">
+          <ul class="left">
+            <li class="divider"></li>
+            <li><%= link_to "Sites", sites_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to "Messages" %></li>
+            <li class="divider"></li>
+            <li><%= link_to "Tutorials" %></li>
+          </ul>
+        </section>
+      </nav>
     </div>
-  </nav>
-
-    <%= yield %>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= yield %>
+    </div>
+  </div>
 
     <%= javascript_include_tag "application" %>
   </body>
