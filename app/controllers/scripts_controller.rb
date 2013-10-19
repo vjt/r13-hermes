@@ -6,6 +6,12 @@ class ScriptsController < ApplicationController
 
   def show
     head :not_found and return unless @site
+
+    callback = params[:callback]
+    head :bad_request and return unless callback.present?
+
+    tips = @site.tips.published
+    render :json => tips.to_json, :callback => callback
   end
 
   protected
