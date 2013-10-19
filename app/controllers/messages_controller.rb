@@ -5,6 +5,8 @@ class MessagesController < ApplicationController
   before_filter :find_site
   before_filter :find_message, only: %w( update )
 
+  skip_before_action :verify_authenticity_token, only: :update
+
   def index
     head :not_found and return unless @site
 
@@ -23,13 +25,20 @@ class MessagesController < ApplicationController
   # Updates the status of the given message type and ID for the hermes_user
   # stored in the cookies.
   #
+  # params[:until] is expected to be a JS timestamp, that is - milliseconds
+  # passed after the Unix Epoch.
+  #
   def update
     head :bad_request and return unless @message.present?
 
     remote_user = cookies['__hermes_user']
     head :bad_request and return unless remote_user.present?
 
-    @message.dismiss! for: remote_user, until: params[:until].presence
+    up_to = if params[:until].present?
+      Time.at(params[:until].to_i / 1000)
+    end
+
+    @message.dismiss! remote_user, up_to
 
     head :created
   end

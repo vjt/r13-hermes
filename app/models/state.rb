@@ -28,6 +28,8 @@ class State < ActiveRecord::Base
   # the timestamp is `nil`, then the message will be dismissed
   # forever (more or less ;-).
   def self.dismiss!(message, remote_user, up_to = nil)
+    up_to = nil if up_to.respond_to?(:past?) && up_to.past?
+
     new.tap do |state|
       state.message     = message
       state.remote_user = remote_user
