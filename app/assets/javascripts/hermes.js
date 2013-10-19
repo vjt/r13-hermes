@@ -1,9 +1,11 @@
+//= require hermes-endpoint
+
 (function() {
   var jQuery,
       jQueryURL     = '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
-      hermesURL     = '//localhost:3000/messages.js',
-      foundationURL = '//localhost:3000/foundation.min.js',
-      modernizrURL  = '//localhost:3000/custom.modernizr.js';
+      hermesURL     = __hermes_host__ + '/messages.js',
+      foundationURL = __hermes_host__ + '/foundation.min.js',
+      modernizrURL  = __hermes_host__ + '/custom.modernizr.js';
 
   function loadJavaScript(url, loadHandler) {
     var script_tag = document.createElement('script');
