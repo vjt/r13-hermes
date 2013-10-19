@@ -9,13 +9,19 @@
 </div>
 
 <div>
+  <%= f.label :path %>
+  <%= f.text_field :path %>
+</div>
+
+
+<div>
   <%= f.label :published_at, 'Publishing starts' %>
-  <%= f.text_field :published_at %>
+  <%= f.datetime_select :published_at %>
 </div>
 
 <div>
   <%= f.label :unpublished_at, 'Publishing ends' %>
-  <%= f.text_field :unpublished_at %>
+  <%= f.datetime_select :unpublished_at %>
 </div>
 
 <div>

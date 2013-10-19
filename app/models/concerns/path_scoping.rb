@@ -3,7 +3,7 @@ module PathScoping
 
   included do
     def self.within(path)
-      where('path ILIKE ?', "#{path}%")
+      where('path LIKE ?', "#{path}%")
     end
   end
 end

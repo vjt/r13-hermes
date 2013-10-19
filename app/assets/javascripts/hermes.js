@@ -20,29 +20,23 @@
     main();
   }
 
-  function createCookie(name,value,days) {
-    if (days) {
-      var date = new Date();
-      date.setTime(date.getTime()+(days*24*60*60*1000));
-      var expires = "; expires="+date.toGMTString();
-    }
-    else var expires = "";
-    document.cookie = name+"="+value+expires+"; path=/";
+  function scriptLoadHandler() {
+    jQuery = window.jQuery.noConflict(true);
+    main();
   }
 
-  function readCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-      var c = ca[i];
-      while (c.charAt(0)==' ') c = c.substring(1,c.length);
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-  }
+  function main() {
+    jQuery(document).ready(function($) {
+      var h = new Hermes();
 
-  function eraseCookie(name) {
-    createCookie(name,"",-1);
+      $.ajax(h.endpoint, {
+        dataType: 'jsonp',
+        success: function(messages, status) {
+          var message = null;
+          while (message = messages.shift()) { h.show(message); }
+        }
+      });
+    });
   }
 
   function Hermes() {
@@ -60,12 +54,20 @@
       }
     }
 
+    this.showTutorial = function(message) {
+      alert(message.type);
+    }
+
+    this.showTip = function(message) {
+      alert(message.type);
+    }
+
     this.showBroadcast = function(message) {
-      var tip = jQuery('<div class="hermes-broadcast" />');
+      var broadcast = jQuery('<div class="hermes-broadcast" />');
       var close = jQuery('<span class="hermes-broadcast-close" />');
 
-      tip.html(message.content);
-      tip.css({
+      broadcast.html(message.content);
+      broadcast.css({
         'background-color': '#D9EDF7',
         'border-color': '#BCE8F1',
         'color': '#3A87AD',
@@ -92,9 +94,6 @@
       });
 
       close.click(function(e) {
-
-        console.log(message);
-
         jQuery.ajax(message.url, {
           dataType: 'jsonp',
           complete: function(jqXHR, status) {
@@ -103,30 +102,37 @@
         });
       });
 
-      tip.append(close);
+      broadcast.append(close);
 
-      jQuery(document.body).prepend(tip);
+      jQuery(document.body).prepend(broadcast);
     }
 
     return this;
   }
 
-  function scriptLoadHandler() {
-    jQuery = window.jQuery.noConflict(true);
-    main();
+  function createCookie(name,value,days) {
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime()+(days*24*60*60*1000));
+      var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
   }
 
-  function main() {
-    jQuery(document).ready(function($) {
-      var h = new Hermes();
-
-      $.ajax(h.endpoint, {
-        dataType: 'jsonp',
-        success: function(messages, status) {
-          var message = null;
-          while (message = messages.shift()) { h.show(message); }
-        }
-      });
-    });
+  function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
   }
+
+  function eraseCookie(name) {
+    createCookie(name,"",-1);
+  }
+
 })();
