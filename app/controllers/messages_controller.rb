@@ -53,7 +53,7 @@ class MessagesController < ApplicationController
       model = params[:type].camelize.constantize
 
       return unless model.included_modules.include?(Publicable)
-      model.find(params[:id])
+      @message = model.find(params[:id])
     end
 
 end
