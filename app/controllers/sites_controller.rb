@@ -1,3 +1,6 @@
+# This controllers is the backend core, from which users manage the sites
+# they want to get the help elements in.
+#
 class SitesController < ApplicationController
   before_action :authenticate_user!
 
