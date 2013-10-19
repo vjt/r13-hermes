@@ -4,7 +4,7 @@
 class Site < ActiveRecord::Base
   belongs_to :user
 
-  has_many :tips
+  has_many :tips, as: :tippable
   has_many :tutorials
 
   validates :user_id, :name, :hostname, presence: true
