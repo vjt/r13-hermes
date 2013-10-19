@@ -10,7 +10,9 @@ class ScriptsController < ApplicationController
     callback = params[:callback]
     head :bad_request and return unless callback.present?
 
-    tips = @site.tips.published
+    remote_user = (cookies['__hermes_user'] ||= State.ephemeral_user)
+
+    tips = @site.tips.published.respecting(remote_user)
     render :json => tips.to_json, :callback => callback
   end
 

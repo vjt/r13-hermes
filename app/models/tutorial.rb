@@ -1,5 +1,6 @@
 class Tutorial < ActiveRecord::Base
   include Publicable
+  include Politeness
 
   belongs_to :site, inverse_of: :tutorials
   has_many :tips, as: :tippable, inverse_of: :tippable

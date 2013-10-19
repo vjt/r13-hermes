@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019125454) do
+ActiveRecord::Schema.define(version: 20131019150624) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "sites", force: true do |t|
     t.integer  "user_id"
@@ -23,6 +26,17 @@ ActiveRecord::Schema.define(version: 20131019125454) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "states", force: true do |t|
+    t.integer  "message_id"
+    t.string   "message_type"
+    t.datetime "show_at"
+    t.string   "remote_user"
+  end
+
+  add_index "states", ["message_id", "message_type"], name: "index_states_on_message_id_and_message_type", using: :btree
+  add_index "states", ["remote_user"], name: "index_states_on_remote_user", unique: true, using: :btree
+  add_index "states", ["show_at"], name: "index_states_on_show_at", using: :btree
 
   create_table "tips", force: true do |t|
     t.integer  "tippable_id"
@@ -37,7 +51,7 @@ ActiveRecord::Schema.define(version: 20131019125454) do
     t.integer  "position",       default: 0, null: false
   end
 
-  add_index "tips", ["tippable_id", "tippable_type"], name: "index_tips_on_tippable_id_and_tippable_type"
+  add_index "tips", ["tippable_id", "tippable_type"], name: "index_tips_on_tippable_id_and_tippable_type", using: :btree
 
   create_table "tutorials", force: true do |t|
     t.integer  "site_id"
@@ -48,7 +62,7 @@ ActiveRecord::Schema.define(version: 20131019125454) do
     t.datetime "updated_at"
   end
 
-  add_index "tutorials", ["site_id"], name: "index_tutorials_on_site_id"
+  add_index "tutorials", ["site_id"], name: "index_tutorials_on_site_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "full_name"
@@ -66,7 +80,7 @@ ActiveRecord::Schema.define(version: 20131019125454) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
