@@ -1,26 +1,34 @@
 (function() {
-  var jQuery;
+  var jQuery,
+      jQueryURL     = '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
+      hermesURL     = '//localhost:3000/messages.js',
+      foundationURL = '//localhost:3000/foundation.min.js',
+      modernizrURL  = '//localhost:3000/custom.modernizr.js';
 
-  if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.10.2') {
+  function loadJavaScript(url, loadHandler) {
     var script_tag = document.createElement('script');
-    script_tag.setAttribute("src", "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js");
+    script_tag.setAttribute('src', url);
 
     if (script_tag.readyState) {
       script_tag.onreadystatechange = function () {
         if (this.readyState == 'complete' || this.readyState == 'loaded') {
-          scriptLoadHandler();
+          typeof loadHandler == 'function' && loadHandler();
         }
       };
     } else {
-      script_tag.onload = scriptLoadHandler;
+      script_tag.onload = loadHandler;
     }
-    (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
+    (document.getElementsByTagName('head')[0] || document.documentElement).appendChild(script_tag);
+  }
+
+  if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.10.2') {
+    loadJavaScript(jQueryURL, jQueryLoadHandler);
   } else {
     jQuery = window.jQuery;
     main();
   }
 
-  function scriptLoadHandler() {
+  function jQueryLoadHandler() {
     jQuery = window.jQuery.noConflict(true);
     main();
   }
@@ -40,7 +48,7 @@
   }
 
   function Hermes() {
-    this.endpoint = "//localhost:3000/messages.js";
+    this.endpoint = hermesURL;
 
     this.show = function(message) {
       switch(message.type) {
