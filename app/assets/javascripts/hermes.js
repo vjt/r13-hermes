@@ -45,24 +45,26 @@
     createCookie(name,"",-1);
   }
 
-  function Hermes(data) {
-    this.show = function() {
-      switch(data.type) {
+  function Hermes() {
+    this.endpoint = "//localhost:3000/messages.js";
+
+    this.show = function(message) {
+      switch(message.type) {
       case 'tutorial':
         break;
-      case 'broadcast':
+      case 'tip':
         break;
       default:
-        this.showBroadcast();
+        this.showBroadcast(message);
         break;
       }
     }
 
-    this.showBroadcast = function() {
+    this.showBroadcast = function(message) {
       var tip = jQuery('<div class="hermes-broadcast" />');
       var close = jQuery('<span class="hermes-broadcast-close" />');
 
-      tip.html(data.content);
+      tip.html(message.content);
       tip.css({
         'background-color': '#D9EDF7',
         'border-color': '#BCE8F1',
@@ -73,9 +75,10 @@
         'font-family': '"Helvetica Neue", Helvetica, Arial, sans-serif',
         'padding': '15px',
         'font-size': '14px',
-        'line-height': '1.428571429'
+        'line-height': '18px'
       });
 
+      close.attr('data-url', message.url);
       close.html("×");
       close.css({
         'cursor': 'pointer',
@@ -89,7 +92,15 @@
       });
 
       close.click(function(e) {
-        jQuery(e.target).parents('.hermes-broadcast').hide('fade');
+
+        console.log(message);
+
+        jQuery.ajax(message.url, {
+          dataType: 'jsonp',
+          complete: function(jqXHR, status) {
+            jQuery(e.target).parents('.hermes-broadcast').hide('fade');
+          }
+        });
       });
 
       tip.append(close);
@@ -107,11 +118,13 @@
 
   function main() {
     jQuery(document).ready(function($) {
-      // Hermes code here.
-      $.ajax('//localhost:3000/payload.js', {
+      var h = new Hermes();
+
+      $.ajax(h.endpoint, {
         dataType: 'jsonp',
-        success: function(data, status) {
-          new Hermes(data[0]).show();
+        success: function(messages, status) {
+          var message = null;
+          while (message = messages.shift()) { h.show(message); }
         }
       });
     });

@@ -34,11 +34,18 @@ class MessagesController < ApplicationController
     remote_user = cookies['__hermes_user']
     head :bad_request and return unless remote_user.present?
 
+    callback = params[:callback]
+    head :bad_request and return unless callback.present?
+
     up_to = if params[:until].present?
       Time.at(params[:until].to_i / 1000)
     end
 
-    head(@message.dismiss!(remote_user, up_to) ? :created : :ok)
+    dismissed = @message.dismiss!(remote_user, up_to)
+
+    # head(@message.dismiss!(remote_user, up_to) ? :created : :ok)
+
+    render json: {}, callback: callback
   end
 
   protected
