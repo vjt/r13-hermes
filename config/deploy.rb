@@ -70,7 +70,10 @@ after 'deploy:update_code' do
   run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 
   # Compile Assets
-  run "cd #{release_path}; RAILS_ENV=production bundle exec rake assets:precompile hermes:symlink"
+  run "cd #{release_path}; RAILS_ENV=production bundle exec rake assets:precompile"
+
+  # Symlink hermes.js
+  run %[ ruby -e 'Dir["public/assets/hermes-*.js*"].each {|f| File.symlink(File.basename(f), f.sub(/-[0-9a-f]+/, ""))}' ]
 end
 
 # Restart Unicorn
