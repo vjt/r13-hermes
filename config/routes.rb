@@ -8,5 +8,6 @@ Hermes::Application.routes.draw do
   end
 
   get "/messages.js"        => "messages#index"
-  put "/messages/:type/:id" => "messages#update"
+  # This sucks, we know - but we're stuck with JSONP as of now
+  get "/messages/:type/:id" => "messages#update", as: :message
 end
