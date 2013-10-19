@@ -51,9 +51,9 @@ gem 'ranked-model', github: 'vjt/ranked-model'
 
 gem 'devise'
 
-# Add Foundation Here
-gem 'compass-rails' # you need this or you get an err
-gem 'zurb-foundation', '~> 4.0.0'
+gem "therubyracer"
+gem "less-rails"
+gem 'twitter-bootstrap-rails'
 
 gem 'pry', group: :development
 gem 'pry-nav', group: :development
