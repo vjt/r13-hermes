@@ -46,6 +46,8 @@ gem 'capistrano', '~> 2.0', group: :development
 # Use debugger
 gem 'debugger', group: [:development, :test]
 
+# Ranked model for tip sorting
+gem 'ranked-model', github: 'vjt/ranked-model'
 
 gem 'devise'
 

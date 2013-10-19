@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019122119) do
+ActiveRecord::Schema.define(version: 20131019125454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20131019122119) do
     t.datetime "unpublished_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "selector"
+    t.integer  "position",       default: 0, null: false
   end
 
   add_index "tips", ["tippable_id", "tippable_type"], name: "index_tips_on_tippable_id_and_tippable_type", using: :btree
