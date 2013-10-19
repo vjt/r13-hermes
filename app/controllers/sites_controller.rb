@@ -2,7 +2,7 @@
 # they want to get the help elements in.
 #
 class SitesController < ApplicationController
-  before_action :authenticate_user!
+  include Authenticated
 
   before_filter :find_site, :only => %w( show edit update destroy )
 
