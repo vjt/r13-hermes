@@ -2,10 +2,10 @@
 # tutorials.
 #
 class Site < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, inverse_of: :sites
 
-  has_many :tips, as: :tippable
-  has_many :tutorials
+  has_many :tips, as: :tippable, inverse_of: :tippable
+  has_many :tutorials, inverse_of: :site
 
   validates :user_id, :name, :hostname, presence: true
 
