@@ -7,5 +7,6 @@ Hermes::Application.routes.draw do
     resources :tips
   end
 
-  get "/messages.js" => "messages#index"
+  get "/messages.js"        => "messages#index"
+  put "/messages/:type/:id" => "messages#update"
 end
