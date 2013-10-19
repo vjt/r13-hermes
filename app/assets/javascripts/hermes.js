@@ -28,12 +28,16 @@
   function main() {
     jQuery(document).ready(function($) {
       // Hermes code here.
-      $.ajax('//localhost:3000/payload.js', {
+      $.ajax('//localhost:3000/payload.js?callback=foo', {
         dataType: 'jsonp',
-        success: function() {
-          alert('ye!');
+        success: function(data, status) {
+          console.log("data: ", data, status);
         }
       });
+
+      // $.getJSON('//localhost:3000/payload.js', function(data) {
+      //   console.log("data: ", data);
+      // });
     });
   }
 })();
