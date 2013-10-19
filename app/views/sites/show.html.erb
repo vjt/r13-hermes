@@ -1,3 +1,15 @@
 <h1><%= title "Site #{@site.name}" %></h1>
 
-<%= link_to pluralize(@site.tips.count, 'tip'), site_tips_path(@site) %>
+<dl>
+  <dt>Host name</dt>
+  <dd><%= @site.hostname %></dd>
+
+  <dt>Description</dt>
+  <dd><%= simple_format @site.description %></dd>
+
+  <dt>Tips</dt>
+  <dd><%= link_to pluralize(@site.tips.count, 'tip'), site_tips_path(@site) %></dd>
+
+  <dt>Tutorials</dt>
+  <dd><%= link_to pluralize(@site.tutorials.count, 'tutorial'), site_tutorials_path(@site) %></dd>
+</dl>

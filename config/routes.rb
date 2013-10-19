@@ -4,7 +4,7 @@ Hermes::Application.routes.draw do
   root :to => 'sites#index'
 
   resources :sites do
-    resources :tips
+    resources :tips, :tutorials
   end
 
   get "/messages.js"        => "messages#index"
