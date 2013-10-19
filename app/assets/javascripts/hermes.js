@@ -122,11 +122,6 @@
     }
 
     this.author = function () {
-      // Wrap all the body into a new div
-      //
-      //var wrapper = $('<div/>')
-      //var body    = $('body').wrap(wrapper);
-
       // Add the 4 overlays
       //
       var css = {margin: 0, padding:0, position:'absolute', 'background-color': '#a00'}
