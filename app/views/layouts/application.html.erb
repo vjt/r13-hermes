@@ -22,6 +22,24 @@
 
   <body>
 
+  <nav class="top-bar">
+    <ul class="title-area">
+      <li class="name">
+        <h1><%= link_to "HERMES", root_path %></a></h1>
+      </li>
+    </ul>
+    <section class="top-bar-section">
+      <ul class="right">
+        <li class="divider"></li>
+        <li><%= link_to "Sites", sites_path %></li>
+        <li class="divider"></li>
+        <li><%= link_to "Messages" %></li>
+        <li class="divider"></li>
+        <li><%= link_to "Tutorials" %></li>
+      </ul>
+    </div>
+  </nav>
+
     <%= yield %>
 
     <%= javascript_include_tag "application" %>
