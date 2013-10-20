@@ -8,23 +8,14 @@
 // then stored in Hermes' DB.
 //
 $(function () {
-  $('[data-tip-connector]').on('click', function () {
-    var connector = $(this), options = connector.data('tip-connector');
-    var hostname  = options.hostname;
-    var path      = options.path;
+  $('[data-tip-connect-path]').on('change', function () {
+    var input  = $(this);
+    var target = $(input.data('tip-connect-path'));
 
-    if (!path && options.path_input)
-      path = $(options.path_input).val();
-
-    if (!path)
-      throw new Error('Unable to fetch site path from DOM');
-
-    var url = hostname + path;
-
-    if (!/^http/.test(url))
-      url = 'http://' + url;
-
-    connector.attr({href: url});
-    return true;
+    target.attr('href', [
+      target.data('hostname'),
+      input.val(),
+      '#', target.data('token'),
+    ].join(''));
   });
 });

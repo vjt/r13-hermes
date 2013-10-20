@@ -10,7 +10,7 @@
 
 <div>
   <%= f.label :path %>
-  <%= f.text_field :path %>
+  <%= f.text_field :path, 'data-tip-connect-path' => '#tip-connector' %>
 </div>
 
 <div data-toggle-group="broadcast">
@@ -20,12 +20,11 @@
 
   <label class="radio">
     <input type="radio" name="broadcast" data-toggle="#tip-connector"> Bound to a specific item in the page
-    <%= link_to 'Connect', 'javascript:void(0)', :id => 'tip-connector', 'target' => '_blank',
+    <%= link_to 'Connect', [f.object.tippable.url, f.object.path, '#hermes-authoring'].join,
+          :id => 'tip-connector', 'target' => '_blank',
           'data-togglee' => true, :class => 'hide',
-          'data-tip-connector' => {
-            hostname:    f.object.tippable.hostname, # XXX
-            path_input: '#tip_path'
-          }.to_json
+          'data-target'  => f.object.tippable.url,
+          'data-token'   => 'hermes-authoring'
     %>
   </label>
 
