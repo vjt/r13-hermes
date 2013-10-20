@@ -1,6 +1,10 @@
-<tr>
+<tr id="<%= dom_id(tip) %>">
   <td><%= tip.title  %></td>
   <td><%= l tip.published_at %></td>
   <td><%= l tip.unpublished_at %></td>
-  <td><%= link_to 'Edit', edit_site_tip_path(@site, tip) %></td>
+  <td>
+    <%= link_to 'Edit', edit_site_tip_path(@site, tip) %>
+    ·
+    <%= link_to 'Destroy', site_tip_path(@site, tip), remote: true, method: :delete, confirm: 'Are you sure?' %>
+  </td>
 </tr>

@@ -43,7 +43,10 @@ class TipsController < ApplicationController
 
   def destroy
     @tip.destroy
-    redirect_to site_tips_path(@site), :notice => 'Tip deleted'
+
+    render js: "$('##{dom_id(@tip)}').hide('fade');"
+
+    # redirect_to site_tips_path(@site), :notice => 'Tip deleted'
   end
 
   protected
