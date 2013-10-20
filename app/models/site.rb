@@ -9,6 +9,8 @@ class Site < ActiveRecord::Base
 
   validates :user_id, :name, :hostname, presence: true
 
+  before_save :strip_scheme # Sacrifice correctness for user-friendlyness.
+
   def self.by_user(user)
     where(user_id: user.id)
   end
@@ -26,4 +28,9 @@ class Site < ActiveRecord::Base
   def url
     hostname =~ /^http/ ? hostname : "http://#{hostname}"
   end
+
+  protected
+    def strip_scheme
+      self.hostname = self.hostname.sub(%r{^https?://}, '')
+    end
 end
