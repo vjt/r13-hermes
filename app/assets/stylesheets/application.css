@@ -12,3 +12,18 @@
  *= require bootstrap_and_overrides
  *= require bootstrap-datepicker
  */
+
+.nav-list li {
+  position: relative;
+}
+
+.nav-list .remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.nav-list .remove:hover {
+  text-decoration: none;
+  color: red;
+}

@@ -1,4 +1,7 @@
-<li>
+<li id="<%= dom_id(site) %>">
+  <span>
+    <%= link_to '×', site_path(site), method: :delete, remote: true, class: 'remove' %>
+  </span>
   <%= link_to site_path(site) do |link| %>
     <b><%= site.name %></b>
     <br>
