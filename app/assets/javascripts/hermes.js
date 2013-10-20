@@ -124,7 +124,10 @@
     this.author = function () {
       // Add the 4 overlays
       //
-      var css = {margin: 0, padding:0, position:'absolute', 'background-color': '#a00'}
+      var css = {
+        margin: 0, padding: 0, position: 'absolute',
+        'background-color': '#a00', cursor: 'pointer'
+      };
       var overlay = {
         N: $('<div/>', {id: 'overlayN'}).css(css),
         S: $('<div/>', {id: 'overlayS'}).css(css),
@@ -136,9 +139,11 @@
         $('html').append(overlay[i]);
       }
 
-      var thickness = 4; // px
+      var thickness = 5; // px
 
-      var doc = $(document)
+      var doc = $(document);
+
+      var selected = undefined;
 
       // And now set the mousemove event handler
       $('body').on('mousemove', function (event) {
@@ -149,6 +154,11 @@
           if (elem.tagName == 'BODY')
             return;
 
+          if (elem == selected)
+            return;
+
+          // Build the wrapping rectangle
+          //
           var rect = elem.getBoundingClientRect();
           var stop = doc.scrollTop(), sleft = doc.scrollLeft();
 
@@ -186,6 +196,25 @@
             height: rect.height + thickness,
             top:    (rect.top  - thickness/2) + stop,
             left:   (rect.left - thickness/2) + sleft
+          });
+
+          // Reset the old selected element
+          //
+          if (selected) {
+            selected = $(selected);
+            selected.css(selected.data('hermes-restore-css')).
+              data('hermes-restore-css', null);
+          }
+          selected = elem;
+
+          // Set the onclick handler to our callback
+          //
+          $(selected).data('hermes-restore-css', {
+            'cursor': selected.style.cursor,
+            'background-color': selected.style.backgroundColor
+          }).css({
+            'cursor': 'pointer',
+            'background-color': '#ddd'
           });
 
         } catch (e) {
