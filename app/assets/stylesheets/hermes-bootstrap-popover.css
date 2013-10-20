@@ -143,11 +143,9 @@
   border-width: 1px;
   border-style: solid;
   padding: 1%;
-  box-shadow: #ccc 0px 2px 7px;
-  position: fixed;
+  box-shadow: inset #ccc 0px 2px 7px;
   width: 98%;
-  top: 0;
-  z-index: 10001;
+  margin: 0;
 }
 
 .hermes-broadcast * {
@@ -165,7 +163,7 @@
   background: none !important;
   border: none !important;
   position: absolute;
-  top: 10%;
+  top: 1%;
   right: 1%;
   color: #777;
   width: 30px;
