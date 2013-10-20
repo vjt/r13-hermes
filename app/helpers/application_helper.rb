@@ -14,4 +14,15 @@ module ApplicationHelper
       tinymce
     end
   end
+
+  def gravatar(email, size)
+    default = case Rails.env
+              when 'production'  then "http://www.eyeonplay.com/assets/user-#{size}.png"
+              when 'staging'     then "http://staging.eyeonplay.com/assets/user-#{size}.png"
+              else 'identicon'
+              end
+
+    gravatar_id = Digest::MD5.hexdigest(email.downcase)
+    return "http://gravatar.com/avatar/#{gravatar_id}?size=#{size}&default=#{CGI.escape(default)}"
+  end
 end

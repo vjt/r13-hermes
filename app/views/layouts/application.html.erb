@@ -32,6 +32,7 @@
               <% if user_signed_in? %>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <%= image_tag gravatar(current_user.email, 25) %>
                     <%= current_user.email %>
                     <b class="caret"></b>
                   </a>
@@ -55,12 +56,12 @@
       </div>
       <div class="row">
         <% if user_signed_in? %>
+          <div class="span3">
+            <%= render 'side' if current_user %>
+          </div>
           <div class="span9">
             <%= bootstrap_flash %>
             <%= yield %>
-          </div>
-          <div class="span3">
-            <%= render 'side' if current_user %>
           </div>
         <% else %>
           <div class="span9">
