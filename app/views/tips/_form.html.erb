@@ -22,10 +22,17 @@
     <input type="radio" name="broadcast" data-toggle="#tip-connector"> Bound to a specific item in the page
     <%= link_to 'Connect', [f.object.tippable.url, f.object.path, '#hermes-authoring'].join,
           :id => 'tip-connector', 'target' => '_blank',
-          'data-togglee' => true, :class => 'hide',
-          'data-target'  => f.object.tippable.url,
-          'data-token'   => 'hermes-authoring'
+          'data-togglee'  => true, :class => 'hide',
+          'data-hostname' => f.object.tippable.url,
+          'data-token'    => 'hermes-authoring',
+          'data-output'   => '#tip-connected'
     %>
+
+    <span id="tip-connected" class="hide">
+      <i class="icon icon-ok"></i> Connected!
+      <%= f.hidden_field :selector %>
+    </span>
+
   </label>
 
 </div>

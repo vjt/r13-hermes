@@ -18,4 +18,14 @@ $(function () {
       '#', target.data('token'),
     ].join(''));
   });
+
+  $('#tip-connector').on('click', function () {
+    var connector = $(this);
+    var output    = $(connector.data('output'));
+
+    window.__hermes_connect_callback = function (selector) {
+      output.find('input').val(selector)
+      output.show();
+    }
+  });
 });
