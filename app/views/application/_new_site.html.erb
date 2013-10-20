@@ -9,7 +9,7 @@
         <label class="control-label">Name</label>
         <div class="controls">
           <%= f.text_field :name, { :class => 'input-xlarge' } %>
-          <span class="help-block">Please provide a name for the site you are adding.</span>
+          <span class="help-block">Enter a name for the site you are adding.</span>
         </div>
       </div>
 
@@ -17,7 +17,13 @@
         <label class="control-label">Address</label>
         <div class="controls">
           <%= f.text_field :hostname , { :class => 'input-xlarge' } %>
-          <span class="help-block">Please provide the URL for the site you are adding.</span>
+          <span class="help-block">Enter the URL for the site you are adding (example: http://www.railsrumble.com).</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="controls">
+          <span class="help-block">Hint: don't forget to add the <code>hermes.js</code> script to your site!</span>
         </div>
       </div>
     </div>

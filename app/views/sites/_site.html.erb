@@ -7,14 +7,14 @@
     <small class="muted"><%= site.hostname %></small>
     <br>
   <% end %>
-  <div>
+  <small>
     <%= link_to site_tips_path(site) do %>
-      <span class="badge"><%= site.tips.count %></span> go to site tips
+      <span class="label"><%= site.tips.count %></span> go to site tips
     <% end %>
 
     <%# link_to site_tutorials_path(site) do %>
       <!--span class="label"><%= pluralize(site.tutorials.count, 'tutorials') %></span-->
     <%# end %>
-  </div>
+  </small>
 </li>
 <li class="divider"></li>
