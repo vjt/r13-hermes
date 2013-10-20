@@ -1,6 +1,5 @@
 //= require hermes-endpoint
-//= require jquery.pagetour
-//= require bootstrap-tooltip
+//= require hermes-bootstrap-popover
 
 (function() {
   var jQuery,
@@ -53,8 +52,7 @@
     this.endpoint = hermesURL;
 
     this.display = function() {
-      __hermes_init_pagetour__($);
-      __hermes_init_tooltip__($);
+      __hermes_init_popover__($);
 
       $.ajax(this.endpoint, {
         dataType: 'jsonp',
@@ -80,15 +78,13 @@
       }
     }
 
-    var showTutorial = function(message) {
-      alert(message.type);
+    var showTutorial = function(tutorial) {
+      console.log(tutorial);
     }
 
     var showTip = function(tip) {
-      setTimeout(function () {
-        var step = {selector: tip.selector, description: tip.content};
-        $.pageTour([step]).start();
-      }, 1000);
+      // selector: tip.selector, description: tip.content
+      //debugger
     }
 
     var showBroadcast = function(message) {
