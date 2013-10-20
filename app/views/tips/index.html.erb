@@ -1,3 +1,16 @@
-<h1><%= title @site.name, 'Tips' %></h1>
-
-<%= render @tips %>
+<div class="span12">
+  <h1><%= title @site.name, 'Tips' %></h1>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>From</th>
+        <th>To</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <%= render @tips %>
+    </tbody>
+  </table>
+</div>

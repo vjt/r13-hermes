@@ -34,7 +34,7 @@ class TutorialsController < ApplicationController
 
   def update
     if @tutorial.update_attributes(tutorial_params)
-      redirect_to site_tutorials_path(@site), :notice => 'Tutorial saved'
+      redirect_to site_tutorials_path(@site), :notice => 'tutorial saved'
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class TutorialsController < ApplicationController
 
   def destroy
     @tutorial.destroy
-    redirect_to site_tutorials_path(@site), :notice => 'Tutorial deleted'
+    redirect_to site_tutorials_path(@site), :notice => 'tutorial deleted'
   end
 
   protected
@@ -58,6 +58,7 @@ class TutorialsController < ApplicationController
     def tutorial_params
       params.
         require(:tutorial).
-        permit(:title, :published_at, :unpublished_at)
+        permit(:title, :published_at,
+               :unpublished_at, :path, :position)
     end
 end

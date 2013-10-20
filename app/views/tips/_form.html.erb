@@ -10,18 +10,44 @@
 
 <div>
   <%= f.label :path %>
-  <%= f.text_field :path %>
+  <%= f.text_field :path, 'data-tip-connect-path' => '#tip-connector' %>
 </div>
 
+<div data-toggle-group>
+  <label class="radio">
+    <input type="radio" name="broadcast" id="tip-disconnect" data-output="#tip-connected" <%= 'checked' if f.object.selector.blank? %>> Broadcast
+  </label>
+
+  <label class="radio">
+    <input type="radio" name="broadcast" <%= 'checked' if f.object.selector.present? %>
+      data-toggle="#tip-connector"> Bound to a specific item in the page
+
+    <%= link_to 'Connect', [f.object.tippable.url, f.object.path, '#hermes-authoring'].join,
+          :id => 'tip-connector', 'target' => '_blank',
+          :class => ('hide' if f.object.selector.blank?),
+          'data-togglee'  => true,
+          'data-hostname' => f.object.tippable.url,
+          'data-token'    => 'hermes-authoring',
+          'data-output'   => '#tip-connected'
+    %>
+
+    <span id="tip-connected" class="<%= 'hide' if f.object.selector.blank? %>">
+      <i class="icon icon-ok"></i> Connected!
+      <%= f.hidden_field :selector %>
+    </span>
+
+  </label>
+
+</div>
 
 <div>
   <%= f.label :published_at, 'Publishing starts' %>
-  <%= f.datetime_select :published_at %>
+  <%= f.text_field :published_at, :class => "datepicker span2" %>
 </div>
 
 <div>
   <%= f.label :unpublished_at, 'Publishing ends' %>
-  <%= f.datetime_select :unpublished_at %>
+  <%= f.text_field :unpublished_at, :class => "datepicker span2" %>
 </div>
 
 <div>

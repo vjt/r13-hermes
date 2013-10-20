@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require turbolinks
-
+//= require bootstrap
+//= require bootstrap-datepicker
+//= require toggler
+//= require tip-connector

@@ -44,17 +44,12 @@
     <div class="navbar navbar-inversed navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+          <button class="btn btn-navbar collapsed" data-target=".nav-collapse" data-toggle="collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">Hermes</a>
-          <div class="container nav-collapse">
-            <ul class="nav">
-              <li><%= link_to "Sites", sites_path %></li>
-            </ul>
-          </div><!--/.nav-collapse -->
+          </button>
+          <%= logo %>
         </div>
       </div>
     </div>
@@ -63,14 +58,12 @@
         <div class="row">
           <div class="span12">
             <%= bootstrap_flash %>
-            <div class="row">
               <%= yield %>
-            </div>
           </div>
         </div><!--/row-->
 
       <footer>
-        <p>&copy; HERMES 2013</p>
+        <p>&copy; Antani 2013</p>
       </footer>
 
     </div> <!-- /container -->
