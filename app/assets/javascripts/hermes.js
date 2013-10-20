@@ -41,8 +41,8 @@
     jQuery(document).ready(function($) {
       var h = new Hermes($);
 
-      if (/#hermes-authoring/.test(document.location.hash) && window.opener) {
-        h.author();
+      if ((m = document.location.hash.match(/#hermes-authoring,(https?)/)) && window.opener) {
+        h.author(m[1]); // XXX DIRTY
       } else {
         h.display();
       }
@@ -164,7 +164,7 @@
       $(document.body).prepend(broadcast);
     }
 
-    this.author = function () {
+    this.author = function (opener_protocol) {
       // Cache the document here for speed.
       var doc = $(document);
 
@@ -179,8 +179,8 @@
         event.stopImmediatePropagation();
 
         var path = getPath(selected);
-        // window.opener.__hermes_connect_callback(path);
-        window.opener.postMessage(path, "http:" + __hermes_host__);
+
+        window.opener.postMessage(path, opener_protocol + ':' + __hermes_host__);
         window.close();
       };
 
