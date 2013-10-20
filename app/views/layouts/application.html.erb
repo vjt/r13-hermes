@@ -22,6 +22,11 @@
   </head>
   <body>
     <%= render 'new_site' %>
+    <div class="ribbon">
+      <a href="http://www.48rails.it/">
+        <img src="http://www.48rails.it/images/ribbon_Antani.png" />
+      </a>
+    </div>
     <div class="navbar navbar-inversed navbar-static-top">
       <div class="navbar-inner">
         <div class="container">
@@ -65,7 +70,6 @@
           </div>
         <% else %>
           <div class="span7">
-            <%= bootstrap_flash %>
             <%= render 'welcome' %>
           </div>
           <div class="span3">

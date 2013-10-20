@@ -44,7 +44,9 @@ class SitesController < ApplicationController
 
   def destroy
     @site.destroy
-    render js: "$('##{dom_id(@site)}').remove()";
+    respond_to do |format|
+      format.js
+    end
   end
 
   protected
