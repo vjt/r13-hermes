@@ -142,14 +142,21 @@
   color: #3A87AD;
   border-width: 1px;
   border-style: solid;
-  font-size: 20px;
-  line-height: 20px;
-  padding: 1% 0;
+  padding: 1%;
   box-shadow: #ccc 0px 2px 7px;
   position: fixed;
-  width: 100%;
+  width: 98%;
   top: 0;
   z-index: 10001;
+}
+
+.hermes_broadcast * {
+  font-size: 20px !important;
+  line-height: 20px !important;
+}
+
+.hermes-broadcast p {
+  margin: 0 0 4px !important;
 }
 
 .hermes-broadcast .hermes-close {
@@ -158,14 +165,11 @@
   background: none !important;
   border: none !important;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10%;
+  right: 1%;
   color: #777;
   width: 30px;
   height: 30px;
   font-weight: bolder;
 }
 
-.hermes-broadcast p {
-  margin: 0 0 4px !important;
-}
