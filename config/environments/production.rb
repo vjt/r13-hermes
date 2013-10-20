@@ -77,4 +77,9 @@ Hermes::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[HERMES] ",
+    :sender_address => %{hermes@antani.r13.railsrumble.com},
+    :exception_recipients => %w{antani-r13@googlegroups.com}
 end

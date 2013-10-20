@@ -4,6 +4,10 @@
 class SitesController < ApplicationController
   include Authenticated
 
+  def crash
+    raise 'HELLO THIS IS A TEST'
+  end
+
   before_filter :find_site, :only => %w( show edit update destroy )
 
   def index

@@ -16,6 +16,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'sanitize-rails'
 gem 'tinymce-rails'
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
+gem 'exception_notification'
 
 group :doc do
   gem 'sdoc', require: false
