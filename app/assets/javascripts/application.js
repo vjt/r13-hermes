@@ -16,3 +16,4 @@
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-datepicker
+//= require toggler

@@ -13,6 +13,17 @@
   <%= f.text_field :path %>
 </div>
 
+<div data-toggle-group="broadcast">
+  <label class="radio">
+    <input type="radio" name="broadcast" checked="checked"> Broadcast
+  </label>
+
+  <label class="radio">
+    <input type="radio" name="broadcast" data-toggle="#tip-connector"> Bound to a specific item in the page
+    <%= link_to 'Connect', 'javascript:void(0)', 'data-togglee' => true, :id => 'tip-connector', :class => 'hide' %>
+  </label>
+
+</div>
 
 <div>
   <%= f.label :published_at, 'Publishing starts' %>
