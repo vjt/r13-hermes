@@ -112,7 +112,7 @@
         html: true,
         placement: 'auto',
         trigger: 'manual',
-        title: tip.title || 'The title',
+        title: tip.title,
         content: content
       });
 

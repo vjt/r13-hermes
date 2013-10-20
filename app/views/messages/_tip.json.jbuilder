@@ -9,4 +9,5 @@ end
 
 #
 json.id      tip.id
+json.title   tip.title
 json.content tip.content
