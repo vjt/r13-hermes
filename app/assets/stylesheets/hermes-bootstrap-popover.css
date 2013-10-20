@@ -117,3 +117,13 @@
   border-left-color: #ffffff;
   bottom: -10px;
 }
+
+/* Our additions */
+.popover h3.popover_title,
+.popover .popover_content .hermes_content {
+  color: #333 !important;
+}
+
+.popover h3.popover_title {
+  font-weight: 600 !important;
+}
