@@ -9,7 +9,7 @@
   @license http://opensource.org/licenses/MIT
   @version 0.3.1
 */
-(function($) {
+__hermes_init_pagetour__ = (function($) {
   var PageTour;
   PageTour = (function() {
 
@@ -411,4 +411,4 @@
       return new PageTour(s, o);
     }
   });
-})(jQuery);
+});
