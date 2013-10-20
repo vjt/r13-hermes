@@ -9,6 +9,7 @@
   @license http://opensource.org/licenses/MIT
   @version 0.3.1
 */
+
 __hermes_init_pagetour__ = (function($) {
   var PageTour;
   PageTour = (function() {
@@ -406,10 +407,17 @@ __hermes_init_pagetour__ = (function($) {
 
   })();
 
+  // Load the CSS
+  var style = document.createElement('style');
+  style.type = 'text/css';
+  style.innerText = "<%= ActionView::Base.new.escape_javascript(File.read('app/assets/stylesheets/pagetour.css').gsub("\n", '')) %>";
+  (document.getElementsByTagName('head')[0] || document.documentElement).appendChild(style);
+
   return $.extend({
     pageTour: function(s, o) {
       if (o == null) o = {};
       return new PageTour(s, o);
     }
   });
+
 });

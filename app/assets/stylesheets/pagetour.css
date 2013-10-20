@@ -1,0 +1,125 @@
+body.pagetour-body-on .tooltip {
+  z-index: 10001;
+}
+
+.pagetour-mask-wrapper {
+  display: none;
+  position: absolute;
+  z-index: 10000;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.pagetour-mask-wrapper .pagetour-mask-top,
+.pagetour-mask-wrapper .pagetour-mask-left,
+.pagetour-mask-wrapper .pagetour-mask-right,
+.pagetour-mask-wrapper .pagetour-mask-bottom {
+  position: absolute;
+  background: #1a1a1a;
+  opacity: 0;
+}
+
+.pagetour-mask-wrapper .pagetour-mask-top.fixed,
+.pagetour-mask-wrapper .pagetour-mask-left.fixed,
+.pagetour-mask-wrapper .pagetour-mask-right.fixed,
+.pagetour-mask-wrapper .pagetour-mask-bottom.fixed {
+  position: fixed;
+}
+
+.pagetour-mask-wrapper .pagetour-mask-top {
+  width: 100%;
+}
+
+.pagetour-mask-wrapper .pagetour-mask-left {
+  left: 0;
+}
+
+.pagetour-mask-wrapper .pagetour-mask-right {
+  right: 0;
+}
+
+.pagetour-mask-wrapper .pagetour-mask-bottom {
+  width: 100%;
+}
+
+.pagetour-mask-wrapper .pagetour-mask-help {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  margin-left: -10px;
+  z-index: 1;
+  padding: 10px 15px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  background: #fafafa;
+  color: #444444;
+  cursor: help;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0;
+  -moz-box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+.pagetour-mask-wrapper .pagetour-mask-help:hover {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+
+.pagetour-step-tooltip {
+  min-width: 60px;
+  position: absolute;
+  max-width: 350px;
+}
+
+.pagetour-step-tooltip p.centered {
+  position: absolute;
+  width: 90%;
+  bottom: 1px;
+}
+
+.pagetour-step-tooltip p.centered a {
+  color: white;
+}
+
+.pagetour-step-tooltip .pagetour-step-tooltip-content p {
+  font-weight: bold;
+  font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.pagetour-step-tooltip .pagetour-step-tooltip-controls {
+  padding: 10px;
+  padding-top: 0;
+  overflow: hidden;
+}
+
+.pagetour-step-tooltip .pagetour-step-tooltip-controls input {
+  padding: 3px 5px;
+  padding-top: 2px;
+  font-size: 12px;
+  float: right;
+}
+.pagetour-step-tooltip .pagetour-step-tooltip-controls input.guide-step-next, .pagetour-step-tooltip .pagetour-step-tooltip-controls input.guide-step-close {
+  margin-left: 5px;
+}
+.pagetour-step-tooltip .pagetour-step-hide {
+  position: absolute;
+  right: 2px;
+  top: -5px;
+  display: block;
+  padding: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.pagetour-step-tooltip.fixed {
+  position: fixed;
+}
