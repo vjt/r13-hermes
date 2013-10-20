@@ -4,8 +4,8 @@
 class Site < ActiveRecord::Base
   belongs_to :user, inverse_of: :sites
 
-  has_many :tips, as: :tippable, inverse_of: :tippable
-  has_many :tutorials, inverse_of: :site
+  has_many :tips, as: :tippable, inverse_of: :tippable, dependent: :destroy
+  has_many :tutorials,           inverse_of: :site,     dependent: :destroy
 
   validates :user_id, :name, :hostname, presence: true
 

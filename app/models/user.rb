@@ -4,5 +4,5 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :sites, inverse_of: :user
+  has_many :sites, inverse_of: :user, dependent: :destroy
 end
