@@ -22,7 +22,7 @@ class TipsController < ApplicationController
     if @tip.save
       redirect_to site_tips_path(@site)
     else
-      flash.now[:error] = 'There was an error saving your tip.'
+      flash.now[:error] = 'There was an error saving your message.'
       render :new
     end
   end
@@ -32,8 +32,9 @@ class TipsController < ApplicationController
 
   def update
     if @tip.update_attributes(tip_params)
-      redirect_to site_tips_path(@site), :notice => 'Tip saved'
+      redirect_to site_tips_path(@site), :notice => "Message '#{@tip.title}' saved"
     else
+      flash.now[:error] = 'There was an error updating your message'.
       render :edit
     end
   end
@@ -42,8 +43,6 @@ class TipsController < ApplicationController
     @tip.destroy
 
     render js: "$('##{dom_id(@tip)}').hide('fade');"
-
-    # redirect_to site_tips_path(@site), :notice => 'Tip deleted'
   end
 
   # Sets the given tip position
