@@ -8,8 +8,6 @@ class SitesController < ApplicationController
 
   def index
     @site = Site.new
-    @sites = Site.by_user(current_user)
-
   end
 
   def show
@@ -30,9 +28,18 @@ class SitesController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def update
+    @site.update_attributes(sites_param)
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy

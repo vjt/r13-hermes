@@ -6,6 +6,5 @@ class ApplicationController < ActionController::Base
   before_filter :find_sites, :if => :current_user
 
   def find_sites
-    @sites = Site.by_user(current_user)
   end
 end

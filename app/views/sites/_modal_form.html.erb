@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h3>Edit an existing site</h3>
+</div>
+
+<%= form_for site, method: :put, remote: true, :html => { :class => 'form-horizontal', :style => 'margin: 0' } do |f| %>
+  <div class="modal-body">
+    <div class="control-group">
+      <label class="control-label">Name</label>
+      <div class="controls">
+        <%= f.text_field :name, { :class => 'input-xlarge' } %>
+        <span class="help-block">Please provide a name for the site you are adding.</span>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Address</label>
+      <div class="controls">
+        <%= f.text_field :hostname , { :class => 'input-xlarge' } %>
+        <span class="help-block">Please provide the URL for the site you are adding.</span>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit 'Update site', class: 'btn btn-primary' %>
+  </div>
+<% end %>

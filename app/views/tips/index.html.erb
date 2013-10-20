@@ -1,9 +1,9 @@
-<div>
-  <h3>
-    <%= title @site.name, 'Tips' %>
-    <%= link_to 'Create a new tip', new_site_tip_path(@site), class: 'btn', style: 'float: right' %>
-  </h3>
+<h3>
+  <%= title @site.name, 'Tips' %>
+  <%= link_to 'Create a new tip', new_site_tip_path(@site), class: 'btn', style: 'float: right' %>
+</h3>
 
+<% if @tips.any? %>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -17,4 +17,15 @@
       <%= render @tips %>
     </tbody>
   </table>
-</div>
+<% else %>
+  <div class="hero-unit" style="padding: 30px 60px; text-align: center">
+    <h3>No tips yet for this site!</h3>
+    <p>
+      Start adding message to your site clicking the button below.
+    </p>
+    <hr>
+    <p>
+      <%= link_to "Add a tip to your site!", new_site_tip_path(@site), class: 'btn btn-primary btn-large' %>
+    </p>
+  </div>
+<% end %>

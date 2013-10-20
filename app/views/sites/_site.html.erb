@@ -2,14 +2,14 @@
   <span>
     <%= link_to '×', site_path(site), method: :delete, remote: true, class: 'remove', title: 'Are you sure?', confirm: 'This action will remove your site.' %>
   </span>
-  <%= link_to edit_site_path(site) do |link| %>
-    <b><%= site.name %></b>
+  <%= link_to edit_site_path(site), remote: true do |link| %>
+    <i class="icon-pencil"></i> <b><%= site.name %></b>
     <small class="muted"><%= site.hostname %></small>
     <br>
   <% end %>
   <div>
     <%= link_to site_tips_path(site) do %>
-      <span class="label"><%= pluralize(site.tips.count, 'tip') %></span>
+      <span class="badge"><%= site.tips.count %></span> view tips
     <% end %>
 
     <%# link_to site_tutorials_path(site) do %>

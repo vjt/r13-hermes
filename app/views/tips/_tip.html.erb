@@ -4,7 +4,6 @@
   <td><%= l tip.unpublished_at %></td>
   <td>
     <%= link_to 'Edit', edit_site_tip_path(@site, tip), class: 'label label-info' %>
-    ·
     <%= link_to 'Destroy', site_tip_path(@site, tip), remote: true, method: :delete, title: 'Are you sure?', confirm: 'This action will delete your tip.', class: 'label label-important' %>
   </td>
 </tr>

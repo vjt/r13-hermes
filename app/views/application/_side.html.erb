@@ -1,7 +1,7 @@
 <div id="sites-list" class="well" style="padding: 8px 0">
   <ul class="nav nav-list">
     <li class="nav-header">Your sites</li>
-    <%= render @sites %>
+    <%= render Site.by_user(current_user) %>
     <li>
       <span>
         <%= link_to 'Add new site', '#new-site-modal', class: 'btn btn-small btn-primary', :'data-toggle' => 'modal' %>
