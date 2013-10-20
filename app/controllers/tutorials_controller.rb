@@ -8,7 +8,7 @@ class TutorialsController < ApplicationController
     @tutorials = @site.tutorials.order('created_at DESC') # FIXME
 
     if @tutorials.blank?
-      redirect_to new_site_tutorial_path(@site), :notice => 'Create your first tutorial'
+      redirect_to new_site_tutorial_path(@site)
     end
   end
 

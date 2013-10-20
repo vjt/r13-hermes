@@ -9,7 +9,7 @@ class TipsController < ApplicationController
     @tips = @site.tips.order('created_at DESC') # FIXME
 
     if @tips.blank?
-      redirect_to new_site_tip_path(@site), :notice => 'Create your first tip'
+      redirect_to new_site_tip_path(@site)
     end
   end
 

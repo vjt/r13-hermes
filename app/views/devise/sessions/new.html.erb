@@ -1,6 +1,6 @@
 <h3>Sign in</h3>
 
-<%= form_for resource, :as => resource_name, :url => session_path(resource_name), html: { class: 'form-horizontal' } do |f| %>
+<%= form_for resource, :as => resource_name, :url => session_path(resource_name) do |f| %>
   <div class="control-group">
     <%= f.label :email, class: 'control-label' %>
     <div class="controls">
@@ -25,10 +25,6 @@
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button "Sign in", class: "btn btn-primary" %>
-  </div>
+  <%= f.button "Sign in", class: "btn btn-primary" %>
 
 <% end %>
-
-<%= render "devise/shared/links" %>

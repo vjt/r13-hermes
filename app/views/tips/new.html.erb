@@ -1,5 +1,11 @@
-<h3><%= title @site.name, 'New tip' %></h3>
+<ul class="breadcrumb">
+  <li><%= link_to @site.name, @site %> <span class="divider">/</span></li>
+  <li class="active">Create new tip</li>
+</ul>
 
 <%= form_for @tip, :url => site_tips_path(@site), html: { class: 'form-horizontal' } do |f| %>
-  <%= render 'form', :f => f %>
+  <fieldset>
+    <legend>Create a new tip</legend>
+    <%= render 'form', :f => f %>
+  </fieldset>
 <% end %>

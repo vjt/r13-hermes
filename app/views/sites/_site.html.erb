@@ -1,10 +1,20 @@
 <li id="<%= dom_id(site) %>">
   <span>
-    <%= link_to '×', site_path(site), method: :delete, remote: true, class: 'remove', confirm: 'This action will remove your site.' %>
+    <%= link_to '×', site_path(site), method: :delete, remote: true, class: 'remove', title: 'Are you sure?', confirm: 'This action will remove your site.' %>
   </span>
-  <%= link_to site_path(site) do |link| %>
+  <%= link_to edit_site_path(site) do |link| %>
     <b><%= site.name %></b>
+    <small class="muted"><%= site.hostname %></small>
     <br>
-    <span class="muted"><%= site.hostname %></span>
   <% end %>
+  <div>
+    <%= link_to site_tips_path(site) do %>
+      <span class="label"><%= pluralize(site.tips.count, 'tip') %></span>
+    <% end %>
+
+    <%# link_to site_tutorials_path(site) do %>
+      <!--span class="label"><%= pluralize(site.tutorials.count, 'tutorials') %></span-->
+    <%# end %>
+  </div>
 </li>
+<li class="divider"></li>
