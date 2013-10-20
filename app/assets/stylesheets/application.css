@@ -13,6 +13,7 @@
  *= require jquery.ui.core
  *= require jquery.ui.theme
  *= require bootstrap-datepicker
+ *= require bootstrap-wysihtml5
  *= require style
  */
 

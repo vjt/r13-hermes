@@ -18,6 +18,7 @@
 //= require twitter/bootstrap
 //= require bootstrap
 //= require bootstrap-datepicker
+//= require bootstrap-wysihtml5
 //= require toggler
 //= require tip-connector
 //= require data-confirm-modal

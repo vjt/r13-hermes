@@ -1,7 +1,0 @@
-menubar   : false
-toolbar   : "undo redo | bold italic underline | forecolor backcolor"
-statusbar : false
-
-plugins   : "textcolor"
-
-content_css : '/assets/tinymce-editor-body.css'

@@ -14,7 +14,7 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'sanitize-rails'
-gem 'tinymce-rails'
+gem 'bootstrap-wysihtml5-rails'
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
 group :doc do
