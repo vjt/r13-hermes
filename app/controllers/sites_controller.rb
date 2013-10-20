@@ -10,9 +10,6 @@ class SitesController < ApplicationController
     @site = Site.new
     @sites = Site.by_user(current_user)
 
-    if @sites.blank?
-      redirect_to new_site_path, notice: "Create your first site"
-    end
   end
 
   def show
