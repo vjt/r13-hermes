@@ -150,9 +150,6 @@
           var rect = elem.getBoundingClientRect();
           var doc  = $(document), stop = doc.scrollTop(), sleft = doc.scrollLeft();
 
-          if (rect.width > 5000)
-            return;
-
           // North
           //
           overlay.N.css({
@@ -169,6 +166,24 @@
             height: thickness,
             top:    rect.top + rect.height - thickness/2,
             left:   rect.left
+          });
+
+          // East
+          //
+          overlay.E.css({
+            width:  thickness,
+            height: rect.height + thickness,
+            top:    rect.top - thickness / 2,
+            left:   rect.left + rect.width - thickness/2
+          });
+
+          // West
+          //
+          overlay.W.css({
+            width:  thickness,
+            height: rect.height + thickness,
+            top:    rect.top - thickness / 2,
+            left:   rect.left - thickness/2
           });
 
         } catch (e) {
