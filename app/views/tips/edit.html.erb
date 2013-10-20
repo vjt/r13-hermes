@@ -1,5 +1,5 @@
 <h3>
-  <%= title @site.name, 'Edit tip' %>
+  <%= title @site.name, "Edit message '#{@tip.title}'" %>
 </h3>
 
 <%= form_for @tip, :url => site_tip_path(@site, @tip), html: { class: 'form-horizontal' } do |f| %>
