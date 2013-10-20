@@ -23,13 +23,18 @@ class SitesController < ApplicationController
   end
 
   def create
-    @site = current_user.sites.
-      new(params.require(:site).permit(:name, :hostname, :description))
+    @site = current_user.sites.new(sites_param)
 
     if @site.save
-      redirect_to sites_path
+      respond_to do |format|
+        format.html { redirect_to sites_path }
+        format.js { render js: 'alert("saved!");' }
+      end
     else
-      redirect_to sites_path, :warning => 'Wrong data'
+      respond_to do |format|
+        format.html { redirect_to sites_path, :warning => 'Wrong data.' }
+        format.js { render js: 'alert("Please verify your data");' }
+      end
     end
   end
 
@@ -43,6 +48,10 @@ class SitesController < ApplicationController
   end
 
   protected
+    def sites_param
+      params.require(:site).permit(:name, :hostname, :description)
+    end
+
     def find_site
       @site = Site.find(params[:id])
     end
