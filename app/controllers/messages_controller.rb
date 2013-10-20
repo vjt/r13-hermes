@@ -3,7 +3,6 @@
 #
 class MessagesController < ApplicationController
   before_filter :require_callback
-  before_filter :require_jsonp
 
   before_filter :find_site
   before_filter :find_message, only: %w( show update )
@@ -17,7 +16,7 @@ class MessagesController < ApplicationController
 
     @messages = @site.tips.published.sorted.within(@source.path).respecting(remote_user)
 
-    render json: render_to_string, callback: @callback
+    render json: render_to_string(template: 'messages/index.json'), callback: @callback
   end
 
   # Render a single tip, bypassing the State machinery, for preview purposes.
@@ -25,7 +24,7 @@ class MessagesController < ApplicationController
   # partial in the backend interface.
   #
   def show
-    json = render_to_string partial: 'message', object: @message
+    json = render_to_string partial: 'messages/message', object: @message
     render json: json, callback: @callback
   end
 
@@ -54,10 +53,6 @@ class MessagesController < ApplicationController
     def require_callback
       @callback = params[:callback]
       head :bad_request unless @callback.present?
-    end
-
-    def require_jsonp
-      head :unprocessable_entity unless request.format == 'text/javascript'
     end
 
     def find_site
