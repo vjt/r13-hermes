@@ -6,4 +6,12 @@ module ApplicationHelper
       content_tag(:span, '⚚') + ' Hermes'
     end.to_s
   end
+
+  def include_tinymce
+    unless @tinymce_loaded
+      @tinymce_loaded = true
+      content_for(:head) { tinymce_assets }
+      tinymce
+    end
+  end
 end
