@@ -83,6 +83,12 @@
     }
 
     var showTip = function(tip) {
+      elem = $(tip.selector);
+      elem.popover(
+        {placement: 'auto', trigger: 'manual', title: tip.title || 'The title', content: tip.content
+      });
+
+      setTimeout(function () { elem.popover('show'); }, 2000);
       // selector: tip.selector, description: tip.content
       //debugger
     }
