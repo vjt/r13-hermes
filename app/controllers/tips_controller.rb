@@ -2,7 +2,7 @@ class TipsController < ApplicationController
   include Authenticated
 
   before_filter :find_site
-  before_filter :find_tip, only: %w( show edit update destroy )
+  before_filter :find_tip, only: %w( show edit update destroy position )
   before_filter :generate_xd_token, only: %w( new edit )
 
   def index
@@ -45,6 +45,19 @@ class TipsController < ApplicationController
     render js: "$('##{dom_id(@tip)}').hide('fade');"
 
     # redirect_to site_tips_path(@site), :notice => 'Tip deleted'
+  end
+
+  # Sets the given tip position
+  def position
+    head :bad_request and return unless params[:pos]
+    pos = params[:pos].to_i
+
+    head :bad_request and return unless pos >= 0
+
+    @tip.position = pos
+    @tip.save!
+
+    head :ok
   end
 
   protected

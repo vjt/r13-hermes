@@ -14,9 +14,7 @@ class MessagesController < ApplicationController
 
     remote_user = (cookies['__hermes_user'] ||= State.ephemeral_user)
 
-    @messages =
-      @site.tips.published.within(@source.path).respecting(remote_user) +
-      @site.tutorials.published.within(@source.path).respecting(remote_user)
+    @messages = @site.tips.published.sorted.within(@source.path).respecting(remote_user)
 
     render json: render_to_string, callback: @callback
   end
