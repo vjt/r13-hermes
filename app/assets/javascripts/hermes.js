@@ -3,10 +3,10 @@
 
 (function() {
   var jQuery,
-      jQueryURL         = '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
-      hermesURL         = __hermes_host__ + '/messages.js',
-      foundationURL     = __hermes_host__ + '/foundation.min.js',
-      modernizrURL      = __hermes_host__ + '/custom.modernizr.js';
+      jQueryURL     = '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
+      hermesURL     = __hermes_host__ + '/messages.js',
+      foundationURL = __hermes_host__ + '/foundation.min.js',
+      modernizrURL  = __hermes_host__ + '/custom.modernizr.js';
 
   function loadJavaScript(url, loadHandler) {
     var script_tag = document.createElement('script');
@@ -84,23 +84,44 @@
     }
 
     var showTip = function(tip) {
-      elem = $(tip.selector);
+      var elem = $(tip.selector);
+      var close = $('<button class="hermes-close" />');
+      var content = $('<div class="hermes-content" />');
+      var buttonsContainer = $('<div class="hermes-actions" />');
+
+      close.html('Got it!');
+      close.css({
+        'padding': '5px 10px',
+        'margin': '10px 0',
+        'float': 'right'
+      });
+
+      close.click(function(e) {
+        elem.popover('hide');
+        $.ajax(tip.url, {
+          dataType: 'jsonp',
+          complete: function(jqXHR, status) {}
+        });
+      });
+
+      content.html(tip.content);
+      content.append(buttonsContainer);
+      buttonsContainer.append(close);
+
       elem.popover({
+        html: true,
         placement: 'auto',
         trigger: 'manual',
         title: tip.title || 'The title',
-        content: tip.content,
-        html: true
+        content: content
       });
 
-      setTimeout(function () { elem.popover('show'); }, 200);
-      // selector: tip.selector, description: tip.content
-      //debugger
+      elem.popover('show');
     }
 
     var showBroadcast = function(message) {
-      var broadcast = $('<div class="hermes-broadcast" />');
-      var close = $('<span class="hermes-broadcast-close" />');
+      var broadcast = $('<div class="hermes-container hermes-broadcast" />');
+      var close = $('<span class="hermes-close" />');
 
       broadcast.html(message.content);
       broadcast.css({
@@ -133,7 +154,7 @@
         $.ajax(message.url, {
           dataType: 'jsonp',
           complete: function(jqXHR, status) {
-            $(e.target).parents('.hermes-broadcast').hide('fade');
+            $(e.target).parents('.hermes-container').hide('fade');
           }
         });
       });

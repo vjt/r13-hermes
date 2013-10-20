@@ -56,9 +56,11 @@ class TipsController < ApplicationController
     end
 
     def tip_params
-      params.
-        require(:tip).
-        permit(:title, :content, :published_at, :path,
-               :unpublished_at, :selector, :position)
+      params.require(:tip).permit(
+        :title, :content, :published_at, :path,
+        :unpublished_at, :selector, :position, :redisplay
+      ).tap do |params|
+        params[:redisplay] = nil if params[:redisplay] === '0'
+      end
     end
 end

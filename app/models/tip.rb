@@ -10,4 +10,10 @@ class Tip < ActiveRecord::Base
   validates :tippable, associated: true
 
   validates :title, :content, presence: true
+
+  attr_accessor :redisplay
+
+  before_save do |tip|
+    tip.redisplay && tip.states.delete_all
+  end
 end
