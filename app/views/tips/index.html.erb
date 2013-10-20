@@ -31,16 +31,21 @@
 <% end %>
 
 <script>
-  $('#tips-list').sortable({
-    handle: '.icon-reorder',
-    update: function(event, ui) {
-      var pos = $('#tips-list').find('tr').index(ui.item);
-      $.ajax("/tips/" + ui.item.attr('data-id') + '/position', {
-        data: { pos: pos },
-        type: 'put',
-        success: function() {
-        }
-      });
-    }
+  $(function() {
+    $('#tips-list').sortable({
+      revert: true,
+      handle: '.icon-reorder',
+      update: function(event, ui) {
+        var pos = $('#tips-list').find('tr').index(ui.item);
+        $.ajax("/tips/" + ui.item.attr('data-id') + '/position', {
+          data: { pos: pos },
+          type: 'put',
+          success: function() {
+          }
+        });
+      }
+    });
+
+    $('#tips-list').disableSelection();
   });
 </script>
