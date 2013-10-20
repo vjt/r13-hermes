@@ -54,36 +54,38 @@
     this.display = function() {
       __hermes_init_pagetour__($);
 
-      $.ajax(h.endpoint, {
+      $.ajax(this.endpoint, {
         dataType: 'jsonp',
         success: function(messages, status) {
           var message = null;
-          while (message = messages.shift()) { h.show(message); }
+          while (message = messages.shift()) { show(message); }
         }
       });
     }
 
-    this.show = function(message) {
+    var show = function(message) {
       switch(message.type) {
       case 'tutorial':
         break;
+
       case 'tip':
         break;
+
       default:
-        this.showBroadcast(message);
+        showBroadcast(message);
         break;
       }
     }
 
-    this.showTutorial = function(message) {
+    var showTutorial = function(message) {
       alert(message.type);
     }
 
-    this.showTip = function(message) {
+    var showTip = function(message) {
       alert(message.type);
     }
 
-    this.showBroadcast = function(message) {
+    var showBroadcast = function(message) {
       var broadcast = $('<div class="hermes-broadcast" />');
       var close = $('<span class="hermes-broadcast-close" />');
 
