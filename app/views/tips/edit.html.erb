@@ -1,4 +1,4 @@
-<h1><%= title @site.name, 'New tip' %></h1>
+<h1><%= title @site.name, 'Edit tip' %></h1>
 
 <%= form_for @tip, :url => site_tip_path(@site, @tip) do |f| %>
   <%= render 'form', :f => f %>

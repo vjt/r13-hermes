@@ -1,0 +1,5 @@
+<h1><%= title @site.name, 'New tutorial' %></h1>
+
+<%= form_for @tutorial, :url => site_tutorials_path(@site) do |f| %>
+  <%= render 'form', :f => f %>
+<% end %>

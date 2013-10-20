@@ -1,0 +1,24 @@
+<div>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+
+<div>
+  <%= f.label :path %>
+  <%= f.text_field :path %>
+</div>
+
+
+<div>
+  <%= f.label :published_at, 'Publishing starts' %>
+  <%= f.datetime_select :published_at %>
+</div>
+
+<div>
+  <%= f.label :unpublished_at, 'Publishing ends' %>
+  <%= f.datetime_select :unpublished_at %>
+</div>
+
+<div>
+  <%= f.submit 'Save!' %>
+</div>

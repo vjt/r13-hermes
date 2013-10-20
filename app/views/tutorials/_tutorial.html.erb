@@ -1,13 +1,6 @@
-<div>
-  <h2><%= tutorial.title %></h2>
-
-  <dl>
-    <dt>Publish at</dt>
-    <dd><%= l tutorial.published_at %></dd>
-
-    <dt>Unpublish at</dt>
-    <dd><%= l tutorial.unpublished_at %></dd>
-  </dl>
-
-  <%= link_to 'Edit', edit_site_tutorial_path(@site, tutorial) %>
-</div>
+<tr>
+  <td><%= tutorial.title  %></td>
+  <td><%= l tutorial.published_at %></td>
+  <td><%= l tutorial.unpublished_at %></td>
+  <td><%= link_to 'Edit', edit_site_tutorial_path(@site, tutorial) %></td>
+</tr>
