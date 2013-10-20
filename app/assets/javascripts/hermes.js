@@ -22,11 +22,25 @@
     (document.getElementsByTagName('head')[0] || document.documentElement).appendChild(script_tag);
   }
 
-  if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.10.2') {
+  if (window.jQuery === undefined ||
+      window.jQuery.fn.jquery === undefined ||
+      window.jQuery.fn.jquery.split === undefined) {
+
     loadJavaScript(jQueryURL, jQueryLoadHandler);
+
   } else {
-    jQuery = window.jQuery;
-    main();
+    // Check for sufficiently recent version - at least 1.5.
+    //
+    var ver = window.jQuery.fn.jquery.split('.'),
+        maj = parseInt(ver[0]),
+        min = parseInt(ver[1]);
+
+    if (maj == 1 && min > 4) {
+      jQuery = window.jQuery;
+      main();
+
+    } else
+      loadJavaScript(jQueryURL, jQueryLoadHandler)
   }
 
   function jQueryLoadHandler() {
