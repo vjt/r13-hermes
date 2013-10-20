@@ -508,7 +508,7 @@ __hermes_init_popover__ = (function (jQuery) {
 // Load the CSS
 var style = document.createElement('style');
 style.type = 'text/css';
-style.innerText = "<%= ActionView::Base.new.escape_javascript(File.read('app/assets/stylesheets/hermes-bootstrap-popover.css').gsub("\n", '')) %>";
+style.innerText = "<%= ActionView::Base.new.escape_javascript(File.read('app/assets/stylesheets/hermes-embed.css').gsub("\n", '')) %>";
 
 (document.getElementsByTagName('head')[0] || document.documentElement).appendChild(style);
 
