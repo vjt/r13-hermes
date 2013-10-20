@@ -18,3 +18,4 @@
 //= require bootstrap-datepicker
 //= require toggler
 //= require tip-connector
+//= require data-confirm-modal
