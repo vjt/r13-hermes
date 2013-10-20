@@ -122,7 +122,24 @@
     }
 
     this.author = function () {
-      // Add the 4 overlays
+      // Cache the document here for speed.
+      var doc = $(document);
+
+      // This is the selected element, that gets updated while hovering
+      var selected = undefined;
+
+      // This is the way out, that sends the selected element Selector out to
+      // the opener window.
+      var callback = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+        console.log(selected);
+        alert('I am a ' + selected.tagName);
+      };
+
+      // Create the 4 overlays that make up the border of the hovering element.
       //
       var css = {
         margin: 0, padding: 0, position: 'absolute',
@@ -136,23 +153,11 @@
       };
 
       for (i in overlay) {
+        overlay[i].bind('click.hermes', callback);
         $('html').append(overlay[i]);
       }
 
       var thickness = 5; // px
-
-      var doc = $(document);
-
-      var selected = undefined;
-
-      var callback = function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation();
-
-        console.log(this);
-        alert('I am a ' + this.tagName);
-      };
 
       // And now set the mousemove event handler
       $('body').on('mousemove', function (event) {
