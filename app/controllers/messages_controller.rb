@@ -3,6 +3,7 @@
 #
 class MessagesController < ApplicationController
   before_filter :require_callback
+  before_filter :require_jsonp
 
   before_filter :find_site
   before_filter :find_message, only: %w( show update )
@@ -53,6 +54,10 @@ class MessagesController < ApplicationController
     def require_callback
       @callback = params[:callback]
       head :bad_request unless @callback.present?
+    end
+
+    def require_jsonp
+      head :unprocessable_entity unless request.format == 'text/javascript'
     end
 
     def find_site
