@@ -138,25 +138,27 @@
 
       var thickness = 4; // px
 
+      var doc = $(document)
+
       // And now set the mousemove event handler
       $('body').on('mousemove', function (event) {
         try {
 
-          var elem = document.elementFromPoint(event.pageX, event.pageY);
+          var elem = event.toElement;
 
           if (elem.tagName == 'BODY')
             return;
 
           var rect = elem.getBoundingClientRect();
-          var doc  = $(document), stop = doc.scrollTop(), sleft = doc.scrollLeft();
+          var stop = doc.scrollTop(), sleft = doc.scrollLeft();
 
           // North
           //
           overlay.N.css({
             width:  rect.width,
             height: thickness,
-            top:    rect.top - thickness/2,
-            left:   rect.left
+            top:    (rect.top - thickness/2) + stop,
+            left:   (rect.left) + sleft
           });
 
           // South
@@ -164,8 +166,8 @@
           overlay.S.css({
             width:  rect.width,
             height: thickness,
-            top:    rect.top + rect.height - thickness/2,
-            left:   rect.left
+            top:    (rect.top + rect.height - thickness/2) + stop,
+            left:   (rect.left) + sleft
           });
 
           // East
@@ -173,8 +175,8 @@
           overlay.E.css({
             width:  thickness,
             height: rect.height + thickness,
-            top:    rect.top - thickness / 2,
-            left:   rect.left + rect.width - thickness/2
+            top:    (rect.top  - thickness/2) + stop,
+            left:   (rect.left + rect.width - thickness/2) + sleft
           });
 
           // West
@@ -182,8 +184,8 @@
           overlay.W.css({
             width:  thickness,
             height: rect.height + thickness,
-            top:    rect.top - thickness / 2,
-            left:   rect.left - thickness/2
+            top:    (rect.top  - thickness/2) + stop,
+            left:   (rect.left - thickness/2) + sleft
           });
 
         } catch (e) {
