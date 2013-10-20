@@ -1,4 +1,5 @@
 //= require hermes-endpoint
+//= require jquery.pagetour
 
 (function() {
   var jQuery,
@@ -51,6 +52,8 @@
     this.endpoint = hermesURL;
 
     this.display = function() {
+      __hermes_init_pagetour__($);
+
       $.ajax(h.endpoint, {
         dataType: 'jsonp',
         success: function(messages, status) {
