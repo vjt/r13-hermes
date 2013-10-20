@@ -1,6 +1,8 @@
 <h3>
   <%= title @site.name, 'Tips' %>
-  <%= link_to 'Create a new tip', new_site_tip_path(@site), class: 'btn btn-small', style: 'float: right' %>
+  <%= link_to new_site_tip_path(@site), class: 'btn btn-small', style: 'float: right' do %>
+    <i class="icon-plus"></i> New tip
+  <% end %>
 </h3>
 
 <% if @tips.any? %>
@@ -10,7 +12,7 @@
         <th>Tip Title</th>
         <th>Visible From</th>
         <th>Visible Until</th>
-        <th>Actions</th>
+        <th></th>
       </tr>
     </thead>
     <tbody id="tips-list">
@@ -35,6 +37,7 @@
     $('#tips-list').sortable({
       revert: true,
       handle: '.icon-reorder',
+      start: function(event, ui) {},
       update: function(event, ui) {
         var pos = $('#tips-list').find('tr').index(ui.item);
         $.ajax("/tips/" + ui.item.attr('data-id') + '/position', {

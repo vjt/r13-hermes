@@ -4,7 +4,9 @@
     <%= render Site.by_user(current_user) %>
     <li>
       <span>
-        <%= link_to 'Add new site', '#new-site-modal', class: 'btn btn-small btn-primary', :'data-toggle' => 'modal' %>
+        <%= link_to '#new-site-modal', class: 'btn btn-small', :'data-toggle' => 'modal' do %>
+          <i class="icon-plus"></i> New site
+        <% end %>
       </span>
     </li>
   </ul>

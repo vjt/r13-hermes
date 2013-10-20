@@ -2,9 +2,17 @@
   <td><i class="icon-reorder"></i> <%= link_to tip.title, edit_site_tip_path(@site, tip)  %></td>
   <td><%= l tip.published_at %></td>
   <td><%= l tip.unpublished_at %></td>
-  <td>
-    <%= link_to 'Go to page', "http://#{@site.hostname}#{tip.path}", class: 'label label-success', target: '_blank' %>
-    <%= link_to 'Edit', edit_site_tip_path(@site, tip), class: 'label label-info' %>
-    <%= link_to 'Destroy', site_tip_path(@site, tip), remote: true, method: :delete, title: 'Are you sure?', confirm: 'This action will delete your tip.', class: 'label label-important' %>
+  <td style="text-align: right">
+    <%= link_to "http://#{@site.hostname}#{tip.path}", class: 'btn btn-small', target: '_blank' do %>
+      <i class="icon-eye-open"></i>
+    <% end %>
+
+    <%= link_to edit_site_tip_path(@site, tip), class: 'btn btn-small' do %>
+      <i class="icon-edit"></i>
+    <% end %>
+
+    <%= link_to site_tip_path(@site, tip), remote: true, method: :delete, title: 'Are you sure?', confirm: 'This action will delete your tip.', class: 'btn btn-small' do %>
+      <i class="icon-remove"></i>
+    <% end %>
   </td>
 </tr>
