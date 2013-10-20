@@ -1,32 +1,38 @@
-<h3>Sign in</h3>
+<div class="user-meta">
 
-<%= form_for resource, :as => resource_name, :url => session_path(resource_name) do |f| %>
-  <div class="control-group">
-    <%= f.label :email, class: 'control-label' %>
-    <div class="controls">
-      <%= f.email_field :email, :autofocus => true %>
+  <%= image_tag 'hermes-logo.png', class: 'logo' %>
+
+  <h3>Hermes</h3>
+
+  <h4>Sign in</h4>
+
+  <%= form_for resource, :as => resource_name, :url => session_path(resource_name) do |f| %>
+    <div class="control-group">
+      <div class="controls">
+        <%= f.email_field :email, :autofocus => true, placeholder: 'email...', class: 'input-block-level' %>
+      </div>
     </div>
-  </div>
 
-  <div class="control-group">
-    <%= f.label :password, class: 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password %>
+    <div class="control-group">
+      <div class="controls">
+        <%= f.password_field :password, placeholder: 'password...', class: 'input-block-level' %>
+      </div>
     </div>
-  </div>
 
-  <div class="control-group">
-    <div class="controls">
-      <% if devise_mapping.rememberable? -%>
-        <%= f.label :remember_me, class: 'checkbox' do %>
-          <%= f.check_box :remember_me %> Remember me
-        <% end %>
-      <% end -%>
+    <div class="control-group">
+      <div class="controls">
+        <% if devise_mapping.rememberable? -%>
+          <%= f.label :remember_me, class: 'checkbox' do %>
+            <%= f.check_box :remember_me %> Remember me
+          <% end %>
+        <% end -%>
+      </div>
     </div>
-  </div>
 
-  <%= f.button "Sign in", class: "btn btn-primary" %>
+    <%= f.button "Sign in", class: "btn input-block-level" %>
 
-<% end %>
+  <% end %>
 
-<%= render 'devise/shared/links' %>
+  <%= render 'devise/shared/links' %>
+
+</div>

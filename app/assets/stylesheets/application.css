@@ -13,6 +13,7 @@
  *= require jquery.ui.core
  *= require jquery.ui.theme
  *= require bootstrap-datepicker
+ *= require style
  */
 
 .nav-list li {
@@ -45,8 +46,6 @@
 }
 
 .support-links {
-  padding-top: 10px;
-  margin-top: 10px;
   border-top: 1px solid #EEE;
   font-size: 0.85em;
 }

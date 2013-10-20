@@ -1,30 +1,35 @@
-<h3>Sign up</h3>
+<div class="user-meta">
 
-<%= form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f| %>
-  <%= devise_error_messages! %>
+  <%= image_tag 'hermes-logo.png', class: 'logo' %>
 
-  <div class="control-group">
-    <%= f.label :email, class: 'control-label' %>
-    <div class="controls">
-      <%= f.email_field :email, :autofocus => true %>
+  <h3>Hermes</h3>
+
+  <h4>Sign up</h4>
+
+  <%= form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= f.email_field :email, :autofocus => true, placeholder: 'email', class: 'input-block-level' %>
+      </div>
     </div>
-  </div>
 
-  <div class="control-group">
-    <%= f.label :password, class: 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password %>
+    <div class="control-group">
+      <div class="controls">
+        <%= f.password_field :password, placeholder: 'password', class: 'input-block-level' %>
+      </div>
     </div>
-  </div>
 
-  <div class="control-group">
-    <%= f.label :password_confirmation, class: 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password_confirmation %>
+    <div class="control-group">
+      <div class="controls">
+        <%= f.password_field :password_confirmation, placeholder: 'password confirmation', class: 'input-block-level' %>
+      </div>
     </div>
-  </div>
 
-  <%= f.button "Sign up", class: 'btn btn-primary' %>
-<% end %>
+    <%= f.button "Sign up", class: 'btn input-block-level' %>
+  <% end %>
 
-<%= render 'devise/shared/links' %>
+  <%= render 'devise/shared/links' %>
+
+</div>
