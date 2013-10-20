@@ -22,7 +22,7 @@ module Hermes
 
     config.assets.precompile += [
       'hermes.js',
-      'tinymce-editor-body.js'
+      'tinymce-editor-body.css'
     ]
   end
 end
