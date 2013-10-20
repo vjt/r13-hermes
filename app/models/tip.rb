@@ -11,6 +11,8 @@ class Tip < ActiveRecord::Base
 
   validates :title, :content, presence: true
 
+  sanitizes :content
+
   attr_accessor :redisplay
 
   before_save do |tip|

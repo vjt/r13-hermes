@@ -12,6 +12,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-datepicker-rails'
+gem 'sanitize-rails'
 
 group :doc do
   gem 'sdoc', require: false
