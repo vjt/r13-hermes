@@ -23,10 +23,13 @@ $(function () {
     var connector = $(this);
     var output    = $(connector.data('output'));
 
-    window.__hermes_connect_callback = function (selector) {
-      output.find('input').val(selector)
+    var listener = function(event) {
+      output.find('input').val(event.data);
       output.show();
     }
+
+    window.removeEventListener('message', listener);
+    window.addEventListener('message', listener);
   });
 
   $('#tip-disconnect').on('change', function () {

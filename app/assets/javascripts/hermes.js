@@ -85,11 +85,15 @@
 
     var showTip = function(tip) {
       elem = $(tip.selector);
-      elem.popover(
-        {placement: 'auto', trigger: 'manual', title: tip.title || 'The title', content: tip.content
+      elem.popover({
+        placement: 'auto',
+        trigger: 'manual',
+        title: tip.title || 'The title',
+        content: tip.content,
+        html: true
       });
 
-      setTimeout(function () { elem.popover('show'); }, 2000);
+      setTimeout(function () { elem.popover('show'); }, 200);
       // selector: tip.selector, description: tip.content
       //debugger
     }
@@ -154,7 +158,8 @@
         event.stopImmediatePropagation();
 
         var path = getPath(selected);
-        window.opener.__hermes_connect_callback(path);
+        // window.opener.__hermes_connect_callback(path);
+        window.opener.postMessage(path, "http:" + __hermes_host__);
         window.close();
       };
 
