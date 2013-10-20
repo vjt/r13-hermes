@@ -1,0 +1,6 @@
+<% if @site.persisted? %>
+  $('#new-site-modal').modal('hide');
+  window.location.reload();
+<% else %>
+  alert('Oh, snap! Check your entry.');
+<% end %>

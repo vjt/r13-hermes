@@ -28,17 +28,11 @@ class SitesController < ApplicationController
 
   def create
     @site = current_user.sites.new(sites_param)
+    @site.save
 
-    if @site.save
-      respond_to do |format|
-        format.html { redirect_to sites_path }
-        format.js { render js: 'alert("saved!");' }
-      end
-    else
-      respond_to do |format|
-        format.html { redirect_to sites_path, :warning => 'Wrong data.' }
-        format.js { render js: 'alert("Please verify your data");' }
-      end
+    respond_to do |format|
+      format.html { redirect_to sites_path }
+      format.js
     end
   end
 
