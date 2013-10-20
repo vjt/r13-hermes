@@ -72,6 +72,7 @@
 
       case 'tip':
         showTip(message);
+        break;
 
       default:
         showBroadcast(message);
