@@ -3,8 +3,8 @@
   <td><%= l tip.published_at %></td>
   <td><%= l tip.unpublished_at %></td>
   <td>
-    <%= link_to 'Edit', edit_site_tip_path(@site, tip) %>
+    <%= link_to 'Edit', edit_site_tip_path(@site, tip), class: 'label label-info' %>
     ·
-    <%= link_to 'Destroy', site_tip_path(@site, tip), remote: true, method: :delete, confirm: 'This action will delete your tip.' %>
+    <%= link_to 'Destroy', site_tip_path(@site, tip), remote: true, method: :delete, confirm: 'This action will delete your tip.', class: 'label label-important' %>
   </td>
 </tr>
