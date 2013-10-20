@@ -1,5 +1,27 @@
 html.not_logged_in {
+  body {
+    background: #F9F7F2 image-url('hermes-wing.png') no-repeat right 100px;
+  }
+}
 
+.payoff {
+  font-family: 'Lato', sans-serif;
+  padding: 100px 0 0;
+  line-height: 1;
+  font-size: 2em;
+
+  .big {
+    font-size: 1.8em;
+    margin-bottom: 60px;
+  }
+}
+
+#error_explanation {
+  h2 {
+    color: #900;
+    font-size: 1.2em;
+    line-height: 1.2em;
+  }
 }
 
 .well,
@@ -10,6 +32,11 @@ pre,
   background: #FFFEFA;
 }
 
+.nav > li > a:hover,
+.nav > li > a:focus {
+  background: #EFEDD8;
+}
+
 body {
   height: 100%;
   color: #493E24;
@@ -18,6 +45,8 @@ body {
 
 .not_logged_in {
   .user-meta {
+    position: relative;
+    // left: -100px;
     font-family: 'Lato', sans-serif;
     border: 1px solid #FFF;
     background: #EFEDD8;
