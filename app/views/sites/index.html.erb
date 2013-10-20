@@ -1,31 +1,16 @@
-<div class="row">
-  <p/>
-  <div class="span12">
-    <%= form_for @site, :html => {:class => ''} do |f| %>
-      <%= render 'form', :f => f %>
-    <% end %>
-  </div>
-</div>
-<div class="jumbotron">
-  <div class="container">
-    <p>To set up Hermes for your web site, add the following code to your website layout:</p>
-    <pre>&lt;script src="<%= asset_url('hermes.js') %>"&gt;&lt;/script&gt;</pre>
-    <p>just before the ending <code>&lt;body&gt;</code> tag.
-  </div>
-</div>
+<%= form_for @site, :html => {:class => ''} do |f| %>
+  <%= render 'form', :f => f %>
+<% end %>
+<hr>
+<p>
+  To set up Hermes for your web site, add the following code to your website layout:
+</p>
+<pre>
+  &lt;script src="<%= asset_url('hermes.js') %>"&gt;&lt;/script&gt;
+</pre>
+<p>just before the ending <code>&lt;body&gt;</code> tag.</p>
+
 <div class="row">
   <div class="span12">
-    <h1><%= title 'Your sites' %></h1>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Description</th>
-          <th>Hostname</th>
-        </tr>
-      </thead>
-      <tbody>
-      <%= render @sites %>
-      </tbody>
-    </table>
   </div>
 </div>

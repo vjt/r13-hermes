@@ -1,5 +1,4 @@
-<tr>
-  <td><%= link_to site.name, site_path(site)  %></td>
-  <td><%= site.hostname %></td>
-  <td><%= link_to 'Edit', edit_site_path(site) %></td>
-</tr>
+<li>
+  <%= link_to site.name, site_path(site) %>
+  <%= site.hostname %>
+</li>
