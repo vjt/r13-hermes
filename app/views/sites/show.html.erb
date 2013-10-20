@@ -1,14 +1,14 @@
 <div>
-  <h1><%= title "Site #{@site.name}" %></h1>
+  <h3><%= title "Site #{@site.name}" %></h3>
 
-<dl class="dl-horizontal">
-  <dt>Host name</dt>
-  <dd><%= @site.hostname %></dd>
+  <dl class="dl-horizontal">
+    <dt>Host name</dt>
+    <dd><%= @site.hostname %></dd>
 
-  <dt>Tips</dt>
-  <dd><%= link_to pluralize(@site.tips.count, 'tip'), site_tips_path(@site) %></dd>
+    <dt>Tips</dt>
+    <dd><%= link_to pluralize(@site.tips.count, 'tip'), site_tips_path(@site) %></dd>
 
-  <dt>Tutorials</dt>
-  <dd><%= link_to pluralize(@site.tutorials.count, 'tutorial'), site_tutorials_path(@site) %></dd>
-</dl>
+    <dt>Tutorials</dt>
+    <dd><%= link_to pluralize(@site.tutorials.count, 'tutorial'), site_tutorials_path(@site) %></dd>
+  </dl>
 </div>
