@@ -58,7 +58,7 @@ class TipsController < ApplicationController
     def tip_params
       params.
         require(:tip).
-        permit(:title, :content, :published_at,
+        permit(:title, :content, :published_at, :path,
                :unpublished_at, :selector, :position)
     end
 end

@@ -13,22 +13,25 @@
   <%= f.text_field :path, 'data-tip-connect-path' => '#tip-connector' %>
 </div>
 
-<div data-toggle-group="broadcast">
+<div data-toggle-group>
   <label class="radio">
-    <input type="radio" name="broadcast" checked="checked"> Broadcast
+    <input type="radio" name="broadcast" id="tip-disconnect" data-output="#tip-connected" checked="<%= 'checked' if f.object.selector.blank? %>"> Broadcast
   </label>
 
   <label class="radio">
-    <input type="radio" name="broadcast" data-toggle="#tip-connector"> Bound to a specific item in the page
+    <input type="radio" name="broadcast" checked="<%= 'checked' if f.object.selector.present? %>"
+      data-toggle="#tip-connector"> Bound to a specific item in the page
+
     <%= link_to 'Connect', [f.object.tippable.url, f.object.path, '#hermes-authoring'].join,
           :id => 'tip-connector', 'target' => '_blank',
-          'data-togglee'  => true, :class => 'hide',
+          :class => ('hide' if f.object.selector.blank?),
+          'data-togglee'  => true,
           'data-hostname' => f.object.tippable.url,
           'data-token'    => 'hermes-authoring',
           'data-output'   => '#tip-connected'
     %>
 
-    <span id="tip-connected" class="hide">
+    <span id="tip-connected" class="<%= 'hide' if f.object.selector.blank? %>">
       <i class="icon icon-ok"></i> Connected!
       <%= f.hidden_field :selector %>
     </span>
