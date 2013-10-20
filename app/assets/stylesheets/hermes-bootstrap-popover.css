@@ -127,3 +127,7 @@
 .popover h3.popover-title {
   font-weight: 600 !important;
 }
+
+.popover .popover-content .hermes-actions .hermes-close {
+  cursor: pointer !important;
+}

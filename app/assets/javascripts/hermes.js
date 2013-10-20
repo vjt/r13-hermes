@@ -104,13 +104,9 @@
         'float': 'right'
       });
 
-      close.click(function(e) {
+      close.click(function (event) {
         elem.popover('hide');
-        $(window).trigger('hermes.dismiss-message');
-        $.ajax(tip.url, {
-          dataType: 'jsonp',
-          complete: function(jqXHR, status) { /* Nothing for now */ }
-        });
+        saveTipStateAndSnooze(tip, event);
       });
 
       content.html(tip.content);
@@ -128,12 +124,12 @@
       elem.popover('show');
     }
 
-    var showBroadcast = function(message) {
-      var broadcast = $('<div class="hermes-container hermes-broadcast" />');
+    var showBroadcast = function(broadcast) {
+      var elem = $('<div class="hermes-container hermes-broadcast" />');
       var close = $('<span class="hermes-close" />');
 
-      broadcast.html(message.content);
-      broadcast.css({
+      elem.html(broadcast.content);
+      elem.css({
         'background-color': '#D9EDF7',
         'border-color': '#BCE8F1',
         'color': '#3A87AD',
@@ -146,7 +142,6 @@
         'line-height': '18px'
       });
 
-      close.attr('data-url', message.url);
       close.html("×");
       close.css({
         'cursor': 'pointer',
@@ -159,20 +154,28 @@
         'line-height': '1'
       });
 
-      close.click(function(e) {
-        $(window).trigger('hermes.dismiss-message');
-        $.ajax(message.url, {
-          dataType: 'jsonp',
-          complete: function(jqXHR, status) {
-            $(e.target).parents('.hermes-container').hide('fade');
-          }
-        });
-      });
+      close.click(function (event) {
+        $(event.target).closest('.hermes-container').hide('fade');
+        saveTipStateAndSnooze(broadcast, event)
+      })
 
-      broadcast.append(close);
+      elem.append(close);
 
-      $(document.body).prepend(broadcast);
+      $(document.body).prepend(elem);
     }
+
+    var saveTipStateAndSnooze = function(tip, event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+
+      $(window).trigger('hermes.dismiss-message');
+
+      $.ajax(tip.url, {
+        dataType: 'jsonp',
+        complete: function(jqXHR, status) { /* Nothing, for now */ }
+      });
+    };
 
     this.author = function (opener_protocol) {
       // Cache the document here for speed.
