@@ -8,9 +8,9 @@
 </div>
 <div class="jumbotron">
   <div class="container">
-    <p>Please add the following code to your web site</p>
-    <%#<pre><%= "<script src='#{request.host_with_port}/assets/hermes.js'") </pre>%>
-    <pre></pre>
+    <p>To set up Hermes for your web site, add the following code to your website layout:</p>
+    <pre>&lt;script src="<%= asset_url('hermes.js') %>"&gt;&lt;/script&gt;</pre>
+    <p>just before the ending <code>&lt;body&gt;</code> tag.
   </div>
 </div>
 <div class="row">
