@@ -39,13 +39,17 @@
     jQuery(document).ready(function($) {
       var h = new Hermes();
 
-      $.ajax(h.endpoint, {
-        dataType: 'jsonp',
-        success: function(messages, status) {
-          var message = null;
-          while (message = messages.shift()) { h.show(message); }
-        }
-      });
+      if (/#hermes-authoring/.test(document.location.hash)) {
+        h.author();
+      } else {
+        $.ajax(h.endpoint, {
+          dataType: 'jsonp',
+          success: function(messages, status) {
+            var message = null;
+            while (message = messages.shift()) { h.show(message); }
+          }
+        });
+      }
     });
   }
 
@@ -115,6 +119,77 @@
       broadcast.append(close);
 
       jQuery(document.body).prepend(broadcast);
+    }
+
+    this.author = function () {
+      // Add the 4 overlays
+      //
+      var css = {margin: 0, padding:0, position:'absolute', 'background-color': '#a00'}
+      var overlay = {
+        N: $('<div/>', {id: 'overlayN'}).css(css),
+        S: $('<div/>', {id: 'overlayS'}).css(css),
+        E: $('<div/>', {id: 'overlayE'}).css(css),
+        W: $('<div/>', {id: 'overlayW'}).css(css),
+      };
+
+      for (i in overlay) {
+        $('html').append(overlay[i]);
+      }
+
+      var thickness = 4; // px
+
+      // And now set the mousemove event handler
+      $('body').on('mousemove', function (event) {
+        try {
+
+          var elem = document.elementFromPoint(event.pageX, event.pageY);
+
+          if (elem.tagName == 'BODY')
+            return;
+
+          var rect = elem.getBoundingClientRect();
+          var doc  = $(document), stop = doc.scrollTop(), sleft = doc.scrollLeft();
+
+          // North
+          //
+          overlay.N.css({
+            width:  rect.width,
+            height: thickness,
+            top:    rect.top - thickness/2,
+            left:   rect.left
+          });
+
+          // South
+          //
+          overlay.S.css({
+            width:  rect.width,
+            height: thickness,
+            top:    rect.top + rect.height - thickness/2,
+            left:   rect.left
+          });
+
+          // East
+          //
+          overlay.E.css({
+            width:  thickness,
+            height: rect.height + thickness,
+            top:    rect.top - thickness / 2,
+            left:   rect.left + rect.width - thickness/2
+          });
+
+          // West
+          //
+          overlay.W.css({
+            width:  thickness,
+            height: rect.height + thickness,
+            top:    rect.top - thickness / 2,
+            left:   rect.left - thickness/2
+          });
+
+        } catch (e) {
+          console.log(e);
+        }
+      });
     }
 
     return this;
