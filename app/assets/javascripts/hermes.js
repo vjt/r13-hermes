@@ -150,7 +150,7 @@
       var doc = $(document);
 
       // This is the selected element, that gets updated while hovering
-      var selected = undefined;
+      var selected = null;
 
       // This is the way out, that sends the selected element Selector out to
       // the opener window.
