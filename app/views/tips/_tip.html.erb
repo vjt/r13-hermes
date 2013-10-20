@@ -1,4 +1,4 @@
-<tr id="<%= dom_id(tip) %>">
+<tr data-id="<%= tip.id %>" id="<%= dom_id(tip) %>">
   <td><i class="icon-reorder"></i> <%= tip.title  %></td>
   <td><%= l tip.published_at %></td>
   <td><%= l tip.unpublished_at %></td>

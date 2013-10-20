@@ -8,7 +8,6 @@ class TipsController < ApplicationController
   def index
     @tips = @site.tips.order('created_at DESC') # FIXME
 
-
     # redirect_to new_site_tip_path(@site) if @tips.blank?
   end
 
