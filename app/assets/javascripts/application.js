@@ -17,7 +17,7 @@
 //= require jquery.ui.effect-highlight
 //= require twitter/bootstrap
 //= require bootstrap
-//= require bootstrap-datepicker
+//= require bootstrap-datetimepicker
 //= require bootstrap-wysihtml5
 //= require toggler
 //= require tip-connector

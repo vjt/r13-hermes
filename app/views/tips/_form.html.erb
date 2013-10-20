@@ -51,15 +51,23 @@
 
 <div class="control-group">
   <%= f.label :published_at, 'Publishing starts', class: 'control-label' %>
-  <div class="controls">
-    <%= f.text_field :published_at, :class => "datepicker span2" %>
+  <div class="controls datetimepicker">
+    <%= f.text_field :published_at, 'data-format' => "yyyy-MM-dd hh:mm:ss" %>
+    <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
   </div>
 </div>
 
 <div class="control-group">
   <%= f.label :unpublished_at, 'Publishing ends', class: 'control-label' %>
-  <div class="controls">
-    <%= f.text_field :unpublished_at, :class => "datepicker span2" %>
+  <div class="controls datetimepicker">
+    <%= f.text_field :unpublished_at, 'data-format' => "yyyy-MM-dd hh:mm:ss" %>
+    <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
   </div>
 </div>
 
