@@ -119,11 +119,11 @@
 }
 
 /* Our additions */
-.popover h3.popover_title,
-.popover .popover_content .hermes_content {
+.popover h3.popover-title,
+.popover .popover-content .hermes-content {
   color: #333 !important;
 }
 
-.popover h3.popover_title {
+.popover h3.popover-title {
   font-weight: 600 !important;
 }
