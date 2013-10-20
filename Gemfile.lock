@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/ifad/data-confirm-modal.git
+  revision: f9597a2d8403b57cea5b312360c1989344214b9b
+  specs:
+    data-confirm-modal (1.0.1)
+      railties (>= 3.0)
+      twitter-bootstrap-rails (~> 2.0)
+
+GIT
   remote: git://github.com/mixonic/ranked-model.git
   revision: 70de42d3362f98a80adbfa19f2ebc73ed821b585
   specs:
@@ -192,6 +200,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   bootstrap-datepicker-rails
   capistrano (~> 2.0)
+  data-confirm-modal!
   debugger
   devise
   jbuilder (~> 1.2)
