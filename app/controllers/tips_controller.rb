@@ -1,12 +1,12 @@
 class TipsController < ApplicationController
   include Authenticated
 
-  before_filter :find_site
+  before_filter :find_site, except: :position
   before_filter :find_tip, only: %w( show edit update destroy )
   before_filter :generate_xd_token, only: %w( new edit )
 
   def index
-    @tips = @site.tips.order('created_at DESC') # FIXME
+    @tips = @site.tips.sort_by_row_order
   end
 
   def show
