@@ -15,11 +15,11 @@
 
 <div data-toggle-group>
   <label class="radio">
-    <input type="radio" name="broadcast" id="tip-disconnect" data-output="#tip-connected" checked="<%= 'checked' if f.object.selector.blank? %>"> Broadcast
+    <input type="radio" name="broadcast" id="tip-disconnect" data-output="#tip-connected" <%= 'checked' if f.object.selector.blank? %>> Broadcast
   </label>
 
   <label class="radio">
-    <input type="radio" name="broadcast" checked="<%= 'checked' if f.object.selector.present? %>"
+    <input type="radio" name="broadcast" <%= 'checked' if f.object.selector.present? %>
       data-toggle="#tip-connector"> Bound to a specific item in the page
 
     <%= link_to 'Connect', [f.object.tippable.url, f.object.path, '#hermes-authoring'].join,
