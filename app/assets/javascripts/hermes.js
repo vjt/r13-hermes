@@ -93,24 +93,18 @@
 
     var showTip = function(tip) {
       var elem = $(tip.selector);
-      var close = $('<button class="hermes-close" />');
+
       var content = $('<div class="hermes-content" />');
+      content.html(tip.content);
+
       var buttonsContainer = $('<div class="hermes-actions" />');
+      content.append(buttonsContainer);
 
-      close.html('Got it!');
-      close.css({
-        'padding': '5px 10px',
-        'margin': '10px 0',
-        'float': 'right'
-      });
-
+      var close = $('<button class="hermes-close" />').html('Got it!');
       close.click(function (event) {
         elem.popover('hide');
         saveTipStateAndSnooze(tip, event);
       });
-
-      content.html(tip.content);
-      content.append(buttonsContainer);
       buttonsContainer.append(close);
 
       elem.popover({
@@ -125,41 +119,15 @@
     }
 
     var showBroadcast = function(broadcast) {
-      var elem = $('<div class="hermes-container hermes-broadcast" />');
-      var close = $('<span class="hermes-close" />');
+      var elem = $('<div class="hermes-broadcast" />');
 
-      elem.html(broadcast.content);
-      elem.css({
-        'background-color': '#D9EDF7',
-        'border-color': '#BCE8F1',
-        'color': '#3A87AD',
-        'border-radius': '4px',
-        'border-width': '1px',
-        'border-style': 'solid',
-        'font-family': '"Helvetica Neue", Helvetica, Arial, sans-serif',
-        'padding': '15px',
-        'font-size': '14px',
-        'line-height': '18px'
-      });
-
-      close.html("×");
-      close.css({
-        'cursor': 'pointer',
-        'float': 'right',
-        'font-size': '21px',
-        'font-weight': 'bold',
-        'text-shadow': '0 1px 0 #FFF',
-        'color': '#000',
-        'opacity': '0.2',
-        'line-height': '1'
-      });
-
+      var close = $('<button class="hermes-close" />').html('&times;');
       close.click(function (event) {
-        $(event.target).closest('.hermes-container').hide('fade');
+        elem.hide('fade');
         saveTipStateAndSnooze(broadcast, event)
-      })
+      });
 
-      elem.append(close);
+      elem.append(broadcast.content).append(close);
 
       $(document.body).prepend(elem);
     }
