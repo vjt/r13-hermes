@@ -19,7 +19,7 @@
   position: relative;
 }
 
-.nav-list .remove {
+.nav-list .actions {
   position: absolute;
   top: 0;
   right: 0;
@@ -32,6 +32,11 @@
 .nav-list .remove:hover {
   text-decoration: none;
   color: red;
+}
+
+.nav-list .edit:hover {
+  text-decoration: none;
+  color: green;
 }
 
 #tips-list .icon-reorder {

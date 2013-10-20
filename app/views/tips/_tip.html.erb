@@ -1,5 +1,5 @@
 <tr data-id="<%= tip.id %>" id="<%= dom_id(tip) %>">
-  <td><i class="icon-reorder"></i> <%= tip.title  %></td>
+  <td><i class="icon-reorder"></i> <%= link_to tip.title, edit_site_tip_path(@site, tip)  %></td>
   <td><%= l tip.published_at %></td>
   <td><%= l tip.unpublished_at %></td>
   <td>
