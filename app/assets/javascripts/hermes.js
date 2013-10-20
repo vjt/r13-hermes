@@ -1,5 +1,6 @@
 //= require hermes-endpoint
 //= require jquery.pagetour
+//= require bootstrap-tooltip
 
 (function() {
   var jQuery,
@@ -53,6 +54,7 @@
 
     this.display = function() {
       __hermes_init_pagetour__($);
+      __hermes_init_tooltip__($);
 
       $.ajax(this.endpoint, {
         dataType: 'jsonp',
@@ -69,7 +71,7 @@
         break;
 
       case 'tip':
-        break;
+        showTip(message);
 
       default:
         showBroadcast(message);
@@ -82,7 +84,7 @@
     }
 
     var showTip = function(message) {
-      alert(message.type);
+      console.log(message);
     }
 
     var showBroadcast = function(message) {
