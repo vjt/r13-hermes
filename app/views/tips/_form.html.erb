@@ -1,63 +1,82 @@
-<div>
-  <%= f.label :title %>
-  <%= f.text_field :title, :class => 'input-block-level' %>
+<div class="control-group">
+  <%= f.label :title, class: 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :title, :class => 'input-block-level' %>
+  </div>
 </div>
 
-<div>
-  <%= f.label :content %>
-  <%= f.text_area :content, :class => 'tinymce', :rows => 10 %>
-  <%= include_tinymce %>
+<div class="control-group">
+  <%= f.label :content, class: 'control-label' %>
+  <div class="controls">
+    <%= f.text_area :content, :class => 'tinymce', :rows => 10 %>
+    <%= include_tinymce %>
+  </div>
 </div>
 
-<div>
-  <%= f.label :path %>
-  <%= f.text_field :path, 'data-tip-connect-path' => '#tip-connector' %>
+<div class="control-group">
+  <%= f.label :path, class: 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :path, 'data-tip-connect-path' => '#tip-connector' %>
+  </div>
 </div>
 
-<div data-toggle-group>
-  <label class="radio">
-    <input type="radio" name="broadcast" id="tip-disconnect" data-output="#tip-connected" <%= 'checked' if f.object.selector.blank? %>> Broadcast
-  </label>
+<div class="control-group">
+  <div class="controls">
+    <div data-toggle-group>
+      <label class="radio">
+        <input type="radio" name="broadcast" id="tip-disconnect" data-output="#tip-connected" <%= 'checked' if f.object.selector.blank? %>> Broadcast
+      </label>
 
-  <label class="radio">
-    <input type="radio" name="broadcast" <%= 'checked' if f.object.selector.present? %>
-      data-toggle="#tip-connector"> Bound to a specific item in the page
+      <label class="radio">
+        <input type="radio" name="broadcast" <%= 'checked' if f.object.selector.present? %>
+          data-toggle="#tip-connector"> Bound to a specific item in the page
 
-    <%= link_to 'Connect', [f.object.tippable.url, f.object.path, @tip_connector_token].join,
-          :id => 'tip-connector', 'target' => '_blank',
-          :class => ('hide' if f.object.selector.blank?),
-          'data-togglee'  => true,
-          'data-hostname' => f.object.tippable.url,
-          'data-token'    => @tip_connector_token,
-          'data-output'   => '#tip-connected'
-    %>
+        <%= link_to 'Connect', [f.object.tippable.url, f.object.path, @tip_connector_token].join,
+              :id => 'tip-connector', 'target' => '_blank',
+              :class => ('hide' if f.object.selector.blank?),
+              'data-togglee'  => true,
+              'data-hostname' => f.object.tippable.url,
+              'data-token'    => @tip_connector_token,
+              'data-output'   => '#tip-connected'
+        %>
 
-    <span id="tip-connected" class="<%= 'hide' if f.object.selector.blank? %>">
-      <i class="icon icon-ok"></i> Connected!
-      <%= f.hidden_field :selector %>
-    </span>
+        <span id="tip-connected" class="<%= 'hide' if f.object.selector.blank? %>">
+          <i class="icon icon-ok"></i> Connected!
+          <%= f.hidden_field :selector %>
+        </span>
 
-  </label>
-
+      </label>
+    </div>
+  </div>
 </div>
 
-<div>
-  <%= f.label :published_at, 'Publishing starts' %>
-  <%= f.text_field :published_at, :class => "datepicker span2" %>
+<div class="control-group">
+  <%= f.label :published_at, 'Publishing starts', class: 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :published_at, :class => "datepicker span2" %>
+  </div>
 </div>
 
-<div>
-  <%= f.label :unpublished_at, 'Publishing ends' %>
-  <%= f.text_field :unpublished_at, :class => "datepicker span2" %>
+<div class="control-group">
+  <%= f.label :unpublished_at, 'Publishing ends', class: 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :unpublished_at, :class => "datepicker span2" %>
+  </div>
 </div>
 
-<div>
-  <%= f.label :redisplay, :class => 'checkbox' do %>
-    <%= f.check_box :redisplay %>
-    Check to redisplay the message
+<div class="control-group">
+  <div class="controls">
+    <%= f.label :redisplay, :class => 'checkbox' do %>
+      <%= f.check_box :redisplay %>
+      Check to redisplay the message
+    <% end %>
+  </div>
+</div>
+
+<div class="form-actions">
+  <% if f.object.persisted? %>
+    <%= f.button 'Update tip!', class: 'btn btn-primary' %>
+  <% else %>
+    <%= f.button 'Create new tip!', class: 'btn btn-primary' %>
   <% end %>
-</div>
-
-<div>
-  <%= f.submit 'Save!' %>
 </div>

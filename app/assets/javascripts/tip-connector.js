@@ -15,7 +15,7 @@ $(function () {
     target.attr('href', [
       target.data('hostname'),
       input.val(),
-      '#', target.data('token'),
+      '', target.data('token'),
     ].join(''));
   });
 
