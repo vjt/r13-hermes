@@ -57,11 +57,19 @@
 
       $.ajax(this.endpoint, {
         dataType: 'jsonp',
-        success: function(messages, status) {
-          var message = null;
-          while (message = messages.shift()) { show(message); }
-        }
+        success: enqueue.bind(this)
       });
+    }
+
+    var enqueue = function(messages) {
+      this.queue = messages;
+      dequeue.apply(this);
+    };
+
+    var dequeue = function() {
+      if (this.queue.length == 0) return;
+      show(this.queue.shift());
+      $(window).one('hermes.dismiss-message', dequeue.bind(this));
     }
 
     var show = function(message) {
@@ -80,7 +88,7 @@
     }
 
     var showTutorial = function(tutorial) {
-      console.log(tutorial);
+      console.log(tutorial); // XXX
     }
 
     var showTip = function(tip) {
@@ -98,9 +106,10 @@
 
       close.click(function(e) {
         elem.popover('hide');
+        $(window).trigger('hermes.dismiss-message');
         $.ajax(tip.url, {
           dataType: 'jsonp',
-          complete: function(jqXHR, status) {}
+          complete: function(jqXHR, status) { /* Nothing for now */ }
         });
       });
 
@@ -151,6 +160,7 @@
       });
 
       close.click(function(e) {
+        $(window).trigger('hermes.dismiss-message');
         $.ajax(message.url, {
           dataType: 'jsonp',
           complete: function(jqXHR, status) {
