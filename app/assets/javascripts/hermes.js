@@ -37,24 +37,28 @@
 
   function main() {
     jQuery(document).ready(function($) {
-      var h = new Hermes();
+      var h = new Hermes($);
 
       if (/#hermes-authoring/.test(document.location.hash) && window.opener) {
         h.author();
       } else {
-        $.ajax(h.endpoint, {
-          dataType: 'jsonp',
-          success: function(messages, status) {
-            var message = null;
-            while (message = messages.shift()) { h.show(message); }
-          }
-        });
+        h.display();
       }
     });
   }
 
-  function Hermes() {
+  function Hermes($) {
     this.endpoint = hermesURL;
+
+    this.display = function() {
+      $.ajax(h.endpoint, {
+        dataType: 'jsonp',
+        success: function(messages, status) {
+          var message = null;
+          while (message = messages.shift()) { h.show(message); }
+        }
+      });
+    }
 
     this.show = function(message) {
       switch(message.type) {
