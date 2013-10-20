@@ -54,7 +54,7 @@ class MessagesController < ApplicationController
       @source = URI.parse(request.referer)
       return unless @source.scheme.in? %w( http https )
 
-      @site = Site.find_by_hostname(@source.host)
+      @site = Site.by_url(@source)
 
     rescue URI::InvalidURIError
       nil
