@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/vjt/ranked-model.git
-  revision: 647c20de47994e0b2d62e30e41735f41e78a16f8
+  remote: git://github.com/mixonic/ranked-model.git
+  revision: 70de42d3362f98a80adbfa19f2ebc73ed821b585
   specs:
     ranked-model (0.3)
       activerecord (>= 3.1.12)
@@ -67,7 +67,6 @@ GEM
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (2.0.2)
-    fssm (0.2.10)
     fuubar (1.2.1)
       rspec (~> 2.0)
       rspec-instafail (~> 0.2.0)

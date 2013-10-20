@@ -47,7 +47,7 @@ gem 'capistrano', '~> 2.0', group: :development
 gem 'debugger', group: [:development, :test]
 
 # Ranked model for tip sorting
-gem 'ranked-model', github: 'vjt/ranked-model'
+gem 'ranked-model', github: 'mixonic/ranked-model'
 
 # Well, some testing is due.
 gem 'rspec-rails', group: :test
