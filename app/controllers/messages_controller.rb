@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   before_filter :require_callback
 
   before_filter :find_site
-  before_filter :find_message, only: %w( update )
+  before_filter :find_message, only: %w( show update )
 
   skip_before_action :verify_authenticity_token, only: :update
 
@@ -17,6 +17,15 @@ class MessagesController < ApplicationController
     @messages = @site.tips.published.sorted.within(@source.path).respecting(remote_user)
 
     render json: render_to_string, callback: @callback
+  end
+
+  # Render a single tip, bypassing the State machinery, for preview purposes.
+  # Used by hermes.js in the preview() function, linked from the tips/_tip
+  # partial in the backend interface.
+  #
+  def show
+    json = render_to_string partial: 'message', object: @message
+    render json: json, callback: @callback
   end
 
   # Updates the status of the given message type and ID for the hermes_user

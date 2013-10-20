@@ -11,5 +11,8 @@ Hermes::Application.routes.draw do
 
   get "/messages.js"        => "messages#index"
   # This sucks, we know - but we're stuck with JSONP as of now
-  get "/messages/:type/:id" => "messages#update", as: :message
+  get "/messages/:type/:id" => "messages#update", as: :dismiss_message
+
+  # Message preview, bypassing State check
+  get "/message/:type/:id" => "messages#show",    as: :message
 end
