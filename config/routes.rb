@@ -3,8 +3,6 @@ Hermes::Application.routes.draw do
 
   root :to => 'sites#index'
 
-  get '/crash' => 'sites#crash' # Just a test
-
   resources :sites do
     resources :tips, :tutorials
   end
