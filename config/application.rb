@@ -21,8 +21,7 @@ module Hermes
     # config.i18n.default_locale = :de
 
     config.assets.precompile += [
-      'hermes.js',
-      'tinymce-editor-body.css'
+      'hermes.js'
     ]
   end
 end
