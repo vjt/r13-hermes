@@ -17,3 +17,4 @@
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require toggler
+//= require tip-connector

@@ -20,7 +20,13 @@
 
   <label class="radio">
     <input type="radio" name="broadcast" data-toggle="#tip-connector"> Bound to a specific item in the page
-    <%= link_to 'Connect', 'javascript:void(0)', 'data-togglee' => true, :id => 'tip-connector', :class => 'hide' %>
+    <%= link_to 'Connect', 'javascript:void(0)', :id => 'tip-connector', 'target' => '_blank',
+          'data-togglee' => true, :class => 'hide',
+          'data-tip-connector' => {
+            hostname:    f.object.tippable.hostname, # XXX
+            path_input: '#tip_path'
+          }.to_json
+    %>
   </label>
 
 </div>
