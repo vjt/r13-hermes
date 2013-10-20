@@ -145,6 +145,15 @@
 
       var selected = undefined;
 
+      var callback = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+        console.log(this);
+        alert('I am a ' + this.tagName);
+      };
+
       // And now set the mousemove event handler
       $('body').on('mousemove', function (event) {
         try {
@@ -203,7 +212,8 @@
           if (selected) {
             selected = $(selected);
             selected.css(selected.data('hermes-restore-css')).
-              data('hermes-restore-css', null);
+              data('hermes-restore-css', null).
+              unbind('click.hermes', callback);
           }
           selected = elem;
 
@@ -215,7 +225,7 @@
           }).css({
             'cursor': 'pointer',
             'background-color': '#ddd'
-          });
+          }).bind('click.hermes', callback);
 
         } catch (e) {
           console.log(e);
