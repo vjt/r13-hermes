@@ -11,6 +11,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap-datepicker-rails'
 
 group :doc do
   gem 'sdoc', require: false
