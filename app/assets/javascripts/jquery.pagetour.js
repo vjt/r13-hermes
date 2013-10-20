@@ -3,7 +3,7 @@
   PageTour: A guide through your website. In a simple and effective way!
 
   (c) 2013, Stefano Ceschi Berrini
-  
+
   @author  Stefano Ceschi Berrini <stefano.ceschib@gmail.com> @stecb
   @link    https://github.com/stecb/pagetour
   @license http://opensource.org/licenses/MIT
@@ -45,8 +45,8 @@ __hermes_init_pagetour__ = (function($) {
         * initialize method (when the new Pagetour element is instatiated)
         *
         * @param steps, an array of objects : each object is composed by
-        *   { 
-        *     selector : 'id_of_the_item_to_be_displayed', 
+        *   {
+        *     selector : 'id_of_the_item_to_be_displayed',
         *     description : 'guide html message'
         *   }
         * @param options, object of options
@@ -177,7 +177,7 @@ __hermes_init_pagetour__ = (function($) {
       return this._setTooltip(position, size);
     };
 
-    /*  
+    /*
     *
     * _recalculateSides, internal method, needed when the window is resized (left/right masks change)
     *
@@ -331,7 +331,7 @@ __hermes_init_pagetour__ = (function($) {
       }
     };
 
-    /*  
+    /*
     *
     * _nextStep, internal method, to go to the next tour step
     *
@@ -405,6 +405,7 @@ __hermes_init_pagetour__ = (function($) {
     return PageTour;
 
   })();
+
   return $.extend({
     pageTour: function(s, o) {
       if (o == null) o = {};
