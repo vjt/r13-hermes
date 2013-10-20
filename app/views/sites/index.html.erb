@@ -1,17 +1,21 @@
-<h3>Hermes welcomes you!</h3>
+<div class="welcome">
+  <%= image_tag 'hermes-logo.png' %>
+  <h3>Welcome to Hermes</h3>
+</div>
+
 
 <%#= form_for @site, :html => {:class => ''} do |f| %>
   <%#= render 'form', :f => f %>
 <%# end %>
 
-<p>
-  To set up Hermes for your web site, add the following code to your website layout:
-</p>
+<div class="explain">
+  <p>
+    To set up Hermes for your web site, add the following code to your website layout:
+  </p>
 
-<pre>
-  &lt;script src="<%= root_url + 'hermes.js' %>"&gt;&lt;/script&gt;
-</pre>
+  <pre>&lt;script src="<%= root_url + 'hermes.js' %>"&gt;&lt;/script&gt;</pre>
 
-<p>
-  just before the ending <code>&lt;/body&gt;</code> tag.
-</p>
+  <p>
+    just before the ending <code>&lt;/body&gt;</code> tag.
+  </p>
+</div>
