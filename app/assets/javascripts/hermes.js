@@ -77,7 +77,10 @@
     var dequeue = function() {
       if (this.queue.length == 0) return;
       show(this.queue.shift());
-      $(window).one('hermes.dismiss-message', dequeue.bind(this));
+
+      $(window).one('hermes.dismiss-message', function () {
+        setTimeout(dequeue.bind(this), 250);
+      }.bind(this));
     }
 
     var show = function(message) {
