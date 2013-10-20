@@ -1,0 +1,7 @@
+menubar   : false
+toolbar   : "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor"
+statusbar : false
+
+plugins   : "textcolor"
+
+content_css : '/assets/tinymce-editor-body.css'
