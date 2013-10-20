@@ -16,7 +16,6 @@ gem 'bootstrap-datepicker-rails'
 gem 'sanitize-rails'
 gem 'tinymce-rails'
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
-gem 'exception_notification'
 
 group :doc do
   gem 'sdoc', require: false
@@ -34,4 +33,5 @@ end
 group :production do
   gem 'unicorn'
   gem 'pg'
+  gem 'exception_notification', github: 'rails/exception_notification'
 end
