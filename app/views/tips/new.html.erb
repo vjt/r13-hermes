@@ -1,6 +1,6 @@
 <%= form_for @tip, :url => site_tips_path(@site), html: { class: 'form-horizontal' } do |f| %>
   <fieldset>
-    <legend>Create a new tip for your site “<%= @site.name %>”</legend>
+    <legend>Create a new message for your site “<%= @site.name %>”</legend>
     <%= render 'form', :f => f %>
   </fieldset>
 <% end %>
