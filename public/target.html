@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./target_files/ados"></script>
+
+    <title>javascript - Get element's CSS Selector (without element id) - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/stackoverflow/img/favicon.ico">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta name="og:type" content="website">
+    <meta name="og:image" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=fde65a5a78c6">
+    <meta name="og:title" content="Get element&#39;s CSS Selector (without element id)">
+    <meta name="og:description" content="tl;dr: need DOM path or CSS selector for a element in a page, post-render. The element doesnt have a ID or a unique class.
+
+details:
+Im trying to modify a page through javascript/css (much like sty...">
+    <meta name="og:url" content="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id">
+
+
+
+    <script type="text/javascript" async="" src="./target_files/ga.js"></script><script type="text/javascript" async="" src="./target_files/quant.js"></script><script type="text/javascript" async="" src="./target_files/ados.js"></script><script type="text/javascript" src="./target_files/jquery.min.js"></script>
+    <script src="./target_files/stub.en.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="./target_files/all.css">
+
+    <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Get element&#39;s CSS Selector (without element id)&#39;" href="http://stackoverflow.com/feeds/question/4588119">
+    <script type="text/javascript">
+
+        StackExchange.ready(function () {
+            StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+
+            StackExchange.question.init({canOpenBounty:true,votesCast:[],totalCommentCount:5,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:4588119});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '4588119');
+
+                    });
+    </script>
+
+
+    <script type="text/javascript">
+        StackExchange.ready(function () {
+            StackExchange.realtime.init('ws://sockets.ny.stackexchange.com');
+            StackExchange.realtime.subscribeToInboxNotifications();
+                    StackExchange.realtime.subscribeToReputationNotifications('1');
+                });
+    </script>
+    <script type="text/javascript">
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1382220526,"styleCode":true,"enableUserHovercards":true,"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","enableSocialMediaInSharePopup":true},"user":{"fkey":"4ab39860e41568f4aaabbb966792b8d6","isRegistered":true,"userType":3,"userId":69379,"accountId":26604,"gravatar":"<div class=\"\"><img src=\"https://www.gravatar.com/avatar/b9896d170716175a070c8c03cda3b97f?s=32&d=identicon&r=PG\" alt=\"\" width=\"32\" height=\"32\"></div>","profileUrl":"http://stackoverflow.com/users/69379/vjt","notificationsUnviewedCount":0,"inboxUnviewedCount":2}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"e0bbd4760e83","js/moderator.en.js":"1a411fd265fe","js/full-anon.en.js":"d2d6bfa6e0f2","js/full.en.js":"70679ae5f38a","js/wmd.en.js":"3b1fa237ee0a","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"98eaf3ec452d","js/help.en.js":"8891d63dccb3","js/tageditor.en.js":"f18986485d8f","js/tageditornew.en.js":"172e95af9b71","js/inline-tag-editing.en.js":"499a39b24fd2","js/revisions.en.js":"1dead817b481","js/review.en.js":"53b28a79980b","js/tagsuggestions.en.js":"a7d0f3ff530a","js/post-validation.en.js":"46508df60bf9","js/explore-qlist.en.js":"73825bd006fc","js/events.en.js":"130d4e07b47b"});
+    </script>
+    <script type="text/javascript">
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+
+<script async="" type="text/javascript" src="./target_files/full.en.js"></script><script async="" type="text/javascript" src="./target_files/post-validation.en.js"></script><script async="" type="text/javascript" src="./target_files/prettify-full.en.js"></script><script async="" type="text/javascript" src="./target_files/wmd.en.js"></script><link href="./target_files/sidebar.min.css" type="text/css" rel="stylesheet"><script type="text/javascript" src="./target_files/adFeedback.js"></script><link rel="stylesheet" href="http://static.adzerk.net/Extensions/adFeedback.css"></head>
+<body class="question-page" style="zoom: 1;">
+    <noscript>&lt;div id="noscript-padding"&gt;&lt;/div&gt;</noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+    <div class="container">
+        <div id="header">
+            <div id="portalLink">
+                <a class="genu" onclick="StackExchange.ready(function(){genuwine.click();});return false;">Stack Exchange</a>
+                    <a class="unreadCount" style="margin-top: 3px; opacity: 1;" title="unread messages in your inbox">2</a>
+                        <script type="text/javascript">
+                            StackExchange.ready(function () {
+                                genuwine.animateInbox();
+                            });
+                        </script>
+            </div>
+            <div id="topbar">
+                <div id="hlinks">
+
+<span id="hlinks-user">        <span class="profile-triangle">▼</span><a href="http://stackoverflow.com/users/69379/vjt" class="profile-link">vjt</a>&nbsp;<a href="http://stackoverflow.com/users/69379/vjt?tab=reputation"><span class="reputation-score" title="your reputation; view reputation changes" dir="ltr">119</span></a><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="5 bronze badges"><span class="badge3"></span><span class="badgecount">5</span></span>
+ <span class="lsep">|</span>
+
+</span>
+<span id="hlinks-nav"></span>
+<span id="hlinks-custom">            <a href="http://chat.stackoverflow.com/">chat</a>
+
+ <span class="lsep">|</span>
+                <a href="http://meta.stackoverflow.com/">meta</a>
+
+ <span class="lsep">|</span>
+            <a href="http://stackoverflow.com/about">about</a>
+
+ <span class="lsep">|</span>
+            <a href="http://stackoverflow.com/help">help</a>
+</span>
+                </div>
+                <div id="hsearch">
+                    <form id="search" action="http://stackoverflow.com/search" method="get" autocomplete="off">
+                        <div>
+                            <input autocomplete="off" name="q" class="textbox" placeholder="search" tabindex="1" type="text" maxlength="240" size="28" value="">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs ">
+                    <ul>
+                            <li class="youarehere"><a id="nav-questions" href="http://stackoverflow.com/questions">Questions</a></li>
+                            <li><a id="nav-tags" href="http://stackoverflow.com/tags">Tags</a></li>
+                            <li><a id="nav-users" href="http://stackoverflow.com/users">Users</a></li>
+                            <li><a id="nav-badges" href="http://stackoverflow.com/help/badges">Badges</a></li>
+                            <li><a id="nav-unanswered" href="http://stackoverflow.com/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div id="content">
+
+
+<div itemscope="" itemtype="http://schema.org/Article">
+	<link itemprop="image" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+			<div id="question-header">
+			<h1 itemprop="name"><a href="./target_files/target.html" class="question-hyperlink">Get element's CSS Selector (without element id)</a></h1>
+		</div>
+			<div id="mainbar">
+
+
+
+<div class="question" data-questionid="4588119" id="question">
+
+                <script type="text/javascript">
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1186343766",4).setZone(43) ; });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk1186343766"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NCwiY20iOjg0NywiY2giOjExNzgsImNyIjo1OTE2LCJkaSI6IjhmMWE1ZTY5MDM5ZDRlM2E5NjI0NjZhMzE3YTA2Y2M3IiwiZG0iOjEsImZjIjo4ODAyLCJmbCI6MjQ0NCwia3ciOiJqYXZhc2NyaXB0LGRvbSxjc3Mtc2VsZWN0b3JzLHgtdXNlci1yZWdpc3RlcmVkIiwibnciOjIyLCJyZiI6Imh0dHA6Ly93d3cuZ29vZ2xlLmNvbS91cmw_cT1odHRwOi8vc3RhY2tvdmVyZmxvdy5jb20vcXVlc3Rpb25zLzQ1ODgxMTkvZ2V0LWVsZW1lbnRzLWNzcy1zZWxlY3Rvci13aXRob3V0LWVsZW1lbnQtaWQmc2E9RCZzbnR6PTEmdXNnPUFGUWpDTkZmc0JJRHdqZG5RemVPQ1lfTTJuSWdHcm9rV0EiLCJydiI6MCwicHIiOjE1NjgsInN0Ijo4Mjc3LCJ6biI6NDMsInVyIjoiaHR0cDovL2NhcmVlcnMuc3RhY2tvdmVyZmxvdy5jb20vIn0&s=e4vP_trEhtQaBflhkXIq8V-vA0A" rel="nofollow" target="_blank" title=""><img src="./target_files/d31c8d7d3cf640a6b29d9ad71788dd4a.png" title="" alt="" border="0" width="728" height="90"></a><div class="adzerk-vote-controls" style="display: none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li></ul><a href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div><img height="0px" width="0px" border="0" src="./target_files/i.gif"></div>
+
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="4588119">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+    <span class="vote-count-post ">9</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+    <a class="star-off" href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b>3</b></div>
+
+</div>
+
+            </td>
+
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="description">
+
+        <p><strong>tl;dr</strong>: need DOM path or <strong>CSS selector</strong> for a element in a page, post-render. The element doesnt have a ID or a unique class.</p>
+
+<p><strong>details</strong>:
+Im trying to modify a page through javascript/css (much like stylish or greasemonkey do). This is a very complex page (i didnt build, or cant modify pre-render), which makes constructing the CSS selector hard to do (manually looking at doc structure). how can i achieve this?</p>
+
+<p>tools, codes, browser addons/scripts all welcomed.</p>
+
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/javascript" class="post-tag" title="show questions tagged &#39;javascript&#39;" rel="tag">javascript</a> <a href="http://stackoverflow.com/questions/tagged/dom" class="post-tag" title="show questions tagged &#39;dom&#39;" rel="tag">dom</a> <a href="http://stackoverflow.com/questions/tagged/css-selectors" class="post-tag" title="show questions tagged &#39;css-selectors&#39;" rel="tag">css-selectors</a>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="http://stackoverflow.com/q/4588119/69379" title="short permalink to this question" class="short-link" id="link-post-4588119">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/4588119/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="4588119">flag</a></div>
+    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+
+
+            <a href="http://stackoverflow.com/posts/4588119/revisions" title="show all edits to this post">edited <span title="2011-12-21 10:32:17Z" class="relativetime">Dec 21 '11 at 10:32</span></a>
+        </div>
+        <div class="user-gravatar32">
+            <a href="http://stackoverflow.com/users/106224/boltclock"><div class=""><img src="./target_files/a2d818d801ce38a33807f68fdd92043a" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="http://stackoverflow.com/users/106224/boltclock">BoltClock</a><span class="mod-flair" title="moderator">♦</span><br>
+            <span class="reputation-score" title="reputation score 193561" dir="ltr">194k</span><span title="39 gold badges"><span class="badge1"></span><span class="badgecount">39</span></span><span title="429 silver badges"><span class="badge2"></span><span class="badgecount">429</span></span><span title="675 bronze badges"><span class="badge3"></span><span class="badgecount">675</span></span>
+        </div>
+    </div>
+    </td>
+    <td class="post-signature owner">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+
+
+                    asked <span title="2011-01-03 20:33:15Z" class="relativetime">Jan 3 '11 at 20:33</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="http://stackoverflow.com/users/9114/rcphq"><div class=""><img src="./target_files/49cb327b5e0c70a101c78c2de083d391" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="http://stackoverflow.com/users/9114/rcphq">rcphq</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">396</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="4 silver badges"><span class="badge2"></span><span class="badgecount">4</span></span><span title="12 bronze badges"><span class="badge3"></span><span class="badgecount">12</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4588119" class="comments" data-localized="true">
+		    <table>
+			    <tbody data-remaining-comments-count="0" data-addlink-html="add comment" data-addlink-disabled="false">
+
+    <tr id="comment-5039259" class="comment">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="comment-score">
+
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                    <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                    <a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+
+<div style="display: block;" class="comment-body">
+	<span class="comment-copy">Are you talking about XPath?</span>
+	–&nbsp;
+		<a href="http://stackoverflow.com/users/375394/moogoo" title="7398 reputation" class="comment-user">MooGoo</a>
+	<span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#comment5039259_4588119"><span title="2011-01-03 20:36:15Z" class="relativetime-clean">Jan 3 '11 at 20:36</span></a></span>
+				</div>
+
+        </td>
+    </tr>
+    <tr id="comment-5039302" class="comment">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="comment-score">
+
+                        </td>
+                        <td>
+                                    <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                    <a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+
+<div style="display: block;" class="comment-body">
+	<span class="comment-copy">Sorry, but how <i>can</i> you identify the element? Or do you mean build full DOM tree?</span>
+	–&nbsp;
+		<a href="http://stackoverflow.com/users/447356/shadow-wizard" title="33774 reputation" class="comment-user">Shadow Wizard</a>
+	<span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#comment5039302_4588119"><span title="2011-01-03 20:39:57Z" class="relativetime-clean">Jan 3 '11 at 20:39</span></a></span>
+				</div>
+
+        </td>
+    </tr>
+    <tr id="comment-5039388" class="comment">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="comment-score">
+
+                        </td>
+                        <td>
+                                    <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                    <a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+
+<div style="display: block;" class="comment-body">
+	<span class="comment-copy">my final intent is to create a css selector for the object. i can look at the pages code and deduct this path by looking at the document (sample selector from gmail.com "div.nH.T4.pp + div.pp + div.nH.pp.ps.TZ"), i'd like a way to help me build the selector.</span>
+	–&nbsp;
+		<a href="http://stackoverflow.com/users/9114/rcphq" title="396 reputation" class="comment-user owner">rcphq</a>
+	<span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#comment5039388_4588119"><span title="2011-01-03 20:46:07Z" class="relativetime-clean">Jan 3 '11 at 20:46</span></a></span>
+				</div>
+
+        </td>
+    </tr>
+    <tr id="comment-14251289" class="comment">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="comment-score">
+
+                        </td>
+                        <td>
+                                    <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                    <a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+
+<div style="display: block;" class="comment-body">
+	<span class="comment-copy">Hey rcphq did u find any solution for this problem I am also searching for same thing.</span>
+	–&nbsp;
+		<a href="http://stackoverflow.com/users/404305/c-j" title="68 reputation" class="comment-user">C_J</a>
+	<span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#comment14251289_4588119"><span title="2012-06-07 03:39:11Z" class="relativetime-clean">Jun 7 '12 at 3:39</span></a></span>
+				</div>
+
+        </td>
+    </tr>
+    <tr id="comment-18481221" class="comment">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="comment-score">
+
+                        </td>
+                        <td>
+                                    <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                    <a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+
+<div style="display: block;" class="comment-body">
+	<span class="comment-copy">Why not either use it's id if it has one, or just assign it a new id if it does not have one?</span>
+	–&nbsp;
+		<a href="http://stackoverflow.com/users/286685/stijn-de-witt" title="2610 reputation" class="comment-user">Stijn de Witt</a>
+	<span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#comment18481221_4588119"><span title="2012-11-21 22:37:40Z" class="relativetime-clean">Nov 21 '12 at 22:37</span></a></span>
+				</div>
+
+        </td>
+    </tr>
+			    </tbody>
+				    <tfoot>
+					    <tr>
+						    <td></td>
+						    <td class="comment-form">
+							    <form id="add-comment-4588119" class="" data-placeholdertext="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></form>
+						    </td>
+					    </tr>
+				    </tfoot>
+		    </table>
+	    </div>
+			<a id="comments-link-4588119" class="comments-link" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#">add comment</a>
+    </td>
+</tr>                  <tr class="bounty-notification">
+          <td class="votecell"></td>
+          <td>
+          <div style="margin-top:20px">
+            <a class="bounty-link bounty" title="offer some of your reputation for better answers">
+                start a bounty
+            </a>
+          </div>
+          </td>
+          </tr>
+    </tbody></table>
+</div>
+
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								3 Answers
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+<a name="4588287"></a>
+<div id="answer-4588287" class="answer accepted-answer" data-answerid="4588287">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="4588287">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span class="vote-count-post ">12</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+</div>
+
+            </td>
+
+
+
+<td class="answercell">
+    <div class="post-text"><p>Use FireFox with FireBug installed.</p>
+
+<ul>
+<li>Right-click any element</li>
+<li>Select "Inspect Element"</li>
+<li>Right click the element in the HTML tree</li>
+<li>Select "Copy XPath" or "Copy CSS Path"</li>
+</ul>
+
+<p>Output for the permalink to this answer (XPath):</p>
+
+<blockquote>
+  <p>/html/body/div[4]/div[2]/div[2]/div[2]/div[3]/table/tbody/tr/td[2]/table/tbody/tr/td/div/a</p>
+</blockquote>
+
+<p>CSS Path:</p>
+
+<blockquote>
+  <p>html body.question-page div.container div#content div#mainbar div#answers div#answer-4588287.answer table tbody tr td table.fw tbody tr td.vt div.post-menu a</p>
+</blockquote>
+
+<hr>
+
+<p>But regarding this comment:</p>
+
+<blockquote>
+  <p>my final intent is to create a css
+  selector for the object ...</p>
+</blockquote>
+
+<p>If that is your intent, there may be an easier way through JavaScript:</p>
+
+<pre class="default prettyprint prettyprinted" style=""><code><span class="kwd">var</span><span class="pln"> uniquePrefix </span><span class="pun">=</span><span class="pln"> </span><span class="str">'isThisUniqueEnough_'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> counterIndex </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">function</span><span class="pln"> addCssToElement</span><span class="pun">(</span><span class="pln">elem</span><span class="pun">,</span><span class="pln"> cssText</span><span class="pun">){</span><span class="pln">
+    </span><span class="kwd">var</span><span class="pln"> domId</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">elem</span><span class="pun">.</span><span class="pln">id</span><span class="pun">)</span><span class="pln">domId</span><span class="pun">=</span><span class="pln">elem</span><span class="pun">.</span><span class="pln">id</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">else</span><span class="pun">{</span><span class="pln">
+        domId </span><span class="pun">=</span><span class="pln"> uniquePrefix </span><span class="pun">+</span><span class="pln"> </span><span class="pun">(++</span><span class="pln">counterIndex</span><span class="pun">);</span><span class="pln">
+        elem</span><span class="pun">.</span><span class="pln">id </span><span class="pun">=</span><span class="pln"> domId</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    document</span><span class="pun">.</span><span class="pln">styleSheets</span><span class="pun">[</span><span class="lit">0</span><span class="pun">].</span><span class="pln">insertRule</span><span class="pun">(</span><span class="str">"#"</span><span class="pun">+</span><span class="pln">domId</span><span class="pun">+</span><span class="str">"{"</span><span class="pun">+</span><span class="pln">cssText</span><span class="pun">+</span><span class="str">"}"</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<p>The last line may need to be implemented differently for different browsers. Did not test.</p>
+</div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="http://stackoverflow.com/a/4588287/69379" title="short permalink to this answer" class="short-link" id="link-post-4588287">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/4588287/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="4588287">flag</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+
+
+            <a href="http://stackoverflow.com/posts/4588287/revisions" title="show all edits to this post">edited <span title="2011-01-03 21:21:21Z" class="relativetime">Jan 3 '11 at 21:21</span></a>
+        </div>
+        <div class="user-gravatar32">
+
+        </div>
+        <div class="user-details">
+            <br>
+
+        </div>
+    </div>
+    </td>
+
+
+
+    <td align="right" class="post-signature">
+
+
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+
+
+                        answered <span title="2011-01-03 20:56:32Z" class="relativetime">Jan 3 '11 at 20:56</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="http://stackoverflow.com/users/342852/sean-patrick-floyd"><div class=""><img src="./target_files/65a1e72ed7a72ed7b0831fbcd1fee8b0" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="http://stackoverflow.com/users/342852/sean-patrick-floyd">Sean Patrick Floyd</a><br>
+            <span class="reputation-score" title="reputation score 89796" dir="ltr">89.8k</span><span title="15 gold badges"><span class="badge1"></span><span class="badgecount">15</span></span><span title="117 silver badges"><span class="badge2"></span><span class="badgecount">117</span></span><span title="247 bronze badges"><span class="badge3"></span><span class="badgecount">247</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </tbody></table>
+</td>        </tr>
+
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4588287" class="comments" data-localized="true">
+		    <table>
+			    <tbody data-remaining-comments-count="0" data-addlink-html="add comment" data-addlink-disabled="false">
+
+    <tr id="comment-5039787" class="comment">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="comment-score">
+
+                        </td>
+                        <td>
+                                    <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                    <a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+
+<div style="display: block;" class="comment-body">
+	<span class="comment-copy">Thanks, i was using chrome's version of firebug (lite) and couldn't find this option. Worked like a charm.</span>
+	–&nbsp;
+		<a href="http://stackoverflow.com/users/9114/rcphq" title="396 reputation" class="comment-user owner">rcphq</a>
+	<span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#comment5039787_4588287"><span title="2011-01-03 21:22:50Z" class="relativetime-clean">Jan 3 '11 at 21:22</span></a></span>
+				</div>
+
+        </td>
+    </tr>
+			    </tbody>
+				    <tfoot>
+					    <tr>
+						    <td></td>
+						    <td class="comment-form">
+							    <form id="add-comment-4588287" class="" data-placeholdertext="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></form>
+						    </td>
+					    </tr>
+				    </tfoot>
+		    </table>
+	    </div>
+			<a id="comments-link-4588287" class="comments-link" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#">add comment</a>
+    </td>
+</tr>
+    </tbody></table>
+</div>
+            <script type="text/javascript">
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1932635410",4).setZone(44) ; });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk1932635410"><a href="http://engine.adzerk.net/r?e=eyJhdiI6MTUyNCwiYXQiOjQsImNtIjozMzE4LCJjaCI6MTE3OCwiY3IiOjczNjUsImRpIjoiYzAxNDBkNWI0ZjllNDE4Y2FiZTc2MTg3MGE2ZjFjZWUiLCJkbSI6MSwiZmMiOjExNjM0LCJmbCI6ODIzMCwia3ciOiJqYXZhc2NyaXB0LGRvbSxjc3Mtc2VsZWN0b3JzLHgtdXNlci1yZWdpc3RlcmVkIiwibnciOjIyLCJyZiI6Imh0dHA6Ly93d3cuZ29vZ2xlLmNvbS91cmw_cT1odHRwOi8vc3RhY2tvdmVyZmxvdy5jb20vcXVlc3Rpb25zLzQ1ODgxMTkvZ2V0LWVsZW1lbnRzLWNzcy1zZWxlY3Rvci13aXRob3V0LWVsZW1lbnQtaWQmc2E9RCZzbnR6PTEmdXNnPUFGUWpDTkZmc0JJRHdqZG5RemVPQ1lfTTJuSWdHcm9rV0EiLCJydiI6MCwicHIiOjE1NjksInN0Ijo4Mjc3LCJ6biI6NDQsInVyIjoiaHR0cDovL3d3dy5mYWNlYm9vay5jb20vc3RhY2tleGNoYW5nZSJ9&s=J94J9cjX4qDK7t-F7kswKuQmB6Y" rel="nofollow" target="_blank" title=""><img src="./target_files/426911ce8183470bba36d610a8b39b4f.png" title="" alt="" border="0" width="728" height="90"></a><div class="adzerk-vote-controls" style="display: none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li></ul><a href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div><img height="0px" width="0px" border="0" src="./target_files/i(1).gif"></div>
+
+
+
+
+<a name="4588211"></a>
+<div id="answer-4588211" class="answer" data-answerid="4588211">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="4588211">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span class="vote-count-post ">14</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+</div>
+
+            </td>
+
+
+
+<td class="answercell">
+    <div class="post-text"><pre class="default prettyprint prettyprinted" style=""><code><span class="kwd">function</span><span class="pln"> fullPath</span><span class="pun">(</span><span class="pln">el</span><span class="pun">){</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> names </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[];</span><span class="pln">
+  </span><span class="kwd">while</span><span class="pln"> </span><span class="pun">(</span><span class="pln">el</span><span class="pun">.</span><span class="pln">parentNode</span><span class="pun">){</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">el</span><span class="pun">.</span><span class="pln">id</span><span class="pun">){</span><span class="pln">
+      names</span><span class="pun">.</span><span class="pln">unshift</span><span class="pun">(</span><span class="str">'#'</span><span class="pun">+</span><span class="pln">el</span><span class="pun">.</span><span class="pln">id</span><span class="pun">);</span><span class="pln">
+      </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="kwd">else</span><span class="pun">{</span><span class="pln">
+      </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">el</span><span class="pun">==</span><span class="pln">el</span><span class="pun">.</span><span class="pln">ownerDocument</span><span class="pun">.</span><span class="pln">documentElement</span><span class="pun">)</span><span class="pln"> names</span><span class="pun">.</span><span class="pln">unshift</span><span class="pun">(</span><span class="pln">el</span><span class="pun">.</span><span class="pln">tagName</span><span class="pun">);</span><span class="pln">
+      </span><span class="kwd">else</span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> c</span><span class="pun">=</span><span class="lit">1</span><span class="pun">,</span><span class="pln">e</span><span class="pun">=</span><span class="pln">el</span><span class="pun">;</span><span class="pln">e</span><span class="pun">.</span><span class="pln">previousElementSibling</span><span class="pun">;</span><span class="pln">e</span><span class="pun">=</span><span class="pln">e</span><span class="pun">.</span><span class="pln">previousElementSibling</span><span class="pun">,</span><span class="pln">c</span><span class="pun">++);</span><span class="pln">
+        names</span><span class="pun">.</span><span class="pln">unshift</span><span class="pun">(</span><span class="pln">el</span><span class="pun">.</span><span class="pln">tagName</span><span class="pun">+</span><span class="str">":nth-child("</span><span class="pun">+</span><span class="pln">c</span><span class="pun">+</span><span class="str">")"</span><span class="pun">);</span><span class="pln">
+      </span><span class="pun">}</span><span class="pln">
+      el</span><span class="pun">=</span><span class="pln">el</span><span class="pun">.</span><span class="pln">parentNode</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> names</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="str">" &gt; "</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">  fullPath</span><span class="pun">(</span><span class="pln"> $</span><span class="pun">(</span><span class="str">'input'</span><span class="pun">)[</span><span class="lit">0</span><span class="pun">]</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="com">// "#search &gt; DIV:nth-child(1) &gt; INPUT:nth-child(1)"</span></code></pre>
+
+<p>This seems to be what you are asking for<strike>, but you may realize that this is not guaranteed to uniquely identify only one element. (For the above example, all the sibling inputs would be matched as well.)</strike></p>
+
+<p><strong>Edit</strong>: Changed code to use <code>nth-child</code> instead of CSS classes to properly disambiguate for a single child.</p>
+</div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="http://stackoverflow.com/a/4588211/69379" title="short permalink to this answer" class="short-link" id="link-post-4588211">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/4588211/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="4588211">flag</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+
+
+            <a href="http://stackoverflow.com/posts/4588211/revisions" title="show all edits to this post">edited <span title="2012-08-30 13:36:21Z" class="relativetime">Aug 30 '12 at 13:36</span></a>
+        </div>
+        <div class="user-gravatar32">
+
+        </div>
+        <div class="user-details">
+            <br>
+
+        </div>
+    </div>
+    </td>
+
+
+
+    <td align="right" class="post-signature">
+
+
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+
+
+                        answered <span title="2011-01-03 20:46:12Z" class="relativetime">Jan 3 '11 at 20:46</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="http://stackoverflow.com/users/405017/phrogz"><div class=""><img src="./target_files/2024054e404233ed97b7d9287aff103d" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="http://stackoverflow.com/users/405017/phrogz">Phrogz</a><br>
+            <span class="reputation-score" title="reputation score 88909" dir="ltr">88.9k</span><span title="13 gold badges"><span class="badge1"></span><span class="badgecount">13</span></span><span title="197 silver badges"><span class="badge2"></span><span class="badgecount">197</span></span><span title="274 bronze badges"><span class="badge3"></span><span class="badgecount">274</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </tbody></table>
+</td>        </tr>
+
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4588211" class="comments" data-localized="true">
+		    <table>
+			    <tbody data-remaining-comments-count="0" data-addlink-html="add comment" data-addlink-disabled="false">
+
+    <tr id="comment-16319403" class="comment">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="comment-score">
+
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">2</span>
+                        </td>
+                        <td>
+                                    <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                    <a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+
+<div style="display: block;" class="comment-body">
+	<span class="comment-copy">nice succinct pure js function :) Just a slight note that the :nth-child wont work when applied to the HTML tag... or at least I can't get it to work in Firefox or Chrome... I guess it's probably due to the fact that &lt;html&gt; has no parent.</span>
+	–&nbsp;
+		<a href="http://stackoverflow.com/users/1490904/pebbl" title="6534 reputation" class="comment-user">pebbl</a>
+	<span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#comment16319403_4588211"><span title="2012-08-30 00:15:35Z" class="relativetime-clean">Aug 30 '12 at 0:15</span></a></span>
+				</div>
+
+        </td>
+    </tr>
+    <tr id="comment-16320882" class="comment">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="comment-score">
+
+                        </td>
+                        <td>
+                                    <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                    <a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+
+<div style="display: block;" class="comment-body">
+	<span class="comment-copy">@pebbl Ah, thanks for the note. I'll fix that.</span>
+	–&nbsp;
+		<a href="http://stackoverflow.com/users/405017/phrogz" title="88909 reputation" class="comment-user">Phrogz</a>
+	<span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#comment16320882_4588211"><span title="2012-08-30 02:39:20Z" class="relativetime-clean">Aug 30 '12 at 2:39</span></a></span>
+				</div>
+
+        </td>
+    </tr>
+    <tr id="comment-16325612" class="comment">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="comment-score">
+
+                        </td>
+                        <td>
+                                    <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                    <a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+
+<div style="display: block;" class="comment-body">
+	<span class="comment-copy">no problem, it's not something I would have thought about either :) I've submitted a subtle edit changing "HTML" to "html" in your new revision... due to the .toLowerCase() method.</span>
+	–&nbsp;
+		<a href="http://stackoverflow.com/users/1490904/pebbl" title="6534 reputation" class="comment-user">pebbl</a>
+	<span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#comment16325612_4588211"><span title="2012-08-30 07:50:03Z" class="relativetime-clean">Aug 30 '12 at 7:50</span></a></span>
+				</div>
+
+        </td>
+    </tr>
+    <tr id="comment-27013339" class="comment">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="comment-score">
+
+                        </td>
+                        <td>
+                                    <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                    <a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+
+<div style="display: block;" class="comment-body">
+	<span class="comment-copy">Awesome answer!!</span>
+	–&nbsp;
+		<a href="http://stackoverflow.com/users/448568/steven-de-salas" title="2818 reputation" class="comment-user">Steven de Salas</a>
+	<span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#comment27013339_4588211"><span title="2013-08-23 00:42:41Z" class="relativetime-clean">Aug 23 at 0:42</span></a></span>
+				</div>
+
+        </td>
+    </tr>
+			    </tbody>
+				    <tfoot>
+					    <tr>
+						    <td></td>
+						    <td class="comment-form">
+							    <form id="add-comment-4588211" class="" data-placeholdertext="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></form>
+						    </td>
+					    </tr>
+				    </tfoot>
+		    </table>
+	    </div>
+			<a id="comments-link-4588211" class="comments-link" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#">add comment</a>
+    </td>
+</tr>
+    </tbody></table>
+</div>
+
+
+<a name="4588150"></a>
+<div id="answer-4588150" class="answer" data-answerid="4588150">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="4588150">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+</div>
+
+            </td>
+
+
+
+<td class="answercell">
+    <div class="post-text"><p>you can use for <code>css</code> <code>first-child psuedo classes</code> if the element is a first child in a div table or body..etc</p>
+
+<p>you can use <code>jquery's nth child()</code> funtion.</p>
+
+<p><a href="http://api.jquery.com/nth-child-selector/" rel="nofollow">http://api.jquery.com/nth-child-selector/</a></p>
+
+<p>example from jquery.com</p>
+
+<pre class="default prettyprint prettyprinted" style=""><code><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html&gt;</span><span class="pln">
+</span><span class="tag">&lt;head&gt;</span><span class="pln">
+  </span><span class="tag">&lt;style&gt;</span><span class="pln">
+
+  div </span><span class="pun">{</span><span class="pln"> </span><span class="kwd">float</span><span class="pun">:</span><span class="pln">left</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+  span </span><span class="pun">{</span><span class="pln"> </span><span class="kwd">color</span><span class="pun">:</span><span class="pln">blue</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+  </span><span class="tag">&lt;/style&gt;</span><span class="pln">
+  </span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">src</span><span class="pun">=</span><span class="atv">"http://code.jquery.com/jquery-1.4.4.js"</span><span class="tag">&gt;&lt;/script&gt;</span><span class="pln">
+</span><span class="tag">&lt;/head&gt;</span><span class="pln">
+</span><span class="tag">&lt;body&gt;</span><span class="pln">
+  </span><span class="tag">&lt;div&gt;&lt;ul&gt;</span><span class="pln">
+    </span><span class="tag">&lt;li&gt;</span><span class="pln">John</span><span class="tag">&lt;/li&gt;</span><span class="pln">
+    </span><span class="tag">&lt;li&gt;</span><span class="pln">Karl</span><span class="tag">&lt;/li&gt;</span><span class="pln">
+    </span><span class="tag">&lt;li&gt;</span><span class="pln">Brandon</span><span class="tag">&lt;/li&gt;</span><span class="pln">
+
+  </span><span class="tag">&lt;/ul&gt;&lt;/div&gt;</span><span class="pln">
+  </span><span class="tag">&lt;div&gt;&lt;ul&gt;</span><span class="pln">
+    </span><span class="tag">&lt;li&gt;</span><span class="pln">Sam</span><span class="tag">&lt;/li&gt;</span><span class="pln">
+  </span><span class="tag">&lt;/ul&gt;&lt;/div&gt;</span><span class="pln">
+
+  </span><span class="tag">&lt;div&gt;&lt;ul&gt;</span><span class="pln">
+    </span><span class="tag">&lt;li&gt;</span><span class="pln">Glen</span><span class="tag">&lt;/li&gt;</span><span class="pln">
+    </span><span class="tag">&lt;li&gt;</span><span class="pln">Tane</span><span class="tag">&lt;/li&gt;</span><span class="pln">
+    </span><span class="tag">&lt;li&gt;</span><span class="pln">Ralph</span><span class="tag">&lt;/li&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;li&gt;</span><span class="pln">David</span><span class="tag">&lt;/li&gt;</span><span class="pln">
+  </span><span class="tag">&lt;/ul&gt;&lt;/div&gt;</span><span class="pln">
+</span><span class="tag">&lt;script&gt;</span><span class="pln">$</span><span class="pun">(</span><span class="str">"ul li:nth-child(2)"</span><span class="pun">).</span><span class="pln">append</span><span class="pun">(</span><span class="str">"&lt;span&gt; - 2nd!&lt;/span&gt;"</span><span class="pun">);</span><span class="tag">&lt;/script&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></code></pre>
+
+<p>my 2 cents if i understood the question correctly.</p>
+</div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="http://stackoverflow.com/a/4588150/69379" title="short permalink to this answer" class="short-link" id="link-post-4588150">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/4588150/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="4588150">flag</a></div>                    </td>
+
+
+
+    <td align="right" class="post-signature">
+
+
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+
+
+                        answered <span title="2011-01-03 20:38:01Z" class="relativetime">Jan 3 '11 at 20:38</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="http://stackoverflow.com/users/410273/andrewk"><div class=""><img src="./target_files/59f0040c0c261b816abf4583adce21ac" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="http://stackoverflow.com/users/410273/andrewk">andrewk</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">1,785</span><span title="9 silver badges"><span class="badge2"></span><span class="badgecount">9</span></span><span title="26 bronze badges"><span class="badge3"></span><span class="badgecount">26</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </tbody></table>
+</td>        </tr>
+
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4588150" class="comments" data-localized="true">
+		    <table>
+			    <tbody data-remaining-comments-count="0" data-addlink-html="add comment" data-addlink-disabled="false">
+
+    <tr id="comment-5039434" class="comment">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="comment-score">
+
+                        </td>
+                        <td>
+                                    <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                    <a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+
+<div style="display: block;" class="comment-body">
+	<span class="comment-copy">this would work, but im doing this on a page i didnt build so id need to somehow get what "nth-child" it is. this is my main problem.</span>
+	–&nbsp;
+		<a href="http://stackoverflow.com/users/9114/rcphq" title="396 reputation" class="comment-user owner">rcphq</a>
+	<span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#comment5039434_4588150"><span title="2011-01-03 20:50:38Z" class="relativetime-clean">Jan 3 '11 at 20:50</span></a></span>
+				</div>
+
+        </td>
+    </tr>
+			    </tbody>
+				    <tfoot>
+					    <tr>
+						    <td></td>
+						    <td class="comment-form">
+							    <form id="add-comment-4588150" class="" data-placeholdertext="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></form>
+						    </td>
+					    </tr>
+				    </tfoot>
+		    </table>
+	    </div>
+			<a id="comments-link-4588150" class="comments-link" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#">add comment</a>
+    </td>
+</tr>
+    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="http://stackoverflow.com/questions/4588119/answer/submit" method="post" class="post-form">
+							<input type="hidden" id="post-id" value="4588119">
+							<h2 class="space">Your Answer</h2>
+
+
+
+
+
+<script type="text/javascript">
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+
+        prepareEditor({
+            heartbeatType: 'answer',
+            bindNavPrevention: true,
+            postfix: "",
+            onDemand: false,
+            discardSelector: ".discard-answer"
+
+        });
+
+
+    });
+</script>
+
+
+<div id="post-editor" class="post-editor">
+
+    <div style="position: relative;">
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li class="wmd-button" id="wmd-bold-button" title="Strong &lt;strong&gt; Ctrl+B" style="left: 0px;"><span style="background-position: 0px 0px;"></span></li><li class="wmd-button" id="wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I" style="left: 25px;"><span style="background-position: -20px 0px;"></span></li><li class="wmd-spacer wmd-spacer1" id="wmd-spacer1"></li><li class="wmd-button" id="wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L" style="left: 75px;"><span style="background-position: -40px 0px;"></span></li><li class="wmd-button" id="wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q" style="left: 100px;"><span style="background-position: -60px 0px;"></span></li><li class="wmd-button" id="wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K" style="left: 125px;"><span style="background-position: -80px 0px;"></span></li><li class="wmd-button" id="wmd-image-button" title="Image &lt;img&gt; Ctrl+G" style="left: 150px;"><span style="background-position: -100px 0px;"></span></li><li class="wmd-spacer wmd-spacer2" id="wmd-spacer2"></li><li class="wmd-button" id="wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O" style="left: 200px;"><span style="background-position: -120px 0px;"></span></li><li class="wmd-button" id="wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U" style="left: 225px;"><span style="background-position: -140px 0px;"></span></li><li class="wmd-button" id="wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H" style="left: 250px;"><span style="background-position: -160px 0px;"></span></li><li class="wmd-button" id="wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R" style="left: 275px;"><span style="background-position: -180px 0px;"></span></li><li class="wmd-spacer wmd-spacer3" id="wmd-spacer3"></li><li class="wmd-button" id="wmd-undo-button" title="Undo - Ctrl+Z" style="left: 325px;"><span style="background-position: -200px -20px;"></span></li><li class="wmd-button" id="wmd-redo-button" title="Redo - Ctrl+Shift+Z" style="left: 350px;"><span style="background-position: -220px -20px;"></span></li><li class="wmd-button wmd-help-button" id="wmd-help-button" title="Markdown Editing Help" style="right: 0px;"><span style="background-position: -240px 0px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input processed" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        <div class="grippie" style="margin-right: 0px;"></div></div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+    <div class="community-option">
+        <input id="communitymode" name="communitymode" type="checkbox">
+        <label for="communitymode" title="Marking an answer community wiki encourages others to edit it by lowering the reputation barrier required to edit. However, you will not gain any upvote reputation from it. This cannot be undone.">community wiki</label>
+    </div>
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="4ab39860e41568f4aaabbb966792b8d6">
+        <input id="author" name="author" type="text">
+    </div>
+</div>
+							<div style="position: relative;">
+
+							</div>
+
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#" class="discard-answer dno">discard</a>
+								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/javascript" class="post-tag" title="show questions tagged &#39;javascript&#39;" rel="tag">javascript</a> <a href="http://stackoverflow.com/questions/tagged/dom" class="post-tag" title="show questions tagged &#39;dom&#39;" rel="tag">dom</a> <a href="http://stackoverflow.com/questions/tagged/css-selectors" class="post-tag" title="show questions tagged &#39;css-selectors&#39;" rel="tag">css-selectors</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+							<div class="module question-stats">
+					<p class="label-key">tagged</p>
+					<div class="tagged"><a href="http://stackoverflow.com/questions/tagged/javascript" class="post-tag" title="show questions tagged &#39;javascript&#39;" rel="tag">javascript</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">463461</span></span><br>
+<a href="http://stackoverflow.com/questions/tagged/dom" class="post-tag" title="show questions tagged &#39;dom&#39;" rel="tag">dom</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">14646</span></span><br>
+<a href="http://stackoverflow.com/questions/tagged/css-selectors" class="post-tag" title="show questions tagged &#39;css-selectors&#39;" rel="tag">css-selectors</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">2954</span></span><br>
+</div>
+					<table id="qinfo">
+						<tbody><tr>
+							<td>
+								<p class="label-key">asked</p>
+							</td>
+							<td style="padding-left: 10px">
+								<p class="label-key" title="2011-01-03 20:33:15Z"><b>2 years ago</b></p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p class="label-key">viewed</p>
+							</td>
+
+							<td style="padding-left: 10px">
+								<p class="label-key">
+									<b>7114 times</b>
+								</p>
+							</td>
+						</tr>
+							<tr>
+								<td>
+									<p class="label-key">active</p>
+								</td>
+								<td style="padding-left: 10px">
+									<p class="label-key"><b><a href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id?lastactivity" class="lastactivity-link" title="2012-08-30 13:36:21Z">1 year ago</a></b></p>
+								</td>
+							</tr>
+					</tbody></table>
+				</div>
+
+			            <script type="text/javascript">
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1440822610",17).setZone(45) ; });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk1440822610"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6MTcsImNtIjo4NDcsImNoIjoxMTc4LCJjciI6ODIxMSwiZGkiOiI4YTZiNzBmNTA3YzA0MWYxYWYzNzYwMDA2MGZmYTQxMSIsImRtIjoxLCJmYyI6MTMwMzksImZsIjoyNDQ0LCJrdyI6ImphdmFzY3JpcHQsZG9tLGNzcy1zZWxlY3RvcnMseC11c2VyLXJlZ2lzdGVyZWQiLCJudyI6MjIsInJmIjoiaHR0cDovL3d3dy5nb29nbGUuY29tL3VybD9xPWh0dHA6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNDU4ODExOS9nZXQtZWxlbWVudHMtY3NzLXNlbGVjdG9yLXdpdGhvdXQtZWxlbWVudC1pZCZzYT1EJnNudHo9MSZ1c2c9QUZRakNORmZzQklEd2pkblF6ZU9DWV9NMm5JZ0dyb2tXQSIsInJ2IjowLCJwciI6MTU2OCwic3QiOjgyNzcsInpuIjo0NSwidXIiOiJodHRwOi8vY2FyZWVycy5zdGFja292ZXJmbG93LmNvbS8ifQ&s=nGA8i_q-c9-uODgu4jyEjLjdv8E" rel="nofollow" target="_blank" title=""><img src="./target_files/bd294ce7ff4c43b6aad4aa4169fb819b.jpg" title="" alt="" border="0" width="220" height="250"></a><div class="adzerk-vote-controls" style="display:none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li></ul><a href="http://stackoverflow.com/questions/4588119/get-elements-css-selector-without-element-id#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div><img height="0px" width="0px" border="0" src="./target_files/i(2).gif"></div>
+    <div id="hireme"> <a href="http://careers.stackoverflow.com/jobs?a=144" class="top" target="_blank"></a> <ul class="jobs"> <li> <a href="http://careers.stackoverflow.com/jobs/40903/3-positions-erp-solutions-business-analyst-p-4-international-fund-for?a=NSUx6ADu" target="_blank" title="3 positions: ERP Solutions Business Analyst, P-4 / Ruby/Rails Systems Developer, at International Fund for Agricultural Development (IFAD). Click to learn more."> 3 positions: ERP Solutions Business Analyst, P-4 / Ruby…<br> <span class="company">International Fund for…</span> <span class="location">Rome, Italy / relocation</span> </a> </li> <li> <a href="http://careers.stackoverflow.com/jobs/41452/backend-architect-clickmeter?a=Oyqkk8sU" target="_blank" title="Backend Architect at ClickMeter. Click to learn more."> Backend Architect<br> <span class="company">ClickMeter</span> <span class="location">Rome, Italy</span> </a> </li> <li> <a href="http://careers.stackoverflow.com/jobs/42467/cad-software-developer-omnicad-srl?a=PNaNxSYo" target="_blank" title="CAD Software Developer at Omnicad srl. Click to learn more."> CAD Software Developer<br> <span class="company">Omnicad srl</span> <span class="location">Taranto, Italy</span> </a> </li> </ul> <img alt="" class="impression" src="./target_files/NSUx6ADu-Oyqkk8sU-PNaNxSYo-144" style="display:none"></div>
+
+
+
+
+
+
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/1648412?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">5</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/1648412/how-to-generate-css-path-with-javascript-or-jquery?lq=1" class="question-hyperlink">how to generate CSS Path with javascript or jquery?</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/8588301?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">5</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/8588301/how-to-generate-unique-css-selector-for-dom-element?lq=1" class="question-hyperlink">How to generate unique css selector for DOM element?</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/18554304?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">2</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/18554304/web-scraping-for-specific-content?lq=1" class="question-hyperlink">Web Scraping for specific content</a>
+</div>			</div>
+</div>
+
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+					<div class="related" data-tracker="rq=1">
+						<div class="spacer">
+<a href="http://stackoverflow.com/q/195951?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted large">636</div>
+</a>
+<a href="http://stackoverflow.com/questions/195951/change-an-elements-css-class-with-javascript?rq=1" class="question-hyperlink">Change an element's CSS class with JavaScript</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/1014861?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted large">469</div>
+</a>
+<a href="http://stackoverflow.com/questions/1014861/is-there-a-css-parent-selector?rq=1" class="question-hyperlink">Is there a CSS parent selector?</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/5126200?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">0</div>
+</a>
+<a href="http://stackoverflow.com/questions/5126200/javascript-for-searching-an-elements-specific-ancestor-like-in-xpath?rq=1" class="question-hyperlink">JavaScript for Searching an Element's Specific Ancestor Like in XPath?</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/5135287?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">2</div>
+</a>
+<a href="http://stackoverflow.com/questions/5135287/how-to-generate-all-possible-css-2-selector-combinations?rq=1" class="question-hyperlink">How to Generate All Possible CSS 2 Selector Combinations?</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/5158631?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">3</div>
+</a>
+<a href="http://stackoverflow.com/questions/5158631/sorting-a-set-of-css-selectors-on-the-basis-of-specificity?rq=1" class="question-hyperlink">Sorting a set of CSS selectors on the basis of specificity</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/7450184?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">2</div>
+</a>
+<a href="http://stackoverflow.com/questions/7450184/identity-selector-for-element-queryselector?rq=1" class="question-hyperlink">Identity selector for element.querySelector?</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/9864457?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">3</div>
+</a>
+<a href="http://stackoverflow.com/questions/9864457/addrule-insertrule-with-css-selectors?rq=1" class="question-hyperlink">addRule / insertRule with css selectors</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/15837891?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">0</div>
+</a>
+<a href="http://stackoverflow.com/questions/15837891/the-css-inputvalue-whatever-selector-doesnt-seem-to-match-against-input-value?rq=1" class="question-hyperlink">The CSS input[value=whatever] selector doesn't seem to match against input.value. What am I missing?</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/16260452?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes default">0</div>
+</a>
+<a href="http://stackoverflow.com/questions/16260452/how-to-make-my-css-selector-engine-more-flexible?rq=1" class="question-hyperlink">How to make my css selector engine more flexible?</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/18912584?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">0</div>
+</a>
+<a href="http://stackoverflow.com/questions/18912584/how-to-get-element-from-path-not-class-or-id?rq=1" class="question-hyperlink">How to Get Element From Path Not Class or Id</a>
+</div>
+
+					</div>
+				</div>
+		</div>
+
+<div id="feed-link">
+    <div id="feed-link-text"><a href="http://stackoverflow.com/feeds/question/4588119" title="feed of this question and its answers"><span class="feed-icon"></span>question feed</a></div>
+</div>
+	<script type="text/javascript">
+StackExchange.ready(function(){$.get('/posts/4588119/ivc/aa6a');});
+</script>
+<noscript>
+    &lt;div&gt;&lt;img src="/posts/4588119/ivc/aa6a" class="dno" alt="" width="0" height="0"&gt;&lt;/div&gt;
+</noscript><div style="display:none" id="prettify-lang">default</div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="http://stackoverflow.com/about">about</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://blog.stackexchange.com/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/about/hiring">jobs</a>
+                    <a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6MjAsImNtIjo5NTQsImNoIjoxMTc4LCJjciI6Mjc3NiwiZG0iOjQsImZjIjoyODYyLCJmbCI6Mjc1MSwibnciOjIyLCJydiI6MCwicHIiOjExNSwic3QiOjAsInVyIjoiaHR0cDovL3N0YWNrb3ZlcmZsb3cuY29tL2Fib3V0L2NvbnRhY3QiLCJyZSI6MX0&s=hRods5B22XvRBwWIwtIMekcyNF8">advertising info</a>
+
+                    <a onclick="StackExchange.switchMobile(&quot;on&quot;, &quot;/questions/4588119/get-elements-css-selector-without-element-id&quot;)">mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/">feedback</a></b>
+
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="professional system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Answers</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="Information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="statisticians, data analysts, data miners and data visualization experts">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackoverflow.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Overflow</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo © 2013 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc-wiki</a>
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="footer-flair">
+                <a href="http://creativecommons.org/licenses/by-sa/3.0/" class="cc-wiki-link"></a>
+            </div>
+            <div id="svnrev">
+                rev 2013.10.17.1075
+            </div>
+
+        </div>
+    </div>
+    <noscript>
+        &lt;div id="noscript-warning"&gt;Stack Overflow works best with JavaScript enabled&lt;img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"&gt;&lt;/div&gt;
+    </noscript>
+<script type="text/javascript">var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script type="text/javascript">
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('javascript,dom,css-selectors,x-user-registered');; ados_load(); });
+</script>
+
+    <script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-5620270-1']);
+        _gaq.push(['_setCustomVar', 1, 'tags', '|javascript|dom|css-selectors|']);
+        _gaq.push(['_setCustomVar', 2, 'accountid', '26604',2]);
+_gaq.push(['_trackPageview']);
+    var _qevents = _qevents || [];
+    (function () {
+        var ssl='https:'==document.location.protocol,
+            s=document.getElementsByTagName('script')[0],
+            ga=document.createElement('script');
+        ga.type='text/javascript';
+        ga.async=true;
+        ga.src=(ssl?'https://ssl':'http://www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(ga,s);
+        var sc=document.createElement('script');
+        sc.type='text/javascript';
+        sc.async=true;
+        sc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+        s.parentNode.insertBefore(sc,s);
+    })();
+    _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+
+    <script type="text/javascript" src="http://localhost:3000/assets/hermes.js"></script>
+
+</body><style type="text/css">embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	display: none !important;}</style></html>
