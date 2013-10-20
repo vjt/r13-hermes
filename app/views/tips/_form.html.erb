@@ -64,14 +64,16 @@
   </div>
 </div>
 
-<div class="control-group">
-  <div class="controls">
-    <%= f.label :redisplay, :class => 'checkbox' do %>
-      <%= f.check_box :redisplay %>
-      Check to redisplay the message
-    <% end %>
+<% if f.object.persisted? %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.label :redisplay, :class => 'checkbox' do %>
+        <%= f.check_box :redisplay %>
+        Check to redisplay the message
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <div class="form-actions">
   <% if f.object.persisted? %>
