@@ -20,7 +20,11 @@ class Tip < ActiveRecord::Base
   end
 
   ranks :row_order, :with_same => [:tippable_id, :tippable_type]
-  scope :sorted, -> { rank(:row_order) }
+
+  scope :sort_by_row_order, -> { rank(:row_order) }
+  scope :broadcasts_first,  -> { order(%[ CASE selector WHEN '' THEN 0 ELSE 1 END ]) }
+
+  scope :sorted, -> { sort_by_row_order.broadcasts_first }
 
   def position=(pos)
     self.row_order_position = pos
