@@ -81,8 +81,8 @@
     }
 
     this.showBroadcast = function(message) {
-      var broadcast = jQuery('<div class="hermes-broadcast" />');
-      var close = jQuery('<span class="hermes-broadcast-close" />');
+      var broadcast = $('<div class="hermes-broadcast" />');
+      var close = $('<span class="hermes-broadcast-close" />');
 
       broadcast.html(message.content);
       broadcast.css({
@@ -112,17 +112,17 @@
       });
 
       close.click(function(e) {
-        jQuery.ajax(message.url, {
+        $.ajax(message.url, {
           dataType: 'jsonp',
           complete: function(jqXHR, status) {
-            jQuery(e.target).parents('.hermes-broadcast').hide('fade');
+            $(e.target).parents('.hermes-broadcast').hide('fade');
           }
         });
       });
 
       broadcast.append(close);
 
-      jQuery(document.body).prepend(broadcast);
+      $(document.body).prepend(broadcast);
     }
 
     this.author = function () {
