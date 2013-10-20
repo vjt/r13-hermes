@@ -25,7 +25,7 @@ $(function () {
 
     var listener = function(event) {
       output.find('input').val(event.data);
-      output.show();
+      output.show().effect('highlight', 2000);
     }
 
     window.removeEventListener('message', listener);
