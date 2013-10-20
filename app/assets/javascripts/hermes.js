@@ -84,8 +84,11 @@
       alert(message.type);
     }
 
-    var showTip = function(message) {
-      console.log(message);
+    var showTip = function(tip) {
+      setTimeout(function () {
+        var step = {selector: tip.selector, description: tip.content};
+        $.pageTour([step]).start();
+      }, 1000);
     }
 
     var showBroadcast = function(message) {

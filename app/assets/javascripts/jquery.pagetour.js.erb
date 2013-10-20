@@ -411,6 +411,7 @@ __hermes_init_pagetour__ = (function($) {
   var style = document.createElement('style');
   style.type = 'text/css';
   style.innerText = "<%= ActionView::Base.new.escape_javascript(File.read('app/assets/stylesheets/pagetour.css').gsub("\n", '')) %>";
+
   (document.getElementsByTagName('head')[0] || document.documentElement).appendChild(style);
 
   return $.extend({

@@ -79,6 +79,9 @@ body.pagetour-body-on .tooltip {
   min-width: 60px;
   position: absolute;
   max-width: 350px;
+
+  background-color: #fff;
+  padding: 2px;
 }
 
 .pagetour-step-tooltip p.centered {
