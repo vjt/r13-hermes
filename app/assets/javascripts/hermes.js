@@ -123,7 +123,7 @@
 
       var close = $('<button class="hermes-close" />').html('&times;');
       close.click(function (event) {
-        elem.hide('fade');
+        elem.hide();
         saveTipStateAndSnooze(broadcast, event)
       });
 
