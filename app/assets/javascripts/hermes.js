@@ -102,7 +102,7 @@
 
       var close = $('<button class="hermes-close" />').html('Got it!');
       close.click(function (event) {
-        elem.popover('hide');
+        elem.popover('destroy');
         saveTipStateAndSnooze(tip, event);
       });
       buttonsContainer.append(close);
@@ -123,7 +123,7 @@
 
       var close = $('<button class="hermes-close" />').html('&times;');
       close.click(function (event) {
-        elem.hide();
+        elem.remove();
         saveTipStateAndSnooze(broadcast, event)
       });
 
