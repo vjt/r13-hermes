@@ -22,6 +22,7 @@ class TipsController < ApplicationController
     if @tip.save
       redirect_to site_tips_path(@site)
     else
+      flash.now[:error] = 'There was an error saving your tip.'
       render :new
     end
   end
