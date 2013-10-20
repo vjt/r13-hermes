@@ -89,7 +89,19 @@
         break;
 
       case 'tip':
-        showTip(message);
+        var target = $(message.selector);
+        pos = target.position();
+
+        var body = $(document.body);
+        if (Math.abs(body.scrollTop() - pos.top) > ($(window).innerHeight() - 80))
+          body.animate({scrollTop: pos.top - 80}, {
+            duration: 300,
+            complete: function() { showTip(message, target, true) }
+          });
+
+        else
+          showTip(message, target);
+
         break;
 
       default:
@@ -102,9 +114,7 @@
       console.log(tutorial); // XXX
     }
 
-    var showTip = function(tip) {
-      var elem = $(tip.selector);
-
+    var showTip = function(tip, elem) {
       var content = $('<div class="hermes-content" />');
       content.html(tip.content);
 
@@ -123,7 +133,8 @@
         placement: 'auto',
         trigger: 'manual',
         title: tip.title,
-        content: content
+        content: content,
+        container: 'body'
       });
 
       elem.popover('show');
