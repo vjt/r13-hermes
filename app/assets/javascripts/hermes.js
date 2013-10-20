@@ -39,7 +39,7 @@
     jQuery(document).ready(function($) {
       var h = new Hermes();
 
-      if (/#hermes-authoring/.test(document.location.hash)) {
+      if (/#hermes-authoring/.test(document.location.hash) && window.opener) {
         h.author();
       } else {
         $.ajax(h.endpoint, {
@@ -135,8 +135,31 @@
         event.stopPropagation();
         event.stopImmediatePropagation();
 
-        console.log(selected);
-        alert('I am a ' + selected.tagName);
+        var path = getPath(selected);
+        window.opener.__hermes_connect_callback(path);
+        window.close();
+      };
+
+      // Stolen from http://stackoverflow.com/a/4588211/69379
+      //
+      var getPath = function (el) {
+        var names = [];
+
+        while (el.parentNode) {
+          if (el.id) {
+            names.unshift('#'+el.id);
+            break;
+          } else {
+            if (el == el.ownerDocument.documentElement)
+              names.unshift(el.tagName);
+            else {
+              for (var c=1, e=el; e.previousElementSibling; e = e.previousElementSibling, c++);
+              names.unshift(el.tagName + ':nth-child('+c+')');
+            }
+            el = el.parentNode;
+          }
+        }
+        return names.join(' > ');
       };
 
       // Create the 4 overlays that make up the border of the hovering element.

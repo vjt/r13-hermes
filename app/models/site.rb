@@ -12,4 +12,8 @@ class Site < ActiveRecord::Base
   def self.by_user(user)
     where(user_id: user.id)
   end
+
+  def url
+    hostname =~ /^http/ ? hostname : "http://#{hostname}"
+  end
 end
