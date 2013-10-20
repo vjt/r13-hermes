@@ -1,5 +1,5 @@
 menubar   : false
-toolbar   : "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor"
+toolbar   : "undo redo | bold italic underline | forecolor backcolor"
 statusbar : false
 
 plugins   : "textcolor"
