@@ -28,4 +28,15 @@ $(function () {
       output.show();
     }
   });
+
+  $('#tip-disconnect').on('change', function () {
+    var disconnect = $(this);
+    var output     = $(disconnect.data('output'));
+
+    if (!disconnect.is(':checked'))
+      return;
+
+    output.find('input').val('')
+    output.hide();
+  });
 });
