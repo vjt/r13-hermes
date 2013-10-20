@@ -10,6 +10,8 @@
  *
  *= require_self
  *= require bootstrap_and_overrides
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
  *= require bootstrap-datepicker
  */
 
@@ -30,6 +32,11 @@
 .nav-list .remove:hover {
   text-decoration: none;
   color: red;
+}
+
+#tips-list .icon-reorder {
+  margin-right: 10px;
+  cursor: move;
 }
 
 .support-links {

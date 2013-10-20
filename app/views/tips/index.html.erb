@@ -7,13 +7,13 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Title</th>
-        <th>From</th>
-        <th>To</th>
+        <th>Tip Title</th>
+        <th>Visible From</th>
+        <th>Visible Until</th>
         <th>Actions</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="tips-list">
       <%= render @tips %>
     </tbody>
   </table>
@@ -29,3 +29,12 @@
     </p>
   </div>
 <% end %>
+
+<script>
+  $('#tips-list').sortable({
+    handle: '.icon-reorder',
+    update: function(event, ui) {
+      console.log(ui);
+    }
+  });
+</script>
