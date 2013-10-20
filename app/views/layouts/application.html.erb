@@ -33,7 +33,7 @@
       </div>
       <div class="row">
         <div class="span3">
-          <%= render 'side' %>
+          <%= render 'side' if current_user %>
         </div>
         <div class="span9">
           <%= bootstrap_flash %>
