@@ -4,55 +4,41 @@ HTML::WhiteListSanitizer.allowed_css_keywords     = %w(left center right justify
 
 engine = HTML::WhiteListSanitizer.new
 
-css_sanitizer = lambda {|options|
-  node = options[:node]
-  if node.present? && node.element? && node['style'].present?
-    node['style'] = engine.sanitize_css node['style']
-  end
-}
-
-div_transformer = lambda {|options|
-  node = options[:node]
-  if node.present? && node.element? && node.name.downcase == 'div'
-    node.name = 'p'
-  end
-}
-
 ie_cleaner = lambda {|options|
   node = options[:node]
   return unless node.present? && node.element?
-
-  if align = node['align']
-    node['style'] = "text-align: #{align};"
-  end
 
   if node.name.downcase == 'font'
     node.name = 'span'
   end
 }
 
+css_class_filterer = lambda {|options|
+  node = options[:node]
+  if node.present? && node.element? && node['class'].present?
+    node['class'] = nil unless node['class'] =~ /^wysiwyg-color/
+  end
+}
+
 Sanitize::Rails.configure(
-  :elements => %w[ a b blockquote br div em h3 h4 i img li ol p span strong sub sup u ul ],
+  :elements => %w[ a b br em i p span strong ],
 
   :attributes => {
-    :all  => ['style'],
-    'a'   => ['href'],
-    'img' => ['src']
+    'span' => ['class'],
+    'a'    => ['href'],
+    'img'  => ['src']
   },
 
   :add_attributes => {
-    'a' => {
-      'rel'    => 'nofollow',
-      'target' => '_blank'
-    }
+    'a' => { 'rel' => 'nofollow' }
   },
 
   :protocols => {
-    'a' => {'href' => ['ftp', 'http', 'https', 'mailto', :relative]},
-    'img' => {'src' => ['http', 'https']}
+    'a' =>   {'href' => ['ftp', 'http', 'https', 'mailto', :relative]},
+    'img' => {'src'  => ['http', 'https']}
   },
 
-  :transformers => [css_sanitizer, div_transformer, ie_cleaner],
+  :transformers => [ie_cleaner, css_class_filterer],
 
   :whitespace_elements => %w(
     address article aside blockquote dd dl dt footer
