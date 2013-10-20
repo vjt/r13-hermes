@@ -3,7 +3,7 @@
   <td><%= l tip.published_at %></td>
   <td><%= l tip.unpublished_at %></td>
   <td style="text-align: right">
-    <%= link_to "http://#{@site.hostname}#{tip.path}", class: 'btn btn-small', target: '_blank' do %>
+    <%= link_to "http://#{@site.hostname}#{tip.path}#hermes-preview,#{message_path(tip.class.model_name.param_key, tip.id)}", class: 'btn btn-small', target: '_blank' do %>
       <i class="icon-eye-open"></i>
     <% end %>
 

@@ -3,10 +3,7 @@
 
 (function() {
   var jQuery,
-      jQueryURL     = '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
-      hermesURL     = __hermes_host__ + '/messages.js',
-      foundationURL = __hermes_host__ + '/foundation.min.js',
-      modernizrURL  = __hermes_host__ + '/custom.modernizr.js';
+      jQueryURL     = '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js';
 
   function loadJavaScript(url, loadHandler) {
     var script_tag = document.createElement('script');
@@ -41,8 +38,12 @@
     jQuery(document).ready(function($) {
       var h = new Hermes($);
 
-      if ((m = document.location.hash.match(/#hermes-authoring,(https?)/)) && window.opener) {
+      if ((m = document.location.hash.match(/^#hermes-authoring,(https?)/)) && window.opener) {
         h.author(m[1]); // XXX DIRTY
+
+      } else if ((m = document.location.hash.match(/#hermes-preview,([\w\/]+)/))) {
+        h.preview(m[1]);
+
       } else {
         h.display();
       }
@@ -50,14 +51,21 @@
   }
 
   function Hermes($) {
-    this.endpoint = hermesURL;
-
     this.display = function() {
       __hermes_init_popover__($);
 
-      $.ajax(this.endpoint, {
+      $.ajax(__hermes_host__ + '/messages.js', {
         dataType: 'jsonp',
         success: enqueue.bind(this)
+      });
+    }
+
+    this.preview = function (path) {
+      __hermes_init_popover__($);
+
+      $.ajax(__hermes_host__ + path, {
+        dataType: 'jsonp',
+        success: show
       });
     }
 
