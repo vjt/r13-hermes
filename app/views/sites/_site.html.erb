@@ -1,4 +1,7 @@
 <li>
-  <%= link_to site.name, site_path(site) %>
-  <%= site.hostname %>
+  <%= link_to site_path(site) do |link| %>
+    <b><%= site.name %></b>
+    <br>
+    <span class="muted"><%= site.hostname %></span>
+  <% end %>
 </li>

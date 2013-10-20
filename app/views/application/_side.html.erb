@@ -1,4 +1,12 @@
-<h4><%= title 'Your sites' %></h4>
-<ul class="sites-list">
-  <%= render @sites %>
-</ul>
+<div class="well" style="padding: 8px 0">
+  <ul class="nav nav-list">
+    <li class="nav-header">Your sites</li>
+    <%= render @sites %>
+    <li class="divider"></li>
+    <li>
+      <span>
+        <%= link_to 'Add another site', new_site_path, class: 'btn btn-small btn-primary' %>
+      </span>
+    </li>
+  </ul>
+</div>
